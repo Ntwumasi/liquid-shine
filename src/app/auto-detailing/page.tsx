@@ -1,3 +1,6 @@
+import Image from 'next/image';
+import Link from 'next/link';
+
 export default function AutoDetailingPage() {
   const packages = [
     {
@@ -25,6 +28,7 @@ export default function AutoDetailingPage() {
         "Tire shine application",
       ],
       prices: { coupe: 300, sedan: 350, midSuv: 400, fullSize: 450 },
+      popular: true,
     },
     {
       name: "Premium Detailing",
@@ -62,59 +66,97 @@ export default function AutoDetailingPage() {
   ];
 
   const services = [
-    { icon: "🧼", name: "Washing", description: "Thorough exterior washing with premium soaps" },
-    { icon: "✨", name: "Waxing", description: "Professional wax application for protection" },
-    { icon: "🔧", name: "Polishing", description: "Expert polishing to restore shine" },
-    { icon: "💎", name: "Buffing", description: "Fine buffing for mirror-like finish" },
-    { icon: "🎨", name: "Paint Correction", description: "Remove swirls and scratches" },
-    { icon: "🔧", name: "Engine Bay Cleaning", description: "Detail and clean engine compartment" },
-    { icon: "💡", name: "Headlight Restoration", description: "Restore clarity and protection" },
-    { icon: "🏠", name: "Interior Cleaning", description: "Deep clean all interior surfaces" },
-    { icon: "💨", name: "Steam Cleaning", description: "Professional steam cleaning for carpets" },
-    { icon: "🛋️", name: "Carpet & Upholstery", description: "Complete shampooing and restoration" },
+    { name: "Washing", description: "Thorough exterior washing with premium soaps" },
+    { name: "Waxing", description: "Professional wax application for protection" },
+    { name: "Polishing", description: "Expert polishing to restore shine" },
+    { name: "Buffing", description: "Fine buffing for mirror-like finish" },
+    { name: "Paint Correction", description: "Remove swirls and scratches" },
+    { name: "Engine Bay Cleaning", description: "Detail and clean engine compartment" },
+    { name: "Headlight Restoration", description: "Restore clarity and protection" },
+    { name: "Interior Cleaning", description: "Deep clean all interior surfaces" },
+    { name: "Steam Cleaning", description: "Professional steam cleaning for carpets" },
+    { name: "Carpet & Upholstery", description: "Complete shampooing and restoration" },
+  ];
+
+  const galleryImages = [
+    '/images/Auto-Detailing-2018-Corvette-Convertible-After.jpg',
+    '/images/Auto-Detailing-BMW-3-Series.jpg',
+    '/images/Auto-Detailing-2018-Jeep-Wrangler-Rubicon.jpg',
+    '/images/Auto-Detailing-Dodge-Charger.jpg',
   ];
 
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-blue-900 to-blue-700 text-white py-20 px-4">
-        <div className="max-w-6xl mx-auto">
-          <h1 className="text-5xl font-bold mb-4 text-center">Auto Detailing Services</h1>
-          <p className="text-xl text-blue-100 text-center mb-8 max-w-3xl mx-auto">
-            Professional auto detailing that transforms your vehicle inside and out. From basic washing to complete restoration.
-          </p>
-          <div className="flex justify-center">
-            <button className="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-lg text-lg transition-colors">
-              CALL US NOW!
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* Military Discount Banner */}
-      <section className="bg-blue-50 border-l-4 border-blue-600 py-6 px-4">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex items-center gap-4">
-            <div className="text-4xl">🎖️</div>
-            <div>
-              <h3 className="text-xl font-bold text-blue-900">Military Discount</h3>
-              <p className="text-blue-700">
-                <span className="font-bold text-2xl">15% OFF</span> all auto detailing services for active and veteran military members
-              </p>
+      <section className="relative h-[60vh] min-h-[400px] flex items-center">
+        <Image
+          src="/images/hero-car-front.jpg"
+          alt="Auto Detailing Services"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent" />
+        <div className="container-custom relative z-10">
+          <div className="max-w-2xl">
+            <span className="badge badge-accent mb-4">Professional Service</span>
+            <h1 className="text-5xl md:text-6xl font-bold text-white mb-4">
+              Auto <span className="text-[#FFBA00]">Detailing</span>
+            </h1>
+            <p className="text-xl text-gray-200 mb-8">
+              Professional auto detailing that transforms your vehicle inside and out. From basic washing to complete restoration.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link href="/contact" className="btn btn-accent">
+                Book Now
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </Link>
+              <a href="tel:978-660-1356" className="btn btn-secondary bg-transparent border-white text-white hover:bg-white hover:text-gray-900">
+                (978) 660-1356
+              </a>
             </div>
           </div>
         </div>
       </section>
 
+      {/* Military Discount Banner */}
+      <section className="bg-[#FFBA00] py-4">
+        <div className="container-custom">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            <div className="flex items-center gap-4">
+              <span className="text-3xl">🎖️</span>
+              <div>
+                <span className="font-bold text-gray-900 text-lg">Military & First Responders:</span>
+                <span className="text-gray-800 ml-2">15% OFF all auto detailing services</span>
+              </div>
+            </div>
+            <Link href="/contact" className="px-6 py-2 bg-gray-900 text-white font-semibold rounded-lg hover:bg-gray-800 transition-colors">
+              Claim Discount
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Services Overview */}
-      <section className="py-16 px-4 bg-gray-50">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-center text-gray-900 mb-12">Our Detailing Services</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+      <section className="py-20 bg-gray-50">
+        <div className="container-custom">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <span className="badge badge-primary mb-4">Our Services</span>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              Complete <span className="gradient-text-blue">Detailing Services</span>
+            </h2>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
             {services.map((service, index) => (
-              <div key={index} className="bg-white p-6 rounded-lg shadow-md text-center hover:shadow-lg transition-shadow">
-                <div className="text-4xl mb-3">{service.icon}</div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2">{service.name}</h3>
+              <div key={index} className="bg-white p-6 rounded-xl shadow-md text-center hover:shadow-lg transition-all hover:-translate-y-1">
+                <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-[#004FBB]/10 flex items-center justify-center">
+                  <svg className="w-6 h-6 text-[#004FBB]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <h3 className="font-bold text-gray-900 mb-1">{service.name}</h3>
                 <p className="text-gray-600 text-sm">{service.description}</p>
               </div>
             ))}
@@ -123,82 +165,60 @@ export default function AutoDetailingPage() {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-16 px-4">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-center text-gray-900 mb-12">Why Choose Liquid Shine Elite?</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="flex gap-4">
-              <div className="flex-shrink-0">
-                <div className="flex items-center justify-center h-12 w-12 rounded-md bg-blue-600 text-white">
-                  ✓
+      <section className="py-20 bg-[#004FBB]">
+        <div className="container-custom">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <h2 className="text-4xl font-bold text-white mb-4">
+              Why Choose <span className="text-[#FFBA00]">Liquid Shine?</span>
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { title: "Expert Technicians", desc: "Certified professionals with years of experience" },
+              { title: "Premium Products", desc: "Only the highest quality detailing products" },
+              { title: "Mobile Service", desc: "We come to your home or workplace" },
+              { title: "Satisfaction Guaranteed", desc: "100% satisfaction on all services" },
+            ].map((item, index) => (
+              <div key={index} className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-6 text-center">
+                <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-[#FFBA00] flex items-center justify-center">
+                  <svg className="w-7 h-7 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
                 </div>
+                <h3 className="text-lg font-bold text-white mb-2">{item.title}</h3>
+                <p className="text-blue-100 text-sm">{item.desc}</p>
               </div>
-              <div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">Expert Technicians</h3>
-                <p className="text-gray-600">
-                  Certified and trained professionals with years of experience in auto detailing.
-                </p>
-              </div>
-            </div>
-            <div className="flex gap-4">
-              <div className="flex-shrink-0">
-                <div className="flex items-center justify-center h-12 w-12 rounded-md bg-blue-600 text-white">
-                  ✓
-                </div>
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">Premium Products</h3>
-                <p className="text-gray-600">
-                  We use only the highest quality detailing products and equipment.
-                </p>
-              </div>
-            </div>
-            <div className="flex gap-4">
-              <div className="flex-shrink-0">
-                <div className="flex items-center justify-center h-12 w-12 rounded-md bg-blue-600 text-white">
-                  ✓
-                </div>
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">Mobile Service</h3>
-                <p className="text-gray-600">
-                  We come to you! Professional detailing at your home or workplace.
-                </p>
-              </div>
-            </div>
-            <div className="flex gap-4">
-              <div className="flex-shrink-0">
-                <div className="flex items-center justify-center h-12 w-12 rounded-md bg-blue-600 text-white">
-                  ✓
-                </div>
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">Satisfaction Guaranteed</h3>
-                <p className="text-gray-600">
-                  100% customer satisfaction guarantee on all our detailing services.
-                </p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Detailing Process */}
-      <section className="py-16 px-4 bg-gray-50">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-center text-gray-900 mb-12">Our Detailing Process</h2>
+      <section className="py-20 bg-white">
+        <div className="container-custom">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <span className="badge badge-primary mb-4">Our Process</span>
+            <h2 className="text-4xl font-bold text-gray-900">How We Work</h2>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
             {[
-              { step: "Inspection", description: "Assess vehicle condition" },
-              { step: "Wash", description: "Professional washing" },
-              { step: "Polish", description: "Restore shine and clarity" },
-              { step: "Protect", description: "Apply protective coatings" },
-              { step: "Final Touch", description: "Quality inspection" },
+              { step: "Inspection", desc: "Assess vehicle condition" },
+              { step: "Wash", desc: "Professional washing" },
+              { step: "Polish", desc: "Restore shine and clarity" },
+              { step: "Protect", desc: "Apply protective coatings" },
+              { step: "Final Touch", desc: "Quality inspection" },
             ].map((item, index) => (
-              <div key={index} className="bg-white p-6 rounded-lg shadow-md text-center">
-                <div className="text-4xl font-bold text-blue-600 mb-3">{index + 1}</div>
-                <h3 className="font-bold text-gray-900 mb-2">{item.step}</h3>
-                <p className="text-gray-600 text-sm">{item.description}</p>
+              <div key={index} className="relative">
+                <div className="bg-gray-50 rounded-xl p-6 text-center h-full">
+                  <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-[#004FBB] text-white flex items-center justify-center text-xl font-bold">
+                    {index + 1}
+                  </div>
+                  <h3 className="font-bold text-gray-900 mb-1">{item.step}</h3>
+                  <p className="text-gray-600 text-sm">{item.desc}</p>
+                </div>
+                {index < 4 && (
+                  <div className="hidden md:block absolute top-1/2 -right-2 w-4 h-0.5 bg-[#004FBB]" />
+                )}
               </div>
             ))}
           </div>
@@ -206,13 +226,23 @@ export default function AutoDetailingPage() {
       </section>
 
       {/* Package Cards */}
-      <section className="py-16 px-4">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-center text-gray-900 mb-12">Detailing Packages</h2>
+      <section className="py-20 bg-gray-50">
+        <div className="container-custom">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <span className="badge badge-primary mb-4">Pricing</span>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              Detailing <span className="gradient-text">Packages</span>
+            </h2>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {packages.map((pkg, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white p-6">
+              <div key={index} className={`bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow ${pkg.popular ? 'ring-2 ring-[#FFBA00]' : ''}`}>
+                {pkg.popular && (
+                  <div className="bg-[#FFBA00] text-gray-900 text-center py-2 font-bold text-sm">
+                    MOST POPULAR
+                  </div>
+                )}
+                <div className="bg-[#004FBB] text-white p-6">
                   <h3 className="text-2xl font-bold mb-2">{pkg.name}</h3>
                   <p className="text-blue-100">{pkg.description}</p>
                 </div>
@@ -222,36 +252,38 @@ export default function AutoDetailingPage() {
                     <ul className="space-y-2">
                       {pkg.services.map((service, i) => (
                         <li key={i} className="flex items-start gap-2 text-gray-600">
-                          <span className="text-blue-600 font-bold mt-1">✓</span>
+                          <svg className="w-5 h-5 text-[#004FBB] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                          </svg>
                           {service}
                         </li>
                       ))}
                     </ul>
                   </div>
                   <div className="border-t border-gray-200 pt-6">
-                    <h4 className="font-bold text-gray-900 mb-3">Vehicle Pricing:</h4>
-                    <div className="grid grid-cols-2 gap-3 text-sm">
-                      <div className="bg-gray-50 p-3 rounded">
-                        <p className="text-gray-600">Coupe</p>
-                        <p className="text-2xl font-bold text-blue-600">${pkg.prices.coupe}</p>
+                    <h4 className="font-bold text-gray-900 mb-3">Starting At:</h4>
+                    <div className="grid grid-cols-2 gap-3">
+                      <div className="bg-gray-50 p-3 rounded-lg">
+                        <p className="text-gray-500 text-sm">Coupe</p>
+                        <p className="text-2xl font-bold text-[#004FBB]">${pkg.prices.coupe}</p>
                       </div>
-                      <div className="bg-gray-50 p-3 rounded">
-                        <p className="text-gray-600">Sedan</p>
-                        <p className="text-2xl font-bold text-blue-600">${pkg.prices.sedan}</p>
+                      <div className="bg-gray-50 p-3 rounded-lg">
+                        <p className="text-gray-500 text-sm">Sedan</p>
+                        <p className="text-2xl font-bold text-[#004FBB]">${pkg.prices.sedan}</p>
                       </div>
-                      <div className="bg-gray-50 p-3 rounded">
-                        <p className="text-gray-600">Mid-SUV</p>
-                        <p className="text-2xl font-bold text-blue-600">${pkg.prices.midSuv}</p>
+                      <div className="bg-gray-50 p-3 rounded-lg">
+                        <p className="text-gray-500 text-sm">Mid-SUV</p>
+                        <p className="text-2xl font-bold text-[#004FBB]">${pkg.prices.midSuv}</p>
                       </div>
-                      <div className="bg-gray-50 p-3 rounded">
-                        <p className="text-gray-600">Full-Size</p>
-                        <p className="text-2xl font-bold text-blue-600">${pkg.prices.fullSize}</p>
+                      <div className="bg-gray-50 p-3 rounded-lg">
+                        <p className="text-gray-500 text-sm">Full-Size</p>
+                        <p className="text-2xl font-bold text-[#004FBB]">${pkg.prices.fullSize}</p>
                       </div>
                     </div>
                   </div>
-                  <button className="w-full mt-6 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-colors">
+                  <Link href="/contact" className="block w-full mt-6 btn btn-primary text-center">
                     Get Quote
-                  </button>
+                  </Link>
                 </div>
               </div>
             ))}
@@ -260,68 +292,52 @@ export default function AutoDetailingPage() {
       </section>
 
       {/* Gallery Preview */}
-      <section className="py-16 px-4 bg-gray-50">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-center text-gray-900 mb-12">Before & After Gallery</h2>
+      <section className="py-20 bg-white">
+        <div className="container-custom">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <span className="badge badge-primary mb-4">Our Work</span>
+            <h2 className="text-4xl font-bold text-gray-900">Before & After</h2>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[1, 2, 3, 4].map((item) => (
-              <div key={item} className="bg-gray-300 rounded-lg h-64 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-6xl mb-2">📸</div>
-                  <p className="text-gray-600">Gallery Image {item}</p>
-                </div>
+            {galleryImages.map((src, index) => (
+              <div key={index} className="relative aspect-square rounded-2xl overflow-hidden group">
+                <Image
+                  src={src}
+                  alt={`Auto detailing result ${index + 1}`}
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300" />
               </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="py-16 px-4">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-center text-gray-900 mb-12">Customer Testimonials</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                name: "Maria Rodriguez",
-                text: "Best detailing service I've ever used! My car looks absolutely stunning. The team was professional and thorough.",
-                rating: 5,
-              },
-              {
-                name: "David Thompson",
-                text: "Incredible attention to detail. They came to my home and did an amazing job. Highly recommended!",
-                rating: 5,
-              },
-              {
-                name: "Jessica Lee",
-                text: "The transformation is unbelievable! My car went from dull to showroom quality. Worth every dollar!",
-                rating: 5,
-              },
-            ].map((testimonial, index) => (
-              <div key={index} className="bg-white p-6 rounded-lg shadow-md border-l-4 border-blue-600">
-                <div className="flex gap-1 mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <span key={i} className="text-yellow-400 text-xl">★</span>
-                  ))}
-                </div>
-                <p className="text-gray-600 mb-4 italic">"{testimonial.text}"</p>
-                <p className="font-bold text-gray-900">- {testimonial.name}</p>
-              </div>
-            ))}
+          <div className="text-center mt-10">
+            <Link href="/gallery" className="btn btn-secondary">
+              View Full Gallery
+            </Link>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-blue-700 text-white py-16 px-4">
-        <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-4xl font-bold mb-6">Transform Your Vehicle Today</h2>
-          <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+      <section className="py-20 bg-[#0a1628] relative overflow-hidden">
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#004FBB] rounded-full opacity-20 blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#FFBA00] rounded-full opacity-10 blur-3xl" />
+        <div className="container-custom relative z-10 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            Transform Your Vehicle <span className="text-[#FFBA00]">Today</span>
+          </h2>
+          <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
             Schedule your auto detailing appointment and see the difference professional care can make.
           </p>
-          <button className="bg-white text-blue-600 hover:bg-blue-50 font-bold py-3 px-8 rounded-lg text-lg transition-colors">
-            Schedule Now
-          </button>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link href="/contact" className="btn btn-accent text-base px-8 py-4">
+              Book Your Appointment
+            </Link>
+            <a href="tel:978-660-1356" className="inline-flex items-center gap-2 px-8 py-4 text-base font-semibold text-white bg-white/10 border border-white/20 rounded-xl hover:bg-white/20 transition-colors">
+              (978) 660-1356
+            </a>
+          </div>
         </div>
       </section>
     </div>

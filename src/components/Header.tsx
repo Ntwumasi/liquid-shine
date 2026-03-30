@@ -1,354 +1,132 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
-  const toggleDropdown = () => {
-    setIsDropdownOpen(!isDropdownOpen);
-  };
-
-  const closeMenu = () => {
-    setIsMenuOpen(false);
-    setIsDropdownOpen(false);
-  };
+  const navLinks = [
+    { href: '/', label: 'Home' },
+    { href: '/ceramic-coating', label: 'Ceramic Coating' },
+    { href: '/auto-detailing', label: 'Auto' },
+    { href: '/boat-detailing', label: 'Marine' },
+    { href: '/rv-detailing', label: 'RV' },
+    { href: '/gallery', label: 'Gallery' },
+    { href: '/about-us', label: 'About' },
+  ];
 
   return (
-    <header className="sticky top-0 z-50 bg-[#0f172a] border-b border-[#334155]">
-      {/* Top Bar */}
-      <div className="hidden md:block bg-[#1e293b] border-b border-[#334155] py-3">
-        <div className="container-custom flex justify-between items-center text-sm">
-          <div className="flex items-center space-x-2">
-            <svg className="w-4 h-4 text-[#1a56db]" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-            </svg>
-            <a
-              href="tel:978-660-1356"
-              className="text-white hover:text-[#1a56db] transition-colors duration-300"
-            >
-              (978) 660-1356
-            </a>
-          </div>
-          <div className="flex items-center space-x-4">
-            <a
-              href="https://facebook.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white hover:text-[#1a56db] transition-colors duration-300"
-              aria-label="Facebook"
-            >
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M23 12.013c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 23 18.062 23 12.013z" />
-              </svg>
-            </a>
-            <a
-              href="https://twitter.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white hover:text-[#1a56db] transition-colors duration-300"
-              aria-label="X/Twitter"
-            >
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.6l-5.17-6.763-5.91 6.763h-3.308l7.73-8.835L2.5 2.25h6.75l4.915 6.516L17.41 2.25h.834zM15.69 19.812h1.806L8.271 4.1H6.366l9.324 15.712z" />
-              </svg>
-            </a>
-            <a
-              href="https://instagram.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white hover:text-[#1a56db] transition-colors duration-300"
-              aria-label="Instagram"
-            >
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163C8.756 0 8.331.012 7.052.07 2.695.278.273 2.759.06 7.051.009 8.331 0 8.756 0 12s.011 3.669.06 4.948c.213 4.294 2.635 6.773 6.992 6.982 1.279.058 1.704.07 4.948.07 3.245 0 3.669-.012 4.949-.07 4.356-.209 6.78-2.688 6.993-6.981.058-1.279.07-1.704.07-4.949 0-3.244-.011-3.669-.07-4.948-.213-4.293-2.635-6.774-6.992-6.982C15.669.012 15.245 0 12 0z" />
-                <circle cx="12" cy="12" r="3.6" />
-                <circle cx="18.406" cy="5.594" r="0.9" />
-              </svg>
-            </a>
-            <a
-              href="https://feeds.example.com/rss"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white hover:text-[#1a56db] transition-colors duration-300"
-              aria-label="RSS Feed"
-            >
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M4 6a2 2 0 012-2h12a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V6zm3 5a3 3 0 106 0 3 3 0 00-6 0z" />
-                <circle cx="19" cy="19" r="1" />
-                <path d="M4.5 19.5A14.5 14.5 0 0019.5 4.5" />
-              </svg>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Navigation */}
-      <nav className="bg-[#0f172a]">
-        <div className="container-custom flex items-center justify-between h-16 md:h-20">
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled
+          ? 'bg-white/90 backdrop-blur-lg shadow-soft'
+          : 'bg-transparent'
+      }`}
+    >
+      <div className="container-custom">
+        <nav className="flex items-center justify-between h-20">
           {/* Logo */}
-          <div className="flex-shrink-0">
-            <Link href="/" className="flex items-center space-x-2 group">
-              <div className="w-10 h-10 md:w-12 md:h-12 bg-[#1a56db] rounded-lg flex items-center justify-center group-hover:bg-[#1e40af] transition-colors duration-300">
-                <span className="text-white font-bold text-lg md:text-xl">LS</span>
-              </div>
-              <span className="hidden sm:inline text-white font-bold text-lg md:text-xl group-hover:text-[#1a56db] transition-colors duration-300">
-                Liquid Shine
-              </span>
-            </Link>
-          </div>
+          <Link href="/" className="flex items-center group">
+            <Image
+              src="/images/logo-primary-transparent.png"
+              alt="Liquid Shine Elite Mobile Detailing"
+              width={180}
+              height={60}
+              className={`h-12 w-auto transition-all duration-300 ${
+                isScrolled ? 'brightness-0' : 'brightness-0 invert'
+              }`}
+              priority
+            />
+          </Link>
 
-          {/* Desktop Navigation Links */}
-          <div className="hidden lg:flex items-center space-x-1">
-            <Link
-              href="/"
-              className="px-3 py-2 text-sm font-medium text-white hover:text-[#1a56db] transition-colors duration-300"
-            >
-              HOME
-            </Link>
-            <Link
-              href="/ceramic-coating"
-              className="px-3 py-2 text-sm font-medium text-white hover:text-[#1a56db] transition-colors duration-300"
-            >
-              CERAMIC COATING
-            </Link>
-            <Link
-              href="/auto-detailing"
-              className="px-3 py-2 text-sm font-medium text-white hover:text-[#1a56db] transition-colors duration-300"
-            >
-              AUTO DETAILING
-            </Link>
-
-            {/* Dropdown */}
-            <div className="relative group">
-              <button className="px-3 py-2 text-sm font-medium text-white hover:text-[#1a56db] transition-colors duration-300 flex items-center space-x-1">
-                <span>OTHER SERVICES</span>
-                <svg className="w-4 h-4 group-hover:rotate-180 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                </svg>
-              </button>
-              <div className="absolute left-0 mt-0 w-48 bg-[#1e293b] rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 py-2">
-                <Link
-                  href="/boat-detailing"
-                  className="block px-4 py-2 text-sm text-white hover:text-[#1a56db] hover:bg-[#334155] transition-colors duration-300"
-                >
-                  Boat Detailing
-                </Link>
-                <Link
-                  href="/rv-detailing"
-                  className="block px-4 py-2 text-sm text-white hover:text-[#1a56db] hover:bg-[#334155] transition-colors duration-300"
-                >
-                  RV Detailing
-                </Link>
-              </div>
-            </div>
-
-            <Link
-              href="/products"
-              className="px-3 py-2 text-sm font-medium text-white hover:text-[#1a56db] transition-colors duration-300"
-            >
-              PRODUCTS
-            </Link>
-            <Link
-              href="/about"
-              className="px-3 py-2 text-sm font-medium text-white hover:text-[#1a56db] transition-colors duration-300"
-            >
-              ABOUT US
-            </Link>
-            <Link
-              href="/gallery"
-              className="px-3 py-2 text-sm font-medium text-white hover:text-[#1a56db] transition-colors duration-300"
-            >
-              GALLERY
-            </Link>
-            <Link
-              href="/blog"
-              className="px-3 py-2 text-sm font-medium text-white hover:text-[#1a56db] transition-colors duration-300"
-            >
-              BLOG
-            </Link>
+          {/* Desktop Navigation */}
+          <div className="hidden lg:flex items-center gap-1">
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 ${
+                  isScrolled
+                    ? 'text-gray-700 hover:text-[#004FBB] hover:bg-blue-50'
+                    : 'text-white/90 hover:text-white hover:bg-white/10'
+                }`}
+              >
+                {link.label}
+              </Link>
+            ))}
             <Link
               href="/contact"
-              className="px-3 py-2 text-sm font-medium text-white bg-[#1a56db] rounded hover:bg-[#1e40af] transition-colors duration-300"
+              className="ml-4 btn btn-accent text-sm py-2.5 px-6"
             >
-              CONTACT
+              Get Quote
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
             </Link>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            onClick={toggleMenu}
-            className="lg:hidden inline-flex items-center justify-center p-2 rounded-md text-white hover:text-[#1a56db] hover:bg-[#1e293b] focus:outline-none transition-colors duration-300"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className={`lg:hidden p-2 rounded-lg transition-colors duration-300 ${
+              isScrolled
+                ? 'text-gray-700 hover:bg-gray-100'
+                : 'text-white hover:bg-white/10'
+            }`}
             aria-label="Toggle menu"
           >
             {isMenuOpen ? (
-              <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             ) : (
-              <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             )}
           </button>
-        </div>
+        </nav>
 
         {/* Mobile Menu */}
-        {isMenuOpen && (
-          <div className="lg:hidden bg-[#1e293b] border-t border-[#334155]">
-            <div className="px-2 pt-2 pb-3 space-y-1">
+        <div
+          className={`lg:hidden overflow-hidden transition-all duration-300 ${
+            isMenuOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
+          }`}
+        >
+          <div className="py-4 space-y-1 bg-white rounded-2xl shadow-large mb-4 px-2">
+            {navLinks.map((link) => (
               <Link
-                href="/"
-                onClick={closeMenu}
-                className="block px-3 py-2 rounded-md text-white hover:text-[#1a56db] hover:bg-[#334155] text-sm font-medium transition-colors duration-300"
+                key={link.href}
+                href={link.href}
+                onClick={() => setIsMenuOpen(false)}
+                className="block px-4 py-3 text-gray-700 hover:text-[#004FBB] hover:bg-blue-50 rounded-xl font-medium transition-colors duration-200"
               >
-                HOME
+                {link.label}
               </Link>
-              <Link
-                href="/ceramic-coating"
-                onClick={closeMenu}
-                className="block px-3 py-2 rounded-md text-white hover:text-[#1a56db] hover:bg-[#334155] text-sm font-medium transition-colors duration-300"
-              >
-                CERAMIC COATING
-              </Link>
-              <Link
-                href="/auto-detailing"
-                onClick={closeMenu}
-                className="block px-3 py-2 rounded-md text-white hover:text-[#1a56db] hover:bg-[#334155] text-sm font-medium transition-colors duration-300"
-              >
-                AUTO DETAILING
-              </Link>
-
-              {/* Mobile Dropdown */}
-              <div className="px-3 py-2">
-                <button
-                  onClick={toggleDropdown}
-                  className="w-full text-left text-white hover:text-[#1a56db] text-sm font-medium flex items-center justify-between transition-colors duration-300"
-                >
-                  <span>OTHER SERVICES</span>
-                  <svg
-                    className={`w-4 h-4 transition-transform duration-300 ${
-                      isDropdownOpen ? 'rotate-180' : ''
-                    }`}
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                  </svg>
-                </button>
-                {isDropdownOpen && (
-                  <div className="mt-2 space-y-1 pl-4">
-                    <Link
-                      href="/boat-detailing"
-                      onClick={closeMenu}
-                      className="block px-3 py-2 rounded-md text-white hover:text-[#1a56db] hover:bg-[#334155] text-sm transition-colors duration-300"
-                    >
-                      Boat Detailing
-                    </Link>
-                    <Link
-                      href="/rv-detailing"
-                      onClick={closeMenu}
-                      className="block px-3 py-2 rounded-md text-white hover:text-[#1a56db] hover:bg-[#334155] text-sm transition-colors duration-300"
-                    >
-                      RV Detailing
-                    </Link>
-                  </div>
-                )}
-              </div>
-
-              <Link
-                href="/products"
-                onClick={closeMenu}
-                className="block px-3 py-2 rounded-md text-white hover:text-[#1a56db] hover:bg-[#334155] text-sm font-medium transition-colors duration-300"
-              >
-                PRODUCTS
-              </Link>
-              <Link
-                href="/about"
-                onClick={closeMenu}
-                className="block px-3 py-2 rounded-md text-white hover:text-[#1a56db] hover:bg-[#334155] text-sm font-medium transition-colors duration-300"
-              >
-                ABOUT US
-              </Link>
-              <Link
-                href="/gallery"
-                onClick={closeMenu}
-                className="block px-3 py-2 rounded-md text-white hover:text-[#1a56db] hover:bg-[#334155] text-sm font-medium transition-colors duration-300"
-              >
-                GALLERY
-              </Link>
-              <Link
-                href="/blog"
-                onClick={closeMenu}
-                className="block px-3 py-2 rounded-md text-white hover:text-[#1a56db] hover:bg-[#334155] text-sm font-medium transition-colors duration-300"
-              >
-                BLOG
-              </Link>
+            ))}
+            <div className="pt-2 px-2">
               <Link
                 href="/contact"
-                onClick={closeMenu}
-                className="block px-3 py-2 rounded-md text-white bg-[#1a56db] hover:bg-[#1e40af] text-sm font-medium transition-colors duration-300 mt-2"
+                onClick={() => setIsMenuOpen(false)}
+                className="btn btn-accent w-full justify-center"
               >
-                CONTACT
+                Get Free Quote
               </Link>
-
-              {/* Mobile Top Bar Info */}
-              <div className="pt-3 border-t border-[#334155] mt-3">
-                <a
-                  href="tel:978-660-1356"
-                  className="block px-3 py-2 text-white hover:text-[#1a56db] text-sm transition-colors duration-300"
-                >
-                  (978) 660-1356
-                </a>
-                <div className="flex items-center justify-center space-x-4 pt-3">
-                  <a
-                    href="https://facebook.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-white hover:text-[#1a56db] transition-colors duration-300"
-                    aria-label="Facebook"
-                  >
-                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M23 12.013c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 23 18.062 23 12.013z" />
-                    </svg>
-                  </a>
-                  <a
-                    href="https://twitter.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-white hover:text-[#1a56db] transition-colors duration-300"
-                    aria-label="X/Twitter"
-                  >
-                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.6l-5.17-6.763-5.91 6.763h-3.308l7.73-8.835L2.5 2.25h6.75l4.915 6.516L17.41 2.25h.834zM15.69 19.812h1.806L8.271 4.1H6.366l9.324 15.712z" />
-                    </svg>
-                  </a>
-                  <a
-                    href="https://instagram.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-white hover:text-[#1a56db] transition-colors duration-300"
-                    aria-label="Instagram"
-                  >
-                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163C8.756 0 8.331.012 7.052.07 2.695.278.273 2.759.06 7.051.009 8.331 0 8.756 0 12s.011 3.669.06 4.948c.213 4.294 2.635 6.773 6.992 6.982 1.279.058 1.704.07 4.948.07 3.245 0 3.669-.012 4.949-.07 4.356-.209 6.78-2.688 6.993-6.981.058-1.279.07-1.704.07-4.949 0-3.244-.011-3.669-.07-4.948-.213-4.293-2.635-6.774-6.992-6.982C15.669.012 15.245 0 12 0z" />
-                      <circle cx="12" cy="12" r="3.6" />
-                      <circle cx="18.406" cy="5.594" r="0.9" />
-                    </svg>
-                  </a>
-                </div>
-              </div>
             </div>
           </div>
-        )}
-      </nav>
+        </div>
+      </div>
     </header>
   );
 }

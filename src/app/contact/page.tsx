@@ -37,7 +37,7 @@ export default function Contact() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900">
       {/* Hero Section */}
-      <section className="relative py-24 px-4 sm:py-32 overflow-hidden bg-gradient-to-br from-[#004FBB] via-[#003d91] to-slate-900">
+      <section className="relative pt-32 pb-16 px-4 sm:pt-40 sm:pb-24 overflow-hidden bg-gradient-to-br from-[#004FBB] via-[#003d91] to-slate-900">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#FFBA00] rounded-full blur-3xl"></div>
           <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#004FBB] rounded-full blur-3xl"></div>

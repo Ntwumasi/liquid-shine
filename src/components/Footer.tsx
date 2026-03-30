@@ -14,8 +14,14 @@ export default function Footer() {
   const company = [
     { href: '/about-us', label: 'About Us' },
     { href: '/gallery', label: 'Gallery' },
+    { href: '/products', label: 'Products' },
     { href: '/blog', label: 'Blog' },
     { href: '/contact', label: 'Contact' },
+  ];
+
+  const serviceAreas = [
+    'Bradenton', 'Palmetto', 'Ellenton', 'Parrish', 'Lakewood Ranch',
+    'Sarasota', 'Venice', 'North Port', 'Anna Maria Island'
   ];
 
   const socials = [
@@ -51,24 +57,57 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-[#0a1628] text-white">
+    <footer className="bg-gray-900 text-white">
+      {/* CTA Banner */}
+      <div className="bg-gradient-to-r from-[#004FBB] via-[#0066cc] to-[#004FBB] relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-[#FFBA00]/20 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/10 rounded-full blur-3xl" />
+        </div>
+        <div className="container-custom py-10 relative">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="text-center md:text-left">
+              <h3 className="text-2xl font-bold text-white mb-2">Ready to Get Your Vehicle Detailed?</h3>
+              <p className="text-blue-100">Book your mobile detailing appointment today and see the difference!</p>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Link href="/contact" className="btn btn-accent">
+                Get Free Quote
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </Link>
+              <a href="tel:978-660-1356" className="btn bg-white/10 border border-white/30 text-white hover:bg-white hover:text-[#004FBB]">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+                (978) 660-1356
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Main Footer */}
       <div className="container-custom py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
           {/* Brand */}
-          <div className="lg:col-span-1">
+          <div className="sm:col-span-2 lg:col-span-1">
             <Link href="/" className="inline-block mb-6">
               <Image
                 src="/images/logo-primary-transparent.png"
                 alt="Liquid Shine Elite Mobile Detailing"
                 width={180}
                 height={60}
-                className="h-14 w-auto brightness-0 invert"
+                className="h-12 w-auto brightness-0 invert"
               />
             </Link>
             <p className="text-gray-400 leading-relaxed mb-6">
-              Professional mobile detailing services for auto, marine, and RV. Serving Manatee and Sarasota Counties. We bring the shine to you.
+              Professional mobile detailing services for auto, marine, and RV.
+              Serving Manatee and Sarasota Counties with excellence since 2016.
             </p>
+
+            {/* Social Links */}
             <div className="flex gap-3">
               {socials.map((social) => (
                 <a
@@ -76,7 +115,7 @@ export default function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-lg bg-white/5 hover:bg-[#FFBA00] flex items-center justify-center text-gray-400 hover:text-gray-900 transition-all duration-300"
+                  className="w-10 h-10 rounded-xl bg-gray-800 hover:bg-[#004FBB] flex items-center justify-center text-gray-400 hover:text-white transition-all duration-300"
                   aria-label={social.label}
                 >
                   {social.icon}
@@ -87,14 +126,20 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <h4 className="font-semibold text-white mb-6">Services</h4>
+            <h4 className="font-bold text-white mb-6 flex items-center gap-2">
+              <span className="w-2 h-2 bg-[#FFBA00] rounded-full" />
+              Services
+            </h4>
             <ul className="space-y-3">
               {services.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-gray-400 hover:text-white transition-colors duration-300"
+                    className="text-gray-400 hover:text-white hover:translate-x-1 transition-all duration-300 inline-flex items-center gap-2 group"
                   >
+                    <svg className="w-3 h-3 text-[#004FBB] group-hover:text-[#FFBA00] transition-colors" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+                    </svg>
                     {link.label}
                   </Link>
                 </li>
@@ -104,14 +149,20 @@ export default function Footer() {
 
           {/* Company */}
           <div>
-            <h4 className="font-semibold text-white mb-6">Company</h4>
+            <h4 className="font-bold text-white mb-6 flex items-center gap-2">
+              <span className="w-2 h-2 bg-[#FFBA00] rounded-full" />
+              Company
+            </h4>
             <ul className="space-y-3">
               {company.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-gray-400 hover:text-white transition-colors duration-300"
+                    className="text-gray-400 hover:text-white hover:translate-x-1 transition-all duration-300 inline-flex items-center gap-2 group"
                   >
+                    <svg className="w-3 h-3 text-[#004FBB] group-hover:text-[#FFBA00] transition-colors" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+                    </svg>
                     {link.label}
                   </Link>
                 </li>
@@ -119,32 +170,53 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contact */}
+          {/* Contact & Service Areas */}
           <div>
-            <h4 className="font-semibold text-white mb-6">Contact</h4>
-            <div className="space-y-4">
+            <h4 className="font-bold text-white mb-6 flex items-center gap-2">
+              <span className="w-2 h-2 bg-[#FFBA00] rounded-full" />
+              Contact
+            </h4>
+            <div className="space-y-4 mb-6">
               <a
                 href="tel:978-660-1356"
-                className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors duration-300"
+                className="flex items-center gap-3 text-gray-400 hover:text-[#FFBA00] transition-colors duration-300 group"
               >
-                <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center flex-shrink-0">
+                <div className="w-10 h-10 rounded-xl bg-gray-800 group-hover:bg-[#004FBB]/30 flex items-center justify-center flex-shrink-0 transition-colors">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                   </svg>
                 </div>
-                <span>(978) 660-1356</span>
+                <span className="font-medium">(978) 660-1356</span>
               </a>
               <div className="flex items-start gap-3 text-gray-400">
-                <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center flex-shrink-0">
+                <div className="w-10 h-10 rounded-xl bg-gray-800 flex items-center justify-center flex-shrink-0">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
                 </div>
-                <div>
+                <div className="text-sm">
                   <p>8955 US Hwy 301 N, Ste 330</p>
                   <p>Parrish, FL 34219</p>
                 </div>
+              </div>
+            </div>
+
+            {/* Service Areas Tags */}
+            <div className="mt-6">
+              <p className="text-xs text-gray-500 uppercase tracking-wider mb-3">Service Areas</p>
+              <div className="flex flex-wrap gap-1.5">
+                {serviceAreas.slice(0, 5).map((area) => (
+                  <span
+                    key={area}
+                    className="px-2 py-1 bg-gray-800/50 text-gray-500 text-xs rounded-md"
+                  >
+                    {area}
+                  </span>
+                ))}
+                <span className="px-2 py-1 bg-gray-800/50 text-[#FFBA00] text-xs rounded-md">
+                  +{serviceAreas.length - 5} more
+                </span>
               </div>
             </div>
           </div>
@@ -152,19 +224,21 @@ export default function Footer() {
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-white/10">
+      <div className="border-t border-gray-800">
         <div className="container-custom py-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-gray-400 text-sm">
-              &copy; {currentYear} Liquid Shine, LLC. All rights reserved.
+            <p className="text-gray-500 text-sm text-center md:text-left">
+              &copy; {currentYear} Liquid Shine Elite Mobile Detailing. All rights reserved.
             </p>
-            <div className="flex items-center gap-6 text-sm">
-              <Link href="/privacy" className="text-gray-400 hover:text-white transition-colors">
-                Privacy Policy
-              </Link>
-              <Link href="/terms" className="text-gray-400 hover:text-white transition-colors">
-                Terms of Service
-              </Link>
+            <div className="flex items-center gap-4 text-sm">
+              <span className="text-gray-600 flex items-center gap-2">
+                <svg className="w-4 h-4 text-[#FFBA00]" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+                System X Authorized
+              </span>
+              <span className="w-1 h-1 bg-gray-700 rounded-full hidden md:block" />
+              <span className="text-gray-600 hidden md:inline">Proudly Serving Florida</span>
             </div>
           </div>
         </div>

@@ -88,7 +88,7 @@ export default function AutoDetailingPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative h-[60vh] min-h-[400px] flex items-center">
+      <section className="relative h-[70vh] min-h-[500px] flex items-center">
         <Image
           src="/images/hero-car-front.jpg"
           alt="Auto Detailing Services"
@@ -96,10 +96,10 @@ export default function AutoDetailingPage() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent" />
-        <div className="container-custom relative z-10">
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
+        <div className="container-custom relative z-10 pt-24 md:pt-20">
           <div className="max-w-2xl">
-            <span className="badge badge-accent mb-4">Professional Service</span>
+            <span className="badge badge-accent mb-4 animate-fade-in-up">Professional Service</span>
             <h1 className="text-5xl md:text-6xl font-bold text-white mb-4">
               Auto <span className="text-[#FFBA00]">Detailing</span>
             </h1>

@@ -1,12 +1,44 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+
+// Custom hook for intersection observer
+function useInView(options = {}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [isInView, setIsInView] = useState(false);
+
+  useEffect(() => {
+    const element = ref.current;
+    if (!element) return;
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setIsInView(true);
+        observer.unobserve(element);
+      }
+    }, { threshold: 0.1, ...options });
+
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, [options]);
+
+  return { ref, isInView };
+}
 
 export default function HomePage() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+
+  // Section refs for animations
+  const aboutSection = useInView();
+  const servicesSection = useInView();
+  const benefitsSection = useInView();
+  const statsSection = useInView();
+  const gallerySection = useInView();
+  const certSection = useInView();
+  const testimonialSection = useInView();
 
   const heroSlides = [
     {
@@ -244,9 +276,9 @@ export default function HomePage() {
       </section>
 
       {/* About Section */}
-      <section className="py-16 md:py-20 bg-white">
-        <div className="container-custom">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <section className="py-16 md:py-24 bg-white">
+        <div className="container-custom" ref={aboutSection.ref}>
+          <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center transition-all duration-1000 ${aboutSection.isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <div>
               <span className="badge badge-primary mb-4">About Us</span>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
@@ -302,9 +334,14 @@ export default function HomePage() {
       </section>
 
       {/* Services Section */}
-      <section className="py-16 md:py-20 bg-gradient-to-b from-[#004FBB] to-[#003d91]">
-        <div className="container-custom">
-          <div className="text-center max-w-3xl mx-auto mb-12">
+      <section className="py-16 md:py-24 bg-gradient-to-b from-[#004FBB] to-[#003d91] relative overflow-hidden">
+        {/* Animated background */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-[#FFBA00]/10 rounded-full blur-3xl animate-float" />
+          <div className="absolute bottom-0 left-0 w-80 h-80 bg-white/5 rounded-full blur-3xl animate-float delay-300" />
+        </div>
+        <div className="container-custom relative" ref={servicesSection.ref}>
+          <div className={`text-center max-w-3xl mx-auto mb-12 transition-all duration-1000 ${servicesSection.isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <span className="badge bg-white/20 text-white mb-4">Professional</span>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
               Detailing Services We <span className="text-[#FFBA00]">Offer</span>
@@ -319,7 +356,8 @@ export default function HomePage() {
               <Link
                 key={index}
                 href={service.href}
-                className="group text-center"
+                className={`group text-center transition-all duration-700 ${servicesSection.isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+                style={{ transitionDelay: `${index * 150}ms` }}
               >
                 {/* Circular Image */}
                 <div className="relative w-40 h-40 mx-auto mb-6 rounded-full overflow-hidden border-4 border-white/30 group-hover:border-[#FFBA00] transition-all duration-300">
@@ -365,9 +403,12 @@ export default function HomePage() {
       </section>
 
       {/* Why Choose Us / Benefits */}
-      <section className="py-20 bg-[#004FBB]">
-        <div className="container-custom">
-          <div className="text-center max-w-2xl mx-auto mb-12">
+      <section className="py-20 bg-[#004FBB] relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#0066cc]/50 rounded-full blur-3xl" />
+        </div>
+        <div className="container-custom relative" ref={benefitsSection.ref}>
+          <div className={`text-center max-w-2xl mx-auto mb-12 transition-all duration-1000 ${benefitsSection.isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
               Why Choose <span className="text-[#FFBA00]">Liquid Shine?</span>
             </h2>
@@ -380,7 +421,8 @@ export default function HomePage() {
             {benefits.map((benefit, index) => (
               <div
                 key={index}
-                className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 text-center hover:bg-white/20 transition-all duration-300"
+                className={`bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 text-center hover:bg-white/20 hover:-translate-y-2 transition-all duration-500 ${benefitsSection.isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+                style={{ transitionDelay: `${index * 100}ms` }}
               >
                 <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-[#FFBA00] flex items-center justify-center">
                   <svg className="w-8 h-8 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -396,13 +438,17 @@ export default function HomePage() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 bg-gray-900">
+      <section className="py-16 bg-gray-900" ref={statsSection.ref}>
         <div className="container-custom">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="text-4xl md:text-5xl font-bold text-[#FFBA00] mb-2">{stat.value}</div>
-                <div className="text-gray-400 font-medium">{stat.label}</div>
+              <div
+                key={index}
+                className={`text-center transition-all duration-700 ${statsSection.isInView ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-5 scale-95'}`}
+                style={{ transitionDelay: `${index * 100}ms` }}
+              >
+                <div className="text-4xl md:text-6xl font-bold text-[#FFBA00] mb-2">{stat.value}</div>
+                <div className="text-gray-400 font-medium uppercase tracking-wider text-sm">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -410,9 +456,9 @@ export default function HomePage() {
       </section>
 
       {/* Gallery Preview */}
-      <section className="py-16 md:py-20 bg-white">
+      <section className="py-16 md:py-24 bg-white" ref={gallerySection.ref}>
         <div className="container-custom">
-          <div className="text-center max-w-2xl mx-auto mb-12">
+          <div className={`text-center max-w-2xl mx-auto mb-12 transition-all duration-1000 ${gallerySection.isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <span className="badge badge-primary mb-4">Experienced</span>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
               Our Work <span className="gradient-text">Gallery</span>
@@ -424,9 +470,11 @@ export default function HomePage() {
 
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {galleryImages.map((img, index) => (
-              <div
+              <Link
                 key={index}
-                className="relative aspect-square overflow-hidden rounded-2xl group cursor-pointer"
+                href="/gallery"
+                className={`relative aspect-square overflow-hidden rounded-2xl group cursor-pointer transition-all duration-700 hover:shadow-2xl ${gallerySection.isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+                style={{ transitionDelay: `${index * 75}ms` }}
               >
                 <Image
                   src={img.src}
@@ -434,12 +482,10 @@ export default function HomePage() {
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center">
-                  <svg className="w-10 h-10 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
-                  </svg>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end justify-center pb-4">
+                  <span className="text-white font-medium text-sm">View Gallery</span>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
 
@@ -455,9 +501,9 @@ export default function HomePage() {
       </section>
 
       {/* System X Certification */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-20 bg-gray-50" ref={certSection.ref}>
         <div className="container-custom">
-          <div className="flex flex-col lg:flex-row items-center gap-12">
+          <div className={`flex flex-col lg:flex-row items-center gap-12 transition-all duration-1000 ${certSection.isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <div className="lg:w-1/3 flex justify-center">
               <Image
                 src="/images/logo-system-x-authorized-installer.jpeg"
@@ -487,9 +533,9 @@ export default function HomePage() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white" ref={testimonialSection.ref}>
         <div className="container-custom">
-          <div className="text-center max-w-2xl mx-auto mb-12">
+          <div className={`text-center max-w-2xl mx-auto mb-12 transition-all duration-1000 ${testimonialSection.isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <span className="badge badge-primary mb-4">Testimonials</span>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
               What Our <span className="gradient-text-blue">Clients Say</span>

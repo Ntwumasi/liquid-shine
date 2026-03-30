@@ -31,7 +31,7 @@ export default function Blog() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-900 to-slate-800">
       {/* Hero Section */}
-      <section className="relative py-20 px-4 sm:py-28 overflow-hidden">
+      <section className="relative pt-32 pb-16 px-4 sm:pt-40 sm:pb-24 overflow-hidden">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml?utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1200 600%22><circle cx=%22600%22 cy=%22300%22 r=%22400%22 fill=%22%231a56db%22 opacity=%220.05%22/></svg>')] bg-no-repeat bg-center"></div>
         <div className="relative max-w-4xl mx-auto text-center">
           <h1 className="text-4xl sm:text-6xl font-bold text-white mb-6">

@@ -36,7 +36,7 @@ export default function AboutUs() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative py-20 px-4 sm:py-32 overflow-hidden bg-gradient-to-br from-[#004FBB] via-[#0066cc] to-[#004FBB]">
+      <section className="relative pt-32 pb-20 px-4 sm:pt-40 sm:pb-32 overflow-hidden bg-gradient-to-br from-[#004FBB] via-[#0066cc] to-[#004FBB]">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 left-0 w-96 h-96 bg-[#FFBA00] rounded-full blur-3xl"></div>
           <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>

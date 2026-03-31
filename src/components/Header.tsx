@@ -60,6 +60,8 @@ export default function Header() {
   const otherServices = [
     { href: '/boat-detailing', label: 'Boat Detailing' },
     { href: '/rv-detailing', label: 'RV Detailing' },
+    { href: '/maintenance', label: 'Maintenance' },
+    { href: '/packages', label: 'Packages' },
   ];
 
   const secondaryNavLinks = [
@@ -278,7 +280,7 @@ export default function Header() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </button>
-                <div className={`overflow-hidden transition-all duration-300 ${isMobileServicesOpen ? 'max-h-40' : 'max-h-0'}`}>
+                <div className={`overflow-hidden transition-all duration-300 ${isMobileServicesOpen ? 'max-h-60' : 'max-h-0'}`}>
                   {otherServices.map((link) => (
                     <Link
                       key={link.href}

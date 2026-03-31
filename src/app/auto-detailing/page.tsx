@@ -2,9 +2,11 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function AutoDetailingPage() {
+  const [openPackage, setOpenPackage] = useState<string | null>('express');
+
   // Initialize scroll animations
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -20,80 +22,230 @@ export default function AutoDetailingPage() {
 
     return () => observer.disconnect();
   }, []);
-  const packages = [
+
+  const process = [
     {
-      name: "Basic Detailing",
-      description: "Perfect for regular maintenance",
-      services: [
-        "Full vehicle exterior washing",
-        "Tire and wheel cleaning",
-        "Interior vacuum and dusting",
-        "Window cleaning (exterior and interior)",
-        "Door jambs wiped clean",
-      ],
-      prices: { coupe: 150, sedan: 175, midSuv: 200, fullSize: 225 },
+      step: "1",
+      title: "CLEAN THE GRIME",
+      desc: "Utilizing proper wash techniques, we clean the dirt and grime from your vehicle, we clay it and then dry it, preparing the surface for protection.",
+      image: "/images/gallery-corvette-dark.jpg"
     },
     {
-      name: "Standard Detailing",
-      description: "Most popular package",
-      services: [
-        "Full vehicle exterior washing",
-        "Tire and wheel cleaning",
-        "Interior vacuum, dusting, and trim cleaning",
-        "Window and mirror cleaning",
-        "Door jambs and trim detail",
-        "Waxing and polishing (single stage)",
-        "Tire shine application",
-      ],
-      prices: { coupe: 300, sedan: 350, midSuv: 400, fullSize: 450 },
-      popular: true,
+      step: "2",
+      title: "MAKE IT SLICK",
+      desc: "Quality products are used to provide protection for the paint from the environment and harmful UV rays. This keeps the surface shiny, slick, and looking showroom new.",
+      image: "/images/IMG_5785.jpeg"
     },
     {
-      name: "Premium Detailing",
-      description: "Complete transformation",
-      services: [
-        "Full vehicle exterior washing",
-        "Tire and wheel cleaning",
-        "Complete interior cleaning (vacuum, dusting, shampooing)",
-        "Window, mirror, and headlight cleaning",
-        "Door jambs and engine bay light clean",
-        "Two-stage waxing and polishing",
-        "Paint correction",
-        "Buffing and protection coating",
-        "Tire shine and trim dressing",
-      ],
-      prices: { coupe: 500, sedan: 600, midSuv: 700, fullSize: 800 },
+      step: "3",
+      title: "CLEAN THE INSIDE",
+      desc: "We vacuum the floorboards, shampoo the seats, steam the interior, and even use an extractor if needed to make sure that your interior ends up looking just as impressive as the outside does!",
+      image: "/images/gallery-koenigsegg-white.jpg"
     },
     {
-      name: "Deluxe Package",
-      description: "Ultimate car care experience",
-      services: [
-        "Full vehicle exterior washing",
-        "Tire and wheel cleaning with micro-fiber treatment",
-        "Complete interior cleaning with steam cleaning",
-        "Carpet and upholstery shampooing",
-        "Headlight restoration and protection",
-        "Full engine bay cleaning and detailing",
-        "Two-stage professional polishing",
-        "Paint correction and buffing",
-        "Premium ceramic protective coating",
-        "Tire shine and premium trim dressing",
-      ],
-      prices: { coupe: 800, sedan: 950, midSuv: 1100, fullSize: 1250 },
+      step: "4",
+      title: "DRESS IT UP",
+      desc: "We dress up the all of the trim, plastics, and leather, and make the tires all shiny, giving your vehicle that Liquid Shine look!",
+      image: "/images/IMG_5783.jpeg"
     },
   ];
 
-  const services = [
-    { name: "Washing", description: "Thorough exterior washing with premium soaps" },
-    { name: "Waxing", description: "Professional wax application for protection" },
-    { name: "Polishing", description: "Expert polishing to restore shine" },
-    { name: "Buffing", description: "Fine buffing for mirror-like finish" },
-    { name: "Paint Correction", description: "Remove swirls and scratches" },
-    { name: "Engine Bay Cleaning", description: "Detail and clean engine compartment" },
-    { name: "Headlight Restoration", description: "Restore clarity and protection" },
-    { name: "Interior Cleaning", description: "Deep clean all interior surfaces" },
-    { name: "Steam Cleaning", description: "Professional steam cleaning for carpets" },
-    { name: "Carpet & Upholstery", description: "Complete shampooing and restoration" },
+  const serviceAreas = [
+    "Tampa Area", "Bradenton", "Palmetto", "Ellenton", "Parrish",
+    "Lakewood Ranch", "Anna Maria Island", "Holmes Beach",
+    "Bradenton Beach", "Myakka", "Sarasota"
+  ];
+
+  const packages = [
+    {
+      id: 'express',
+      name: "Express Package",
+      description: "This package is designed for those vehicles that are reasonably well maintained and in good shape, and just need a little bit of love to make it look brand new again; this package is designed as a moderate cleaning package",
+      exteriorIncludes: [
+        "Pre-wash rinse of vehicle to rinse off loose dirt particles",
+        "Degrease bugs, wheels, and tires",
+        "Brush wash wheels, wheel barrels, and tires",
+        "Clean door jams and trunk jams",
+        "Engine bay degreased and cleaned",
+        "Apply foam cannon soap to lift and encapsulate dirt particles from the paint",
+        "Contact hand wash to remove dirt particles without marring the paint",
+        "Clay mitt/towel paint contaminant removal to remove particles and contaminants imbedded in the paint",
+        "Clean and decontaminate windshield",
+        "Blow dry/hand dry with microfiber towel",
+        "Add wax protection to Paint",
+        "Dress tires to a satin shine",
+        "Dress trim/black textured plastics with UV protectant",
+        "Clean glass inside and out",
+      ],
+      interiorIncludes: [
+        "Drill Brushed floors",
+        "Compressed Air Blow out of floors",
+        "Vacuum interior",
+        "Floor mats, upholstered seats (if applicable) and trunk",
+        "Wipe down and meticulously clean interior to include dashboard, door panels, consoles, leather/vinyl seats (if applicable), and the cracks, crevices, and vents",
+        "Dress dashboard and all vinyl, plastics, and leather with UV protectant",
+      ],
+      note: "**This package is designed for vehicles that are in reasonably good shape and just need to be freshened up. It does NOT include deep cleaning of the interior. Pet hair, excessive ground-in dirt, and/or spills and stains will NOT be removed with this package. See Glossy or Liquid Shine packages to address these issues**",
+      prices: [
+        { size: "Coupe (small 2-door)", price: "$175", time: "2 to 3 hours" },
+        { size: "Sedan (4-door car/Ford Ecosport/Chevy Trax or Equinox)", price: "$225", time: "2 to 3 hours" },
+        { size: "Mid-Size SUV/Mid-Size Truck/Luxury Full Size Sedan", price: "$250-$275", time: "2 to 4 hours" },
+        { size: "Full Size SUV/Full Size Truck/Minivan", price: "$300", time: "3 to 4 hours" },
+        { size: "Oversized SUV/Oversized Truck", price: "$350", time: "3 to 4 hours" },
+      ],
+      petHairNote: "**Pet hair removal is not included as standard in this package. For moderate pet hair removal, add $50; for excessive pet hair removal, add $100**",
+    },
+    {
+      id: 'glossy',
+      name: "Glossy Package",
+      description: "This package is for those vehicles that need a little bit of work, but when they get that work, they will be brought back to life and look stunning; this package is designed to be a deeper cleaning package",
+      exteriorIncludes: [
+        "Everything in the Express Package",
+        "Additional clay bar paint contaminant removal, as necessary",
+        "Machine application of polymer sealant for improved protection",
+      ],
+      interiorIncludes: [
+        "Everything in the Express Package",
+        "Steam clean interior, as necessary",
+        "Headliner gently cleaned",
+        "**Please note that headliners are sensitive; We will do the best we can to gently clean, but some stains may remain**",
+        "Shampoo floorboards, floor mats, and cloth seats (if applicable)",
+        "Carpet extraction will be utilized if necessary",
+      ],
+      prices: [
+        { size: "Coupe", price: "$250", time: "3.5 to 4.5 hours" },
+        { size: "Sedan", price: "$350", time: "3.5 to 4.5 hours" },
+        { size: "Mid-SUV/Mid-Size Truck/Luxury Full Size Sedan", price: "$375", time: "4.5 to 5.5 hours" },
+        { size: "Full Size SUV/Full Size Truck/Minivan", price: "$400", time: "5 to 6 hours" },
+        { size: "Oversized SUV/Oversized Truck", price: "$450", time: "6+ hours" },
+      ],
+      petHairNote: "**Pet hair removal is not included as standard in this package. For moderate pet hair removal, add $50; for excessive pet hair removal, add $100**",
+    },
+    {
+      id: 'liquid-shine',
+      name: "Liquid Shine Package",
+      description: "This package is for those people that not only want the best of the best for their vehicles, they want people to stop and gawk when they drive by",
+      exteriorIncludes: [
+        "Everything in Glossy Package",
+        "Engine bay degreased, dried, and dressed, if authorized by the owner",
+        "Machine application of an \"all-in-one\" polish and protectant to clean and enhance the paint and remove minor paint defects, and bring the paint to a deep shine",
+        "Spray sealant applied as a \"topper\" for additional protection and shine",
+        "Painted/clear coated wheel faces treated with high temperature protectant",
+        "Chrome exhaust tips treated with high temperature protectant",
+        "Can upgrade to a one-step paint enhancement — add $100",
+      ],
+      interiorIncludes: [
+        "Everything in the Glossy Package",
+        "Fabric guard protection applied to all fabric surfaces",
+        "Leather fabric protectant applied",
+      ],
+      prices: [
+        { size: "Coupe", price: "$375", time: "4 to 5 hours" },
+        { size: "Sedan", price: "$450", time: "5 to 6 hours" },
+        { size: "Mid-Size SUV/Mid-Size Truck/Luxury Full Size Sedan", price: "$525", time: "6 to 7 hours" },
+        { size: "Full Size SUV/Full Size Truck/Minivan", price: "$600", time: "7+ hours" },
+        { size: "Oversized SUV/Oversized Truck", price: "$675", time: "6+ hours" },
+      ],
+      petHairNote: "** Moderate pet hair removal is included in this package; for excessive pet hair removal, add $50",
+      additionalNote: "Add Spray Ceramic Coating in place of wax/polymer sealant for $200",
+    },
+    {
+      id: 'express-paint',
+      name: "Express Paint Enhancement Package (One-Step)",
+      description: "This package is for those vehicles that need some attention to their paint to look their best, but just need a little bit of work to be brought back to life",
+      exteriorIncludes: [
+        "Pre-wash rinse of vehicle to rinse off loose dirt particles",
+        "Degrease bugs, wheels, and tires",
+        "Brush wash wheels, wheel barrels, and tires",
+        "Clean door jams and trunk jams",
+        "Apply foam cannon soap to lift and encapsulate dirt particles from the paint",
+        "Contact hand wash to remove dirt particles",
+        "Chemical paint contaminant removal to remove iron particles attached to the paint",
+        "Clay mitt/towel paint contaminant removal to remove particles and contaminants imbedded in the paint",
+        "Clean and decontaminate windshield",
+        "Blow dry/hand dry with microfiber towel",
+        "Dress tires to a satin shine",
+        "Dress trim/black textured plastics with UV protectant",
+        "Clean glass inside and out",
+        "Vehicle polished with one-step polish to remove light surface scratches, clean the paint, and provide a deep shine",
+        "Machine application of wax/polymer sealant protection",
+        "Spray sealant applied as a \"topper\" for additional protection",
+        "Painted/clear coated wheel faces treated with high temperature protectant",
+        "Chrome exhaust tips treated with high temperature protectant",
+        "Engine bay degreased and dressed, if authorized by the owner",
+        "Black textured plastics treated with UV protectant dressing",
+        "Designed to remove approximately 50-65% of paint scratches and swirls",
+      ],
+      note: "**This is an EXTERIOR ONLY package**",
+      additionalNote: "Add Spray Ceramic Coating in place of wax/polymer sealant for $200",
+      prices: [
+        { size: "Coupe", price: "$300", time: "4 to 5 hours" },
+        { size: "Sedan", price: "$375", time: "4.5 to 5.5 hours" },
+        { size: "Mid-Size SUV/Mid-Size Truck/Luxury Full Size Sedan", price: "$450", time: "5 to 6 hours" },
+        { size: "Full Size SUV/Full Size Truck/Minivan", price: "$525", time: "6 to 7 hours" },
+      ],
+    },
+    {
+      id: 'advanced-paint',
+      name: "Advanced Paint Enhancement Package (Two-Step)",
+      description: "This package is for those vehicles that need more attention to their paint to look their best",
+      exteriorIncludes: [
+        "Pre-wash rinse of vehicle to rinse off loose dirt particles",
+        "Degrease bugs, wheels, and tires",
+        "Brush wash wheels, wheel barrels, and tires",
+        "Clean door jams and trunk jams",
+        "Apply foam cannon soap to lift and encapsulate dirt particles from the paint",
+        "Contact hand wash to remove dirt particles",
+        "Chemical paint contaminant removal to remove iron particles attached to the paint",
+        "Clay mitt/towel paint contaminant removal to remove particles and contaminants imbedded in the paint",
+        "Clean and decontaminate windshield",
+        "Blow dry/hand dry with microfiber towel",
+        "Dress tires to a satin shine",
+        "Dress trim/black textured plastics with UV protectant",
+        "Clean glass inside and out",
+        "Light compounding to deep clean the paint and reduce scratches and swirls",
+        "Light polish to increase depth and gloss of paint",
+        "Paint sealant or wax applied for protection",
+        "Painted/clear coated wheel faces treated with high temperature protectant",
+        "Chrome exhaust tips treated with high temperature protectant",
+        "Engine bay degreased and dressed, if authorized by the owner",
+        "Black textured plastics treated with UV protectant dressing",
+        "Designed to remove approximately 60-75% of paint scratches and swirls",
+      ],
+      note: "**This is an EXTERIOR ONLY package**",
+      additionalNote: "Add Spray Ceramic Coating in place of wax/polymer sealant for $200",
+      prices: [
+        { size: "Coupe", price: "$575", time: "5 to 7 hours" },
+        { size: "Sedan", price: "$650", time: "5 to 7 hours" },
+        { size: "Mid-Size SUV/Mid-Size Truck/Luxury Full Size Sedan", price: "$725", time: "6 to 8 hours" },
+        { size: "Full Size SUV/Full Size Truck/Minivan", price: "$800", time: "6 to 8 hours" },
+      ],
+    },
+    {
+      id: 'wash-vacuum',
+      name: "Wash n Vacuum",
+      description: "This is a basic detail package. No Cleaning of the interior occurs (stain removal, scuffs etc.). Designed for those vehicles that need maintenance or for those cars that don't need a full detail.",
+      exteriorIncludes: [
+        "Basic Exterior wash",
+        "Spray sealant for 6 months of protection",
+        "Provides a durable, glass-like shine",
+        "Rims faces/tires",
+        "Blow dry/hand dry with microfiber towel",
+      ],
+      interiorIncludes: [
+        "Door Jambs",
+        "Light Superficial Interior Vacuum",
+        "Dusting of High Profile areas",
+        "Interior/Exterior Windows",
+        "Cleaning and dressing of floor mats",
+      ],
+      prices: [
+        { size: "Sedan", price: "$150", time: "" },
+        { size: "Mid Size SUV", price: "$175", time: "" },
+        { size: "Trucks, Vans & Oversized", price: "$200", time: "" },
+      ],
+      note: "You are able to add requests to this but that will alter the price.",
+    },
   ];
 
   const galleryImages = [
@@ -103,8 +255,12 @@ export default function AutoDetailingPage() {
     '/images/Auto-Detailing-2018-Corvette-Convertible-After.jpg',
     '/images/gallery-corvette-dark.jpg',
     '/images/gallery-koenigsegg-white.jpg',
-    '/images/Ceramic-Coating-Tesla-3.jpg',
-    '/images/Auto-Detailing-2018-BMW-3-Series.jpg',
+  ];
+
+  const testimonials = [
+    { name: "T. Harvey", text: "Thanks to Liquid Shine Elite Mobile Detailing for making my car look like new!", source: "Facebook" },
+    { name: "Robert R.", text: "Incredible attention to detail. My car has never looked better. The ceramic coating they applied still beads water perfectly after 6 months!", source: "Google" },
+    { name: "Sarah D.", text: "Professional, thorough, and the results speak for themselves. Highly recommend!", source: "Google" },
   ];
 
   return (
@@ -154,179 +310,238 @@ export default function AutoDetailingPage() {
                 <span className="text-white/90 ml-2">15% OFF all auto detailing services</span>
               </div>
             </div>
-            <Link href="/contact" className="px-6 py-2 bg-white text-[#0080FF] font-semibold rounded-lg hover:bg-gray-100 transition-colors">
+            <Link href="/contact" className="px-6 py-2 bg-white text-[#0080FF] font-semibold rounded-sm hover:bg-gray-100 transition-colors uppercase text-sm tracking-wide">
               Claim Discount
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Services Overview */}
+      {/* What Makes Us Better Section */}
       <section className="py-20 bg-[#111111]">
         <div className="container-custom">
-          <div className="text-center max-w-2xl mx-auto mb-12 scroll-animate">
-            <span className="badge badge-primary mb-4">Our Services</span>
-            <h2 className="text-4xl font-black text-white mb-4 uppercase tracking-tight">
-              <span className="text-outline">Complete</span> <span className="text-[#0080FF]">Detailing Services</span>
-            </h2>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-            {services.map((service, index) => (
-              <div key={index} className="bg-white/5 border border-white/10 p-6 rounded-xl text-center hover:bg-white/10 hover:border-[#0080FF]/30 transition-all hover:-translate-y-1">
-                <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-[#0080FF]/20 flex items-center justify-center">
-                  <svg className="w-6 h-6 text-[#0080FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="scroll-animate-left">
+              <span className="badge badge-primary mb-4">Why Us</span>
+              <h2 className="text-3xl md:text-4xl font-black text-white mb-6">
+                What Makes Our Auto Detailing <span className="text-[#0080FF]">Services Better?</span>
+              </h2>
+              <p className="text-gray-400 text-lg mb-6">
+                At Liquid Shine, we are committed to delivering you the best Professional Mobile Detailing services possible. Whether you are looking to detail your Auto, Boat, or RV, we would love to have the opportunity to make your investment look beautiful!
+              </p>
+              <div className="mb-6">
+                <p className="text-white font-bold mb-3">Servicing all of Manatee and Sarasota Counties, including:</p>
+                <div className="flex flex-wrap gap-2">
+                  {serviceAreas.map((area, index) => (
+                    <span key={index} className="px-3 py-1 bg-white/5 border border-white/10 rounded-sm text-gray-400 text-sm">
+                      {area}
+                    </span>
+                  ))}
                 </div>
-                <h3 className="font-bold text-white mb-1">{service.name}</h3>
-                <p className="text-gray-500 text-sm">{service.description}</p>
+              </div>
+              <div className="flex items-start gap-3 mb-4">
+                <svg className="w-5 h-5 text-[#0080FF] mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                </svg>
+                <p className="text-gray-400">We come to you with everything we need in our fully self-contained unit</p>
+              </div>
+              <Link href="/contact" className="btn btn-accent mt-4">
+                Request Your Free Quote
+              </Link>
+            </div>
+            <div className="scroll-animate-right">
+              <div className="relative rounded-sm overflow-hidden border border-white/10">
+                <Image
+                  src="/images/IMG_5783.jpeg"
+                  alt="Exotic Car Detailing"
+                  width={600}
+                  height={400}
+                  className="w-full h-auto object-cover"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4-Step Process - Circular Design */}
+      <section className="py-24 relative overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src="/images/hero-boat-ocean.jpg"
+            alt="Background"
+            fill
+            className="object-cover opacity-20"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a] via-[#0a0a0a]/95 to-[#0a0a0a]" />
+        </div>
+
+        <div className="container-custom relative z-10">
+          <div className="text-center max-w-3xl mx-auto mb-16 scroll-animate">
+            <span className="badge badge-primary mb-4">Professional</span>
+            <h2 className="text-3xl md:text-5xl font-black text-white mb-6">
+              Process We Follow for <span className="text-[#0080FF]">Auto Detailing</span>
+            </h2>
+            <p className="text-gray-400 text-lg">
+              We are a fully self-contained and mobile auto detailing service. We come to you and we bring everything we need. We provide our own power, water, and everything else necessary to give your auto, boat, or RV that Liquid Shine look.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-4 items-start">
+            {process.map((item, index) => (
+              <div key={index} className={`relative scroll-animate scroll-delay-${index + 1} flex flex-col items-center text-center`}>
+                <div className="relative mb-6 group">
+                  <div className="absolute inset-0 rounded-full border-2 border-white/30 group-hover:border-[#0080FF] transition-colors duration-500" style={{ margin: '-8px', padding: '8px' }} />
+                  <div className="relative w-44 h-44 md:w-40 md:h-40 lg:w-48 lg:h-48 rounded-full overflow-hidden border-4 border-white/20 group-hover:border-[#0080FF]/50 transition-all duration-500 shadow-2xl">
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  </div>
+                  <div className="absolute bottom-2 left-1/2 -translate-x-1/2 text-7xl md:text-6xl lg:text-7xl font-black text-[#0080FF] drop-shadow-[0_0_20px_rgba(0,128,255,0.5)] z-10" style={{ fontFamily: 'Impact, sans-serif' }}>
+                    {item.step}
+                  </div>
+                  {index < 3 && (
+                    <div className="hidden md:flex absolute top-1/2 -right-6 lg:-right-4 -translate-y-1/2 items-center z-20">
+                      <svg className="w-8 h-8 text-[#0080FF] animate-pulse" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                      </svg>
+                    </div>
+                  )}
+                </div>
+                <h3 className="text-lg font-bold text-white mb-3 uppercase tracking-wider">{item.title}</h3>
+                <p className="text-gray-400 text-sm leading-relaxed max-w-xs">{item.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Why Choose Us */}
-      <section className="py-20 bg-[#0a0a0a]">
-        <div className="container-custom">
-          <div className="text-center max-w-2xl mx-auto mb-12 scroll-animate">
-            <h2 className="text-4xl font-black text-white mb-4 uppercase tracking-tight">
-              <span className="text-outline">Why Choose</span> <span className="text-[#0080FF]">Liquid Shine?</span>
-            </h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { title: "Expert Technicians", desc: "Certified professionals with years of experience" },
-              { title: "Premium Products", desc: "Only the highest quality detailing products" },
-              { title: "Mobile Service", desc: "We come to your home or workplace" },
-              { title: "Satisfaction Guaranteed", desc: "100% satisfaction on all services" },
-            ].map((item, index) => (
-              <div key={index} className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 text-center hover:border-[#0080FF]/30 transition-colors">
-                <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-[#0080FF] flex items-center justify-center">
-                  <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-bold text-white mb-2">{item.title}</h3>
-                <p className="text-gray-500 text-sm">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Detailing Process */}
+      {/* Packages Section */}
       <section className="py-20 bg-[#111111]">
         <div className="container-custom">
-          <div className="text-center max-w-2xl mx-auto mb-12 scroll-animate">
-            <span className="badge badge-primary mb-4">Our Process</span>
-            <h2 className="text-4xl font-black text-white uppercase tracking-tight">
-              <span className="text-outline">How We</span> <span className="text-[#0080FF]">Work</span>
+          <div className="text-center max-w-3xl mx-auto mb-16 scroll-animate">
+            <span className="badge badge-primary mb-4">Experienced</span>
+            <h2 className="text-3xl md:text-5xl font-black text-white mb-6">
+              Our Auto Detailing <span className="text-[#0080FF]">Packages</span>
             </h2>
+            <p className="text-gray-400 text-lg">
+              Regardless of whether you want a quick wash with a little protection provided, or want a deeper cleaning with a longer shine added, we&apos;ve got a package to fit your needs.
+            </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
-            {[
-              { step: "Inspection", desc: "Assess vehicle condition" },
-              { step: "Wash", desc: "Professional washing" },
-              { step: "Polish", desc: "Restore shine and clarity" },
-              { step: "Protect", desc: "Apply protective coatings" },
-              { step: "Final Touch", desc: "Quality inspection" },
-            ].map((item, index) => (
-              <div key={index} className="relative">
-                <div className="bg-white/5 border border-white/10 rounded-xl p-6 text-center h-full">
-                  <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-[#0080FF] text-white flex items-center justify-center text-xl font-bold">
-                    {index + 1}
-                  </div>
-                  <h3 className="font-bold text-white mb-1">{item.step}</h3>
-                  <p className="text-gray-500 text-sm">{item.desc}</p>
-                </div>
-                {index < 4 && (
-                  <div className="hidden md:block absolute top-1/2 -right-2 w-4 h-0.5 bg-[#0080FF]" />
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* Package Cards */}
-      <section className="py-20 bg-[#0a0a0a]">
-        <div className="container-custom">
-          <div className="text-center max-w-2xl mx-auto mb-12 scroll-animate">
-            <span className="badge badge-primary mb-4">Pricing</span>
-            <h2 className="text-4xl font-black text-white mb-4 uppercase tracking-tight">
-              <span className="text-outline">Detailing</span> <span className="text-[#0080FF]">Packages</span>
-            </h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {packages.map((pkg, index) => (
-              <div key={index} className={`bg-[#111111] rounded-2xl border overflow-hidden hover:border-[#0080FF]/50 transition-all ${pkg.popular ? 'border-[#0080FF] ring-1 ring-[#0080FF]' : 'border-white/10'}`}>
-                {pkg.popular && (
-                  <div className="bg-[#0080FF] text-white text-center py-2 font-bold text-sm">
-                    MOST POPULAR
+          <div className="space-y-4">
+            {packages.map((pkg) => (
+              <div key={pkg.id} className="border border-white/10 rounded-sm overflow-hidden">
+                <button
+                  onClick={() => setOpenPackage(openPackage === pkg.id ? null : pkg.id)}
+                  className="w-full flex items-center justify-between p-6 bg-[#0a0a0a] hover:bg-white/5 transition-colors text-left"
+                >
+                  <div className="flex items-center gap-4">
+                    <div className={`w-3 h-3 rounded-sm transition-colors ${openPackage === pkg.id ? 'bg-[#0080FF]' : 'bg-white/30'}`} />
+                    <h3 className="text-xl md:text-2xl font-black text-[#0080FF]">{pkg.name}</h3>
                   </div>
-                )}
-                <div className="bg-white/5 text-white p-6 border-b border-white/10">
-                  <h3 className="text-2xl font-bold mb-2">{pkg.name}</h3>
-                  <p className="text-gray-400">{pkg.description}</p>
-                </div>
-                <div className="p-6">
-                  <div className="mb-6">
-                    <h4 className="font-bold text-white mb-3">Includes:</h4>
-                    <ul className="space-y-2">
-                      {pkg.services.map((service, i) => (
-                        <li key={i} className="flex items-start gap-2 text-gray-400">
-                          <svg className="w-5 h-5 text-[#0080FF] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                          </svg>
-                          {service}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="border-t border-white/10 pt-6">
-                    <h4 className="font-bold text-white mb-3">Starting At:</h4>
-                    <div className="grid grid-cols-2 gap-3">
-                      <div className="bg-white/5 border border-white/10 p-3 rounded-lg">
-                        <p className="text-gray-500 text-sm">Coupe</p>
-                        <p className="text-2xl font-bold text-[#0080FF]">${pkg.prices.coupe}</p>
-                      </div>
-                      <div className="bg-white/5 border border-white/10 p-3 rounded-lg">
-                        <p className="text-gray-500 text-sm">Sedan</p>
-                        <p className="text-2xl font-bold text-[#0080FF]">${pkg.prices.sedan}</p>
-                      </div>
-                      <div className="bg-white/5 border border-white/10 p-3 rounded-lg">
-                        <p className="text-gray-500 text-sm">Mid-SUV</p>
-                        <p className="text-2xl font-bold text-[#0080FF]">${pkg.prices.midSuv}</p>
-                      </div>
-                      <div className="bg-white/5 border border-white/10 p-3 rounded-lg">
-                        <p className="text-gray-500 text-sm">Full-Size</p>
-                        <p className="text-2xl font-bold text-[#0080FF]">${pkg.prices.fullSize}</p>
-                      </div>
+                  <svg
+                    className={`w-6 h-6 text-white transition-transform ${openPackage === pkg.id ? 'rotate-180' : ''}`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+
+                {openPackage === pkg.id && (
+                  <div className="p-6 bg-[#0a0a0a]/50 border-t border-white/10">
+                    <p className="text-gray-400 mb-8">{pkg.description}</p>
+
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                      {pkg.exteriorIncludes && (
+                        <div>
+                          <h4 className="text-xl font-bold text-white mb-4">Exterior Includes</h4>
+                          <ul className="space-y-2">
+                            {pkg.exteriorIncludes.map((item, i) => (
+                              <li key={i} className="flex items-start gap-2 text-gray-400 text-sm">
+                                <span className="text-[#0080FF] mt-1">■</span>
+                                {item}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+
+                      {pkg.interiorIncludes && (
+                        <div>
+                          <h4 className="text-xl font-bold text-white mb-4">Interior Includes</h4>
+                          <ul className="space-y-2">
+                            {pkg.interiorIncludes.map((item, i) => (
+                              <li key={i} className="flex items-start gap-2 text-gray-400 text-sm">
+                                <span className="text-[#0080FF] mt-1">■</span>
+                                {item}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                    </div>
+
+                    {pkg.note && (
+                      <p className="text-yellow-500/80 text-sm mb-6 italic">{pkg.note}</p>
+                    )}
+
+                    <div className="bg-white/5 border border-white/10 rounded-sm p-6">
+                      <h4 className="text-xl font-bold text-white mb-4 text-center">Prices starting at:</h4>
+                      <ul className="space-y-2 max-w-2xl mx-auto">
+                        {pkg.prices.map((price, i) => (
+                          <li key={i} className="flex items-start gap-2 text-gray-400 text-sm">
+                            <span className="text-[#0080FF] mt-1">■</span>
+                            <span>
+                              <span className="text-white font-semibold">{price.size}</span> — <span className="text-[#0080FF] font-bold">{price.price}</span>
+                              {price.time && <span className="text-gray-500"> ({price.time} to complete)</span>}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                      <p className="text-gray-500 text-xs mt-4 text-center">Prices stated are based on the vehicle being in average condition. Excessively dirty/stained interiors will result in additional charges</p>
+                      {pkg.petHairNote && (
+                        <p className="text-yellow-500/80 text-xs mt-2 text-center">{pkg.petHairNote}</p>
+                      )}
+                      {pkg.additionalNote && (
+                        <p className="text-[#0080FF] text-sm mt-3 text-center font-semibold">{pkg.additionalNote}</p>
+                      )}
+                    </div>
+
+                    <div className="text-center mt-6">
+                      <Link href="/contact" className="btn btn-accent">
+                        Get Quote for {pkg.name}
+                      </Link>
                     </div>
                   </div>
-                  <Link href="/contact" className="block w-full mt-6 btn btn-primary text-center">
-                    Get Quote
-                  </Link>
-                </div>
+                )}
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Gallery Preview */}
-      <section className="py-20 bg-[#111111]">
+      {/* Gallery Section */}
+      <section className="py-20 bg-[#0a0a0a]">
         <div className="container-custom">
           <div className="text-center max-w-2xl mx-auto mb-12 scroll-animate">
-            <span className="badge badge-primary mb-4">Our Work</span>
-            <h2 className="text-4xl font-black text-white uppercase tracking-tight">
-              <span className="text-outline">Our</span> <span className="text-[#0080FF]">Results</span>
+            <span className="badge badge-primary mb-4">Experienced</span>
+            <h2 className="text-3xl md:text-4xl font-black text-white mb-4">
+              Our Auto Detailing <span className="text-[#0080FF]">Gallery</span>
             </h2>
+            <p className="text-gray-400">
+              Check out the work we have done for other clients in the community!
+            </p>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {galleryImages.map((src, index) => (
-              <div key={index} className={`scroll-animate-scale scroll-delay-${(index % 4) + 1} relative aspect-square rounded-sm overflow-hidden group border border-white/10 hover:border-[#0080FF]/30 transition-colors`}>
+              <div key={index} className={`scroll-animate-scale scroll-delay-${(index % 3) + 1} relative aspect-[4/3] rounded-sm overflow-hidden group border border-white/10 hover:border-[#0080FF]/30 transition-colors`}>
                 <Image
                   src={src}
                   alt={`Auto detailing result ${index + 1}`}
@@ -339,14 +554,45 @@ export default function AutoDetailingPage() {
           </div>
           <div className="text-center mt-10">
             <Link href="/gallery" className="btn btn-secondary">
-              View Full Gallery
+              View Our All Work
             </Link>
           </div>
         </div>
       </section>
 
+      {/* Testimonials Section */}
+      <section className="py-20 bg-[#111111]">
+        <div className="container-custom">
+          <div className="text-center max-w-2xl mx-auto mb-12 scroll-animate">
+            <span className="badge badge-primary mb-4">Customer Focused</span>
+            <h2 className="text-3xl md:text-4xl font-black text-white mb-4">
+              What Our <span className="text-[#0080FF]">Clients Say</span>
+            </h2>
+            <p className="text-gray-400">
+              Check out all of the great things our past and present clients have to say about us and the work we&apos;ve done!
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {testimonials.map((testimonial, index) => (
+              <div key={index} className={`scroll-animate scroll-delay-${index + 1} bg-[#0a0a0a] border border-white/10 rounded-sm p-8 text-center hover:border-[#0080FF]/30 transition-colors`}>
+                <div className="flex justify-center gap-1 mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="w-5 h-5 text-[#0080FF]" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+                <p className="text-gray-300 text-lg mb-6 italic">&quot;{testimonial.text}&quot;</p>
+                <p className="text-white font-bold">{testimonial.name}</p>
+                <p className="text-[#0080FF] text-sm">— via {testimonial.source}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
-      <section className="py-20 bg-[#111111] relative overflow-hidden">
+      <section className="py-20 bg-[#0a0a0a] relative overflow-hidden">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#0080FF] rounded-full opacity-10 blur-3xl" />
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#0080FF] rounded-full opacity-5 blur-3xl" />
         <div className="container-custom relative z-10 text-center scroll-animate-scale">

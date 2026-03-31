@@ -1,7 +1,25 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
+import { useEffect } from 'react';
 
 export default function BoatDetailingPage() {
+  // Initialize scroll animations
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -100px 0px' });
+
+    document.querySelectorAll('.scroll-animate, .scroll-animate-left, .scroll-animate-right, .scroll-animate-scale')
+      .forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
   const services = [
     { name: "Washing", description: "Gentle marine-grade washing" },
     { name: "Waxing", description: "UV-resistant marine wax application" },
@@ -99,24 +117,24 @@ export default function BoatDetailingPage() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-transparent" />
         <div className="container-custom relative z-10 pt-24 md:pt-20">
           <div className="max-w-2xl">
-            <span className="badge badge-accent mb-4 animate-fade-in-up">Professional Marine Service</span>
-            <h1 className="text-5xl md:text-6xl font-bold text-white mb-4">
-              Boat <span className="text-[#0080FF]">Detailing</span>
+            <span className="badge badge-primary mb-4 animate-fade-in-up">Professional Marine Service</span>
+            <h1 className="text-5xl md:text-6xl font-black text-white mb-4 uppercase tracking-tight">
+              <span className="text-outline">Boat</span> <span className="text-[#0080FF]">Detailing</span>
             </h1>
-            <p className="text-xl text-gray-200 mb-8">
+            <p className="text-xl text-gray-300 mb-8">
               Professional marine detailing that protects your boat from saltwater, sun, and oxidation. Keep your vessel looking like new.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/contact" className="btn btn-accent">
-                Book Now
+                Get Free Estimate
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </Link>
-              <a href="tel:978-660-1356" className="btn btn-secondary bg-transparent border-white text-white hover:bg-[#0a0a0a] hover:text-white">
+              <a href="tel:978-660-1356" className="btn btn-secondary">
                 (978) 660-1356
               </a>
             </div>
@@ -143,11 +161,11 @@ export default function BoatDetailingPage() {
       </section>
 
       {/* Why Boat Detailing Matters */}
-      <section className="py-20 bg-[#0080FF]">
+      <section className="py-20 bg-[#0a0a0a]">
         <div className="container-custom">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <h2 className="text-4xl font-bold text-white mb-4">
-              Why Choose <span className="text-[#0080FF]">Marine Detailing?</span>
+          <div className="text-center max-w-2xl mx-auto mb-12 scroll-animate">
+            <h2 className="text-4xl font-black text-white mb-4 uppercase tracking-tight">
+              <span className="text-outline">Why Choose</span> <span className="text-[#0080FF]">Marine Detailing?</span>
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -157,14 +175,14 @@ export default function BoatDetailingPage() {
               { title: "Value Preservation", desc: "Maintain your boat's value and lifespan" },
               { title: "Expert Care", desc: "Specialized marine detailing expertise" },
             ].map((item, index) => (
-              <div key={index} className="bg-[#0a0a0a]/10 backdrop-blur-sm border border-white/20 rounded-xl p-6 text-center">
-                <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-[#0080FF] flex items-center justify-center">
+              <div key={index} className={`scroll-animate scroll-delay-${index + 1} bg-white/5 backdrop-blur-sm border border-white/10 rounded-sm p-6 text-center hover:border-[#0080FF]/30 transition-colors`}>
+                <div className="w-14 h-14 mx-auto mb-4 rounded-sm bg-[#0080FF] flex items-center justify-center">
                   <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
-                <h3 className="text-lg font-bold text-white mb-2">{item.title}</h3>
-                <p className="text-gray-400 text-sm">{item.desc}</p>
+                <h3 className="text-lg font-bold text-white mb-2 uppercase tracking-wide">{item.title}</h3>
+                <p className="text-gray-500 text-sm">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -174,10 +192,10 @@ export default function BoatDetailingPage() {
       {/* Services Grid */}
       <section className="py-20 bg-[#111111]">
         <div className="container-custom">
-          <div className="text-center max-w-2xl mx-auto mb-12">
+          <div className="text-center max-w-2xl mx-auto mb-12 scroll-animate">
             <span className="badge badge-primary mb-4">Our Services</span>
-            <h2 className="text-4xl font-bold text-white mb-4">
-              Complete <span className="gradient-text-blue">Marine Services</span>
+            <h2 className="text-4xl font-black text-white mb-4 uppercase tracking-tight">
+              <span className="text-outline">Complete</span> <span className="text-[#0080FF]">Marine Services</span>
             </h2>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">

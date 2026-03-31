@@ -1,7 +1,25 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
+import { useEffect } from 'react';
 
 export default function AutoDetailingPage() {
+  // Initialize scroll animations
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -100px 0px' });
+
+    document.querySelectorAll('.scroll-animate, .scroll-animate-left, .scroll-animate-right, .scroll-animate-scale')
+      .forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
   const packages = [
     {
       name: "Basic Detailing",
@@ -79,10 +97,14 @@ export default function AutoDetailingPage() {
   ];
 
   const galleryImages = [
+    '/images/IMG_5785.jpeg',
+    '/images/IMG_5783.jpeg',
+    '/images/IMG_5784.jpeg',
     '/images/Auto-Detailing-2018-Corvette-Convertible-After.jpg',
-    '/images/Auto-Detailing-BMW-3-Series.jpg',
-    '/images/Auto-Detailing-2018-Jeep-Wrangler-Rubicon.jpg',
-    '/images/Auto-Detailing-Dodge-Charger.jpg',
+    '/images/gallery-corvette-dark.jpg',
+    '/images/gallery-koenigsegg-white.jpg',
+    '/images/Ceramic-Coating-Tesla-3.jpg',
+    '/images/Auto-Detailing-2018-BMW-3-Series.jpg',
   ];
 
   return (
@@ -90,30 +112,30 @@ export default function AutoDetailingPage() {
       {/* Hero Section */}
       <section className="relative h-[70vh] min-h-[500px] flex items-center">
         <Image
-          src="/images/hero-car-front.jpg"
+          src="/images/IMG_5785.jpeg"
           alt="Auto Detailing Services"
           fill
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-transparent" />
         <div className="container-custom relative z-10 pt-24 md:pt-20">
           <div className="max-w-2xl">
-            <span className="badge badge-accent mb-4 animate-fade-in-up">Professional Service</span>
-            <h1 className="text-5xl md:text-6xl font-bold text-white mb-4">
-              Auto <span className="text-[#FFBA00]">Detailing</span>
+            <span className="badge badge-primary mb-4 animate-fade-in-up">Professional Service</span>
+            <h1 className="text-5xl md:text-6xl font-black text-white mb-4 uppercase tracking-tight">
+              <span className="text-outline">Auto</span> <span className="text-[#0080FF]">Detailing</span>
             </h1>
-            <p className="text-xl text-gray-200 mb-8">
+            <p className="text-xl text-gray-300 mb-8">
               Professional auto detailing that transforms your vehicle inside and out. From basic washing to complete restoration.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/contact" className="btn btn-accent">
-                Book Now
+                Get Free Estimate
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </Link>
-              <a href="tel:978-660-1356" className="btn btn-secondary bg-transparent border-white text-white hover:bg-white hover:text-gray-900">
+              <a href="tel:978-660-1356" className="btn btn-secondary">
                 (978) 660-1356
               </a>
             </div>
@@ -142,10 +164,10 @@ export default function AutoDetailingPage() {
       {/* Services Overview */}
       <section className="py-20 bg-[#111111]">
         <div className="container-custom">
-          <div className="text-center max-w-2xl mx-auto mb-12">
+          <div className="text-center max-w-2xl mx-auto mb-12 scroll-animate">
             <span className="badge badge-primary mb-4">Our Services</span>
-            <h2 className="text-4xl font-bold text-white mb-4">
-              Complete <span className="gradient-text">Detailing Services</span>
+            <h2 className="text-4xl font-black text-white mb-4 uppercase tracking-tight">
+              <span className="text-outline">Complete</span> <span className="text-[#0080FF]">Detailing Services</span>
             </h2>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
@@ -167,9 +189,9 @@ export default function AutoDetailingPage() {
       {/* Why Choose Us */}
       <section className="py-20 bg-[#0a0a0a]">
         <div className="container-custom">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <h2 className="text-4xl font-bold text-white mb-4">
-              Why Choose <span className="text-[#0080FF]">Liquid Shine?</span>
+          <div className="text-center max-w-2xl mx-auto mb-12 scroll-animate">
+            <h2 className="text-4xl font-black text-white mb-4 uppercase tracking-tight">
+              <span className="text-outline">Why Choose</span> <span className="text-[#0080FF]">Liquid Shine?</span>
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -196,9 +218,11 @@ export default function AutoDetailingPage() {
       {/* Detailing Process */}
       <section className="py-20 bg-[#111111]">
         <div className="container-custom">
-          <div className="text-center max-w-2xl mx-auto mb-12">
+          <div className="text-center max-w-2xl mx-auto mb-12 scroll-animate">
             <span className="badge badge-primary mb-4">Our Process</span>
-            <h2 className="text-4xl font-bold text-white">How We Work</h2>
+            <h2 className="text-4xl font-black text-white uppercase tracking-tight">
+              <span className="text-outline">How We</span> <span className="text-[#0080FF]">Work</span>
+            </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
             {[
@@ -228,10 +252,10 @@ export default function AutoDetailingPage() {
       {/* Package Cards */}
       <section className="py-20 bg-[#0a0a0a]">
         <div className="container-custom">
-          <div className="text-center max-w-2xl mx-auto mb-12">
+          <div className="text-center max-w-2xl mx-auto mb-12 scroll-animate">
             <span className="badge badge-primary mb-4">Pricing</span>
-            <h2 className="text-4xl font-bold text-white mb-4">
-              Detailing <span className="gradient-text">Packages</span>
+            <h2 className="text-4xl font-black text-white mb-4 uppercase tracking-tight">
+              <span className="text-outline">Detailing</span> <span className="text-[#0080FF]">Packages</span>
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -294,13 +318,15 @@ export default function AutoDetailingPage() {
       {/* Gallery Preview */}
       <section className="py-20 bg-[#111111]">
         <div className="container-custom">
-          <div className="text-center max-w-2xl mx-auto mb-12">
+          <div className="text-center max-w-2xl mx-auto mb-12 scroll-animate">
             <span className="badge badge-primary mb-4">Our Work</span>
-            <h2 className="text-4xl font-bold text-white">Before & After</h2>
+            <h2 className="text-4xl font-black text-white uppercase tracking-tight">
+              <span className="text-outline">Our</span> <span className="text-[#0080FF]">Results</span>
+            </h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {galleryImages.map((src, index) => (
-              <div key={index} className="relative aspect-square rounded-2xl overflow-hidden group border border-white/10 hover:border-[#0080FF]/30 transition-colors">
+              <div key={index} className={`scroll-animate-scale scroll-delay-${(index % 4) + 1} relative aspect-square rounded-sm overflow-hidden group border border-white/10 hover:border-[#0080FF]/30 transition-colors`}>
                 <Image
                   src={src}
                   alt={`Auto detailing result ${index + 1}`}
@@ -320,21 +346,21 @@ export default function AutoDetailingPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-[#0a0a0a] relative overflow-hidden">
+      <section className="py-20 bg-[#111111] relative overflow-hidden">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#0080FF] rounded-full opacity-10 blur-3xl" />
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#0080FF] rounded-full opacity-5 blur-3xl" />
-        <div className="container-custom relative z-10 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Transform Your Vehicle <span className="text-[#0080FF]">Today</span>
+        <div className="container-custom relative z-10 text-center scroll-animate-scale">
+          <h2 className="text-4xl md:text-5xl font-black text-white mb-6 uppercase tracking-tight">
+            <span className="text-outline">Transform Your</span> <span className="text-[#0080FF]">Vehicle</span>
           </h2>
           <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
             Schedule your auto detailing appointment and see the difference professional care can make.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link href="/contact" className="btn btn-accent text-base px-8 py-4">
-              Book Your Appointment
+              Get Free Estimate
             </Link>
-            <a href="tel:978-660-1356" className="inline-flex items-center gap-2 px-8 py-4 text-base font-semibold text-white bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 transition-colors">
+            <a href="tel:978-660-1356" className="inline-flex items-center gap-2 px-8 py-4 text-base font-semibold text-white bg-white/5 border border-white/10 rounded-sm hover:bg-white/10 transition-colors uppercase tracking-wide">
               (978) 660-1356
             </a>
           </div>

@@ -1,7 +1,25 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
+import { useEffect } from 'react';
 
 export default function RVDetailingPage() {
+  // Initialize scroll animations
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -100px 0px' });
+
+    document.querySelectorAll('.scroll-animate, .scroll-animate-left, .scroll-animate-right, .scroll-animate-scale')
+      .forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
   const services = [
     { name: "Washing", description: "Specialized RV exterior washing" },
     { name: "Waxing", description: "UV-resistant RV wax application" },
@@ -99,24 +117,24 @@ export default function RVDetailingPage() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-transparent" />
         <div className="container-custom relative z-10 pt-24 md:pt-20">
           <div className="max-w-2xl">
-            <span className="badge badge-accent mb-4 animate-fade-in-up">Professional Service</span>
-            <h1 className="text-5xl md:text-6xl font-bold text-white mb-4">
-              RV <span className="text-[#0080FF]">Detailing</span>
+            <span className="badge badge-primary mb-4 animate-fade-in-up">Professional Service</span>
+            <h1 className="text-5xl md:text-6xl font-black text-white mb-4 uppercase tracking-tight">
+              <span className="text-outline">RV</span> <span className="text-[#0080FF]">Detailing</span>
             </h1>
-            <p className="text-xl text-gray-200 mb-8">
+            <p className="text-xl text-gray-300 mb-8">
               Professional RV detailing that keeps your home on wheels looking spectacular. Specialized care for travel trailers, motorhomes, and fifth wheels.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/contact" className="btn btn-accent">
-                Book Now
+                Get Free Estimate
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </Link>
-              <a href="tel:978-660-1356" className="btn btn-secondary bg-transparent border-white text-white hover:bg-[#0a0a0a] hover:text-white">
+              <a href="tel:978-660-1356" className="btn btn-secondary">
                 (978) 660-1356
               </a>
             </div>

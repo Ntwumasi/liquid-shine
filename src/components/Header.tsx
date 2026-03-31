@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
@@ -8,6 +8,9 @@ import { usePathname } from 'next/navigation';
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
+  const servicesRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -18,9 +21,22 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (servicesRef.current && !servicesRef.current.contains(event.target as Node)) {
+        setIsServicesOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
   // Close menu when route changes
   useEffect(() => {
     setIsMenuOpen(false);
+    setIsServicesOpen(false);
+    setIsMobileServicesOpen(false);
   }, [pathname]);
 
   // Prevent body scroll when menu is open
@@ -35,14 +51,29 @@ export default function Header() {
     };
   }, [isMenuOpen]);
 
-  const navLinks = [
+  const mainNavLinks = [
     { href: '/', label: 'Home' },
     { href: '/ceramic-coating', label: 'Ceramic Coating' },
-    { href: '/auto-detailing', label: 'Auto' },
-    { href: '/boat-detailing', label: 'Marine' },
-    { href: '/rv-detailing', label: 'RV' },
+    { href: '/auto-detailing', label: 'Auto Detailing' },
+  ];
+
+  const otherServices = [
+    { href: '/boat-detailing', label: 'Boat Detailing' },
+    { href: '/rv-detailing', label: 'RV Detailing' },
+  ];
+
+  const secondaryNavLinks = [
+    { href: '/products', label: 'Products' },
+    { href: '/about-us', label: 'About Us' },
     { href: '/gallery', label: 'Gallery' },
-    { href: '/about-us', label: 'About' },
+    { href: '/blog', label: 'Blog' },
+    { href: '/contact', label: 'Contact' },
+  ];
+
+  const allMobileLinks = [
+    ...mainNavLinks,
+    ...otherServices,
+    ...secondaryNavLinks,
   ];
 
   const isActive = (href: string) => {
@@ -75,11 +106,11 @@ export default function Header() {
 
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center gap-1">
-              {navLinks.map((link) => (
+              {mainNavLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`relative px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 group ${
+                  className={`relative px-3 py-2 text-sm font-medium rounded-lg transition-all duration-300 group ${
                     isActive(link.href)
                       ? 'text-[#0080FF] bg-[#0080FF]/10'
                       : 'text-gray-300 hover:text-white hover:bg-white/10'
@@ -91,15 +122,66 @@ export default function Header() {
                   )}
                 </Link>
               ))}
-              <Link
-                href="/contact"
-                className="ml-4 btn btn-accent text-sm py-2.5 px-6 group"
-              >
-                <span>Get Quote</span>
-                <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </Link>
+
+              {/* Other Services Dropdown */}
+              <div className="relative" ref={servicesRef}>
+                <button
+                  onClick={() => setIsServicesOpen(!isServicesOpen)}
+                  className={`relative px-3 py-2 text-sm font-medium rounded-lg transition-all duration-300 flex items-center gap-1 ${
+                    otherServices.some(s => isActive(s.href))
+                      ? 'text-[#0080FF] bg-[#0080FF]/10'
+                      : 'text-gray-300 hover:text-white hover:bg-white/10'
+                  }`}
+                >
+                  Other Services
+                  <svg
+                    className={`w-4 h-4 transition-transform duration-200 ${isServicesOpen ? 'rotate-180' : ''}`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+
+                {/* Dropdown Menu */}
+                <div
+                  className={`absolute top-full left-0 mt-2 w-48 bg-[#111111] border border-white/10 rounded-xl shadow-xl overflow-hidden transition-all duration-200 ${
+                    isServicesOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'
+                  }`}
+                >
+                  {otherServices.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className={`block px-4 py-3 text-sm font-medium transition-colors ${
+                        isActive(link.href)
+                          ? 'text-[#0080FF] bg-[#0080FF]/10'
+                          : 'text-gray-300 hover:text-white hover:bg-white/10'
+                      }`}
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              {secondaryNavLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`relative px-3 py-2 text-sm font-medium rounded-lg transition-all duration-300 group ${
+                    isActive(link.href)
+                      ? 'text-[#0080FF] bg-[#0080FF]/10'
+                      : 'text-gray-300 hover:text-white hover:bg-white/10'
+                  }`}
+                >
+                  {link.label}
+                  {isActive(link.href) && (
+                    <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-[#0080FF]" />
+                  )}
+                </Link>
+              ))}
             </div>
 
             {/* Mobile Menu Button */}
@@ -157,7 +239,7 @@ export default function Header() {
           {/* Navigation Links */}
           <nav className="flex-1 overflow-y-auto py-6 px-4">
             <div className="space-y-1">
-              {navLinks.map((link, index) => (
+              {mainNavLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
@@ -167,7 +249,64 @@ export default function Header() {
                       ? 'bg-[#0080FF] text-white'
                       : 'text-gray-300 hover:bg-white/10 hover:text-white'
                   }`}
-                  style={{ animationDelay: `${index * 50}ms` }}
+                >
+                  <span className={`w-2 h-2 rounded-full ${isActive(link.href) ? 'bg-white' : 'bg-gray-500'}`} />
+                  {link.label}
+                </Link>
+              ))}
+
+              {/* Mobile Other Services Accordion */}
+              <div className="rounded-xl overflow-hidden">
+                <button
+                  onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
+                  className={`w-full flex items-center justify-between gap-3 px-4 py-4 rounded-xl font-medium transition-all duration-300 ${
+                    otherServices.some(s => isActive(s.href))
+                      ? 'bg-[#0080FF] text-white'
+                      : 'text-gray-300 hover:bg-white/10 hover:text-white'
+                  }`}
+                >
+                  <span className="flex items-center gap-3">
+                    <span className={`w-2 h-2 rounded-full ${otherServices.some(s => isActive(s.href)) ? 'bg-white' : 'bg-gray-500'}`} />
+                    Other Services
+                  </span>
+                  <svg
+                    className={`w-4 h-4 transition-transform duration-200 ${isMobileServicesOpen ? 'rotate-180' : ''}`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div className={`overflow-hidden transition-all duration-300 ${isMobileServicesOpen ? 'max-h-40' : 'max-h-0'}`}>
+                  {otherServices.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      onClick={() => setIsMenuOpen(false)}
+                      className={`flex items-center gap-3 px-4 py-3 pl-10 font-medium transition-all duration-300 ${
+                        isActive(link.href)
+                          ? 'bg-[#0080FF]/50 text-white'
+                          : 'text-gray-400 hover:bg-white/5 hover:text-white'
+                      }`}
+                    >
+                      <span className={`w-1.5 h-1.5 rounded-full ${isActive(link.href) ? 'bg-white' : 'bg-gray-600'}`} />
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              {secondaryNavLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setIsMenuOpen(false)}
+                  className={`flex items-center gap-3 px-4 py-4 rounded-xl font-medium transition-all duration-300 ${
+                    isActive(link.href)
+                      ? 'bg-[#0080FF] text-white'
+                      : 'text-gray-300 hover:bg-white/10 hover:text-white'
+                  }`}
                 >
                   <span className={`w-2 h-2 rounded-full ${isActive(link.href) ? 'bg-white' : 'bg-gray-500'}`} />
                   {link.label}
@@ -178,17 +317,6 @@ export default function Header() {
 
           {/* Menu Footer */}
           <div className="p-6 border-t border-white/10 bg-black/30">
-            <Link
-              href="/contact"
-              onClick={() => setIsMenuOpen(false)}
-              className="btn btn-accent w-full justify-center mb-4"
-            >
-              Get Free Quote
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </Link>
-
             <a
               href="tel:978-660-1356"
               className="flex items-center justify-center gap-2 py-3 text-[#0080FF] font-semibold hover:text-[#3399ff] transition-colors"

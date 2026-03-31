@@ -129,7 +129,7 @@ export default function RVDetailingPage() {
       {/* Hero Section */}
       <section className="relative h-[70vh] min-h-[500px] flex items-center">
         <Image
-          src="/images/gallery-rv-road.jpg"
+          src="/images/1280px-Powerhouse_Coach_-_luxury_motor_coach_based_on_Volvo_NH12.jpg"
           alt="RV Detailing Services"
           fill
           className="object-cover"
@@ -312,8 +312,7 @@ export default function RVDetailingPage() {
                   className="w-full p-6 flex items-center justify-between text-left hover:bg-white/5 transition-colors"
                 >
                   <div>
-                    <h3 className="text-2xl font-black text-[#0080FF] uppercase tracking-wide flex items-center gap-3">
-                      <span className="text-2xl">🚐</span>
+                    <h3 className="text-2xl font-black text-[#0080FF] uppercase tracking-wide">
                       {pkg.name}
                     </h3>
                     <p className="text-gray-400 mt-2">{pkg.description}</p>
@@ -392,32 +391,6 @@ export default function RVDetailingPage() {
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* RV Types We Service */}
-      <section className="py-20 bg-[#0a0a0a]">
-        <div className="container-custom">
-          <div className="text-center max-w-2xl mx-auto mb-12 scroll-animate">
-            <span className="badge badge-primary mb-4">All RV Types</span>
-            <h2 className="text-3xl md:text-4xl font-black text-white uppercase tracking-tight">
-              <span className="text-outline">RV Types</span> <span className="text-[#0080FF]">We Service</span>
-            </h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { type: "Motorhomes", description: "Class A, B & C motorhomes", icon: "🚐" },
-              { type: "Travel Trailers", description: "All sizes and types", icon: "🏕️" },
-              { type: "Fifth Wheels", description: "Luxury and standard models", icon: "🚛" },
-              { type: "Toy Haulers", description: "Specialized heavy-duty care", icon: "🎮" },
-            ].map((item, index) => (
-              <div key={index} className={`scroll-animate scroll-delay-${index + 1} bg-[#111111] p-6 rounded-sm text-center border border-white/10 hover:border-[#0080FF]/30 transition-all hover:-translate-y-1`}>
-                <div className="text-5xl mb-4">{item.icon}</div>
-                <h3 className="font-bold text-white mb-2 uppercase tracking-wide">{item.type}</h3>
-                <p className="text-gray-400 text-sm">{item.description}</p>
               </div>
             ))}
           </div>

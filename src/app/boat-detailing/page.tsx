@@ -329,8 +329,7 @@ export default function BoatDetailingPage() {
                   className="w-full p-6 flex items-center justify-between text-left hover:bg-white/5 transition-colors"
                 >
                   <div>
-                    <h3 className="text-2xl font-black text-[#0080FF] uppercase tracking-wide flex items-center gap-3">
-                      <span className="text-2xl">🚤</span>
+                    <h3 className="text-2xl font-black text-[#0080FF] uppercase tracking-wide">
                       {pkg.name}
                     </h3>
                     {pkg.subtitle && (

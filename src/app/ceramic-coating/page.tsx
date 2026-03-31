@@ -117,22 +117,26 @@ export default function CeramicCoatingPage() {
     {
       step: "1",
       title: "CLEAN THE GRIME",
-      desc: "Thorough wash, chemical decontamination, clay bar treatment to remove all embedded contaminants from the paint surface."
+      desc: "Utilizing proper wash techniques, we clean the dirt and grime from your vehicle, we chemically decontaminate and clay bar it, and then dry it, preparing the surface for protection.",
+      image: "/images/gallery-corvette-dark.jpg"
     },
     {
       step: "2",
       title: "POLISH IT UP",
-      desc: "Remove swirls, scratches, and imperfections using professional dual-action polisher to create a flawless base."
+      desc: "A high speed dual action polisher and quality polishing compounds are utilized to remove paint swirls and scratches, and to polish the paint to make it POP!",
+      image: "/images/gallery-koenigsegg-white.jpg"
     },
     {
       step: "3",
       title: "COAT IT OVER",
-      desc: "Apply System X ceramic coating panel by panel, ensuring complete coverage and proper bonding to the paint."
+      desc: "We use professional grade coatings from System X to coat your vehicle with a 3-year, 6-year, or 10-year coating to give it a highly durable and hydrophobic protective layer, and a deep, \"wet look\" shine!",
+      image: "/images/Ceramic-Coating-Tesla-3.jpg"
     },
     {
       step: "4",
       title: "DRESS TO SHINE",
-      desc: "Coat trim, plastics, and glass. Dress tires and perform final inspection for a complete, showroom finish."
+      desc: "We coat all of the trim and plastic pieces with a ceramic coating to provide quality UV protection and a deep gloss, and make the tires all shiny, giving your vehicle that Liquid Shine look!",
+      image: "/images/Auto-Detailing-2018-Corvette-Convertible-After.jpg"
     },
   ];
 
@@ -303,6 +307,68 @@ export default function CeramicCoatingPage() {
         </div>
       </section>
 
+      {/* YouTube Video Section - Modern Design */}
+      <section className="py-24 bg-[#0a0a0a]">
+        <div className="container-custom">
+          {/* Video Container */}
+          <div className="max-w-5xl mx-auto scroll-animate">
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-black/50 group">
+              {/* Decorative border glow */}
+              <div className="absolute -inset-1 bg-gradient-to-r from-[#0080FF]/20 via-transparent to-[#0080FF]/20 rounded-2xl blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+
+              {/* Video iframe */}
+              <div className="relative aspect-video bg-black rounded-xl overflow-hidden border border-white/10">
+                <iframe
+                  className="absolute inset-0 w-full h-full"
+                  src="https://www.youtube.com/embed/Ni-dbFSq5-I?start=34&rel=0&modestbranding=1"
+                  title="System X Ceramic Coating"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* System X Authorization Section */}
+          <div className="mt-20 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
+            <div className="scroll-animate-left">
+              <h2 className="text-3xl md:text-4xl font-black text-[#0080FF] mb-6 leading-tight">
+                Professional Ceramic Coating Installers Authorized to Install System X Coatings
+              </h2>
+              <p className="text-gray-400 text-lg mb-8">
+                At Liquid Shine, we are authorized installers of System X ceramic coating products. We carry and regularly install the 3-year Crystal coating, 6-year Pro coating, and the 10-year Max coating. Contact us to see which coating will best fit your needs and your budget!
+              </p>
+              <Link href="/contact" className="btn btn-accent">
+                Request Your Free Quote
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </Link>
+            </div>
+
+            <div className="scroll-animate-right flex justify-center lg:justify-end">
+              <div className="relative bg-[#111111] rounded-xl p-8 border border-white/10 shadow-2xl max-w-sm">
+                {/* Accredited badge */}
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-red-600 text-white text-xs font-bold uppercase tracking-wider px-4 py-2 rounded-sm">
+                  Accredited Installation Center
+                </div>
+
+                {/* System X Logo */}
+                <div className="mt-4">
+                  <Image
+                    src="/images/logo-system-x-authorized-installer.jpeg"
+                    alt="System X Ceramic Protection - Accredited Installation Center"
+                    width={280}
+                    height={140}
+                    className="mx-auto"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* System X Products Section */}
       <section className="py-20 bg-[#111111]">
         <div className="container-custom">
@@ -349,31 +415,69 @@ export default function CeramicCoatingPage() {
         </div>
       </section>
 
-      {/* 4-Step Process */}
-      <section className="py-20 bg-[#0a0a0a]">
-        <div className="container-custom">
-          <div className="text-center max-w-2xl mx-auto mb-16 scroll-animate">
-            <span className="badge badge-primary mb-4">Our Process</span>
-            <h2 className="text-3xl md:text-4xl font-black text-white mb-4 uppercase tracking-tight">
-              <span className="text-outline">How We</span> <span className="text-[#0080FF]">Apply It</span>
+      {/* 4-Step Process - Modern Circular Design */}
+      <section className="py-24 relative overflow-hidden">
+        {/* Background with gradient overlay */}
+        <div className="absolute inset-0">
+          <Image
+            src="/images/hero-boat-ocean.jpg"
+            alt="Background"
+            fill
+            className="object-cover opacity-20"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a] via-[#0a0a0a]/95 to-[#0a0a0a]" />
+        </div>
+
+        <div className="container-custom relative z-10">
+          <div className="text-center max-w-3xl mx-auto mb-16 scroll-animate">
+            <span className="badge badge-primary mb-4">Professional</span>
+            <h2 className="text-3xl md:text-5xl font-black text-white mb-6">
+              Process We Follow for <span className="text-[#0080FF]">Auto Ceramic Coating</span>
             </h2>
             <p className="text-gray-400 text-lg">
-              Every ceramic coating application follows our proven 4-step process to ensure perfect results.
+              We are a fully self-contained and mobile ceramic coating and auto detailing service. We come to you and we bring everything we need. We provide our own power, water, and everything else necessary to give your auto, boat, or RV that Liquid Shine look.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+
+          {/* Circular Process Steps */}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-4 items-start">
             {process.map((item, index) => (
-              <div key={index} className={`relative scroll-animate scroll-delay-${index + 1}`}>
-                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-sm p-6 h-full text-center hover:border-[#0080FF]/30 transition-colors">
-                  <div className="w-16 h-16 mx-auto mb-4 rounded-sm bg-[#0080FF] text-white flex items-center justify-center text-2xl font-black">
+              <div key={index} className={`relative scroll-animate scroll-delay-${index + 1} flex flex-col items-center text-center`}>
+                {/* Circular Image Container */}
+                <div className="relative mb-6 group">
+                  {/* Outer ring with glow */}
+                  <div className="absolute inset-0 rounded-full border-2 border-white/30 group-hover:border-[#0080FF] transition-colors duration-500" style={{ margin: '-8px', padding: '8px' }} />
+
+                  {/* Image circle */}
+                  <div className="relative w-44 h-44 md:w-40 md:h-40 lg:w-48 lg:h-48 rounded-full overflow-hidden border-4 border-white/20 group-hover:border-[#0080FF]/50 transition-all duration-500 shadow-2xl">
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-700"
+                    />
+                    {/* Overlay gradient */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  </div>
+
+                  {/* Step Number - Large and Bold */}
+                  <div className="absolute bottom-2 left-1/2 -translate-x-1/2 text-7xl md:text-6xl lg:text-7xl font-black text-[#0080FF] drop-shadow-[0_0_20px_rgba(0,128,255,0.5)] z-10" style={{ fontFamily: 'Impact, sans-serif' }}>
                     {item.step}
                   </div>
-                  <h3 className="text-lg font-bold text-white mb-3 uppercase tracking-wide">{item.title}</h3>
-                  <p className="text-gray-500 text-sm">{item.desc}</p>
+
+                  {/* Arrow to next step */}
+                  {index < 3 && (
+                    <div className="hidden md:flex absolute top-1/2 -right-6 lg:-right-4 -translate-y-1/2 items-center z-20">
+                      <svg className="w-8 h-8 text-[#0080FF] animate-pulse" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                      </svg>
+                    </div>
+                  )}
                 </div>
-                {index < 3 && (
-                  <div className="hidden md:block absolute top-1/2 -right-3 w-6 h-0.5 bg-[#0080FF]" />
-                )}
+
+                {/* Text Content */}
+                <h3 className="text-lg font-bold text-white mb-3 uppercase tracking-wider">{item.title}</h3>
+                <p className="text-gray-400 text-sm leading-relaxed max-w-xs">{item.desc}</p>
               </div>
             ))}
           </div>

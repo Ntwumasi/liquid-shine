@@ -268,7 +268,7 @@ export default function AutoDetailingPage() {
       {/* Hero Section */}
       <section className="relative h-[70vh] min-h-[500px] flex items-center">
         <Image
-          src="/images/IMG_5785.jpeg"
+          src="/images/IMG_5783.jpeg"
           alt="Auto Detailing Services"
           fill
           className="object-cover"

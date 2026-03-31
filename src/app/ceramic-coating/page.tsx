@@ -547,14 +547,14 @@ export default function CeramicCoatingPage() {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
+              '/images/IMG_5783.jpeg',
+              '/images/IMG_5785.jpeg',
+              '/images/IMG_5784.jpeg',
               '/images/Ceramic-Coating-Tesla-1.jpg',
               '/images/Ceramic-Coating-Tesla-2.jpg',
               '/images/Ceramic-Coating-Tesla-3.jpg',
               '/images/gallery-corvette-dark.jpg',
-              '/images/Auto-Detailing-2018-Corvette-Convertible-After.jpg',
-              '/images/Auto-Detailing-2018-BMW-3-Series.jpg',
               '/images/gallery-koenigsegg-white.jpg',
-              '/images/Auto-Detailing-2018-Dodge-Charger.jpg',
             ].map((src, index) => (
               <div key={index} className={`scroll-animate-scale scroll-delay-${(index % 4) + 1} relative aspect-square rounded-sm overflow-hidden group border border-white/10 hover:border-[#0080FF]/30 transition-colors`}>
                 <Image

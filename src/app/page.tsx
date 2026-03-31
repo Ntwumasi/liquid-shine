@@ -42,7 +42,12 @@ export default function HomePage() {
 
   const heroSlides = [
     {
-      image: '/images/hero-supercar-dark.jpg',
+      image: '/images/IMG_5783.jpeg',
+      title: 'Exotic Car Specialists',
+      subtitle: 'Lamborghini, Ferrari, and beyond',
+    },
+    {
+      image: '/images/IMG_5785.jpeg',
       title: 'Professional Mobile Detailing',
       subtitle: 'We bring the shine to you',
     },
@@ -68,14 +73,14 @@ export default function HomePage() {
       title: 'Auto Detailing',
       description: 'Washing, waxing, polishing, buffing, paint correction, ceramic coating, engine bay cleaning, headlight restoration, interior cleaning, steam cleaning, carpet & upholstery shampooing and extraction, and fabric & leather protection.',
       href: '/auto-detailing',
-      image: '/images/hero-car-front.jpg',
+      image: '/images/IMG_5785.jpeg',
       icon: '/images/car.png',
     },
     {
       title: 'Ceramic Coating',
       description: 'Professional-grade System X ceramic coating for years of protection and that incredible gloss finish. The most advanced paint protection available.',
       href: '/ceramic-coating',
-      image: '/images/Ceramic-Coating-Tesla-2.jpg',
+      image: '/images/IMG_5783.jpeg',
       icon: '/images/shield-1.png.webp',
     },
     {
@@ -118,15 +123,15 @@ export default function HomePage() {
   ];
 
   const galleryImages = [
+    { src: '/images/IMG_5783.jpeg', alt: 'Lamborghini Huracán STO' },
+    { src: '/images/IMG_5785.jpeg', alt: 'Ferrari 488' },
+    { src: '/images/IMG_5784.jpeg', alt: 'Lamborghini Wheel Detail' },
     { src: '/images/gallery-corvette-dark.jpg', alt: 'Corvette Detail' },
-    { src: '/images/Auto-Detailing-2018-Corvette-Convertible-After.jpg', alt: 'Corvette Convertible' },
     { src: '/images/Ceramic-Coating-Tesla-3.jpg', alt: 'Tesla Ceramic Coating' },
-    { src: '/images/Auto-Detailing-2018-Jeep-Wrangler-Rubicon.jpg', alt: 'Jeep Wrangler Rubicon' },
-    { src: '/images/Auto-Detailing-2018-Dodge-Charger.jpg', alt: 'Dodge Charger' },
     { src: '/images/gallery-koenigsegg-white.jpg', alt: 'Exotic Car Detail' },
+    { src: '/images/Auto-Detailing-2018-Corvette-Convertible-After.jpg', alt: 'Corvette Convertible' },
     { src: '/images/Auto-Detailing-2018-BMW-3-Series.jpg', alt: 'BMW 3 Series' },
     { src: '/images/gallery-interior-leather.jpg', alt: 'Interior Detail' },
-    { src: '/images/Auto-Detailing-2019-Ram-1500.jpg', alt: 'Ram 1500 Truck' },
   ];
 
   const stats = [
@@ -387,23 +392,49 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Full-width Image Break */}
-      <section className="grid grid-cols-1 md:grid-cols-2">
-        <div className="relative h-64 md:h-96">
-          <Image
-            src="/images/gallery-interior-leather.jpg"
-            alt="Interior Detailing"
-            fill
-            className="object-cover"
-          />
-        </div>
-        <div className="relative h-64 md:h-96">
-          <Image
-            src="/images/hero-supercar-dark.jpg"
-            alt="Exterior Detailing"
-            fill
-            className="object-cover"
-          />
+      {/* Video Showcase Section */}
+      <section className="py-20 bg-[#0a0a0a]">
+        <div className="container-custom">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <span className="badge badge-primary mb-4">See Our Work</span>
+            <h2 className="text-3xl md:text-4xl font-black text-white mb-4 uppercase tracking-tight">
+              <span className="text-outline">Detailing</span> <span className="text-[#0080FF]">In Action</span>
+            </h2>
+            <p className="text-gray-400 text-lg">
+              Watch our team bring vehicles back to showroom condition
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {[
+              { src: '/videos/IMG_3796.mov', poster: '/images/IMG_5783.jpeg' },
+              { src: '/videos/IMG_3854.MOV', poster: '/images/IMG_5785.jpeg' },
+              { src: '/videos/IMG_3857.MOV', poster: '/images/IMG_5784.jpeg' },
+              { src: '/videos/E7643D04-E42C-4C0E-A124-F0423EFE1FF1.MOV', poster: '/images/gallery-corvette-dark.jpg' },
+            ].map((video, index) => (
+              <div key={index} className="relative aspect-[9/16] rounded-lg overflow-hidden border border-white/10 hover:border-[#0080FF]/50 transition-all group shadow-xl">
+                <video
+                  className="w-full h-full object-cover"
+                  poster={video.poster}
+                  muted
+                  loop
+                  playsInline
+                  onMouseEnter={(e) => e.currentTarget.play()}
+                  onMouseLeave={(e) => { e.currentTarget.pause(); e.currentTarget.currentTime = 0; }}
+                >
+                  <source src={video.src} type="video/mp4" />
+                </video>
+                {/* Play indicator */}
+                <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-transparent transition-all">
+                  <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-0 transition-transform duration-300">
+                    <svg className="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

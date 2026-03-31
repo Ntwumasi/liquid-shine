@@ -265,9 +265,9 @@ export default function CeramicCoatingPage() {
             </div>
             <div className="relative scroll-animate-right">
               {/* Video Section */}
-              <div className="relative rounded-sm overflow-hidden border border-white/10">
+              <div className="relative rounded-sm overflow-hidden border border-white/10 bg-black">
                 <video
-                  className="w-full aspect-video"
+                  className="w-full aspect-video object-cover"
                   controls
                   poster="/images/Ceramic-Coating-Tesla-2.jpg"
                 >

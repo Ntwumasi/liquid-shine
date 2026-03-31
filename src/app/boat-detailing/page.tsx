@@ -89,7 +89,7 @@ export default function BoatDetailingPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[#0a0a0a]">
       {/* Hero Section */}
       <section className="relative h-[70vh] min-h-[500px] flex items-center">
         <Image
@@ -104,7 +104,7 @@ export default function BoatDetailingPage() {
           <div className="max-w-2xl">
             <span className="badge badge-accent mb-4 animate-fade-in-up">Professional Marine Service</span>
             <h1 className="text-5xl md:text-6xl font-bold text-white mb-4">
-              Boat <span className="text-[#FFBA00]">Detailing</span>
+              Boat <span className="text-[#0080FF]">Detailing</span>
             </h1>
             <p className="text-xl text-gray-200 mb-8">
               Professional marine detailing that protects your boat from saltwater, sun, and oxidation. Keep your vessel looking like new.
@@ -116,7 +116,7 @@ export default function BoatDetailingPage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </Link>
-              <a href="tel:978-660-1356" className="btn btn-secondary bg-transparent border-white text-white hover:bg-white hover:text-gray-900">
+              <a href="tel:978-660-1356" className="btn btn-secondary bg-transparent border-white text-white hover:bg-[#0a0a0a] hover:text-white">
                 (978) 660-1356
               </a>
             </div>
@@ -125,13 +125,13 @@ export default function BoatDetailingPage() {
       </section>
 
       {/* Military Discount Banner */}
-      <section className="bg-[#FFBA00] py-4">
+      <section className="bg-[#0080FF] py-4">
         <div className="container-custom">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-4">
               <span className="text-3xl">🎖️</span>
               <div>
-                <span className="font-bold text-gray-900 text-lg">Military & First Responders:</span>
+                <span className="font-bold text-white text-lg">Military & First Responders:</span>
                 <span className="text-gray-800 ml-2">15% OFF all boat detailing services</span>
               </div>
             </div>
@@ -143,11 +143,11 @@ export default function BoatDetailingPage() {
       </section>
 
       {/* Why Boat Detailing Matters */}
-      <section className="py-20 bg-[#004FBB]">
+      <section className="py-20 bg-[#0080FF]">
         <div className="container-custom">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <h2 className="text-4xl font-bold text-white mb-4">
-              Why Choose <span className="text-[#FFBA00]">Marine Detailing?</span>
+              Why Choose <span className="text-[#0080FF]">Marine Detailing?</span>
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -157,14 +157,14 @@ export default function BoatDetailingPage() {
               { title: "Value Preservation", desc: "Maintain your boat's value and lifespan" },
               { title: "Expert Care", desc: "Specialized marine detailing expertise" },
             ].map((item, index) => (
-              <div key={index} className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-6 text-center">
-                <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-[#FFBA00] flex items-center justify-center">
-                  <svg className="w-7 h-7 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div key={index} className="bg-[#0a0a0a]/10 backdrop-blur-sm border border-white/20 rounded-xl p-6 text-center">
+                <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-[#0080FF] flex items-center justify-center">
+                  <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
                 <h3 className="text-lg font-bold text-white mb-2">{item.title}</h3>
-                <p className="text-blue-100 text-sm">{item.desc}</p>
+                <p className="text-gray-400 text-sm">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -172,24 +172,24 @@ export default function BoatDetailingPage() {
       </section>
 
       {/* Services Grid */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-[#111111]">
         <div className="container-custom">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <span className="badge badge-primary mb-4">Our Services</span>
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-4xl font-bold text-white mb-4">
               Complete <span className="gradient-text-blue">Marine Services</span>
             </h2>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
             {services.map((service, index) => (
-              <div key={index} className="bg-white p-6 rounded-xl shadow-md text-center hover:shadow-lg transition-all hover:-translate-y-1">
-                <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-[#004FBB]/10 flex items-center justify-center">
-                  <svg className="w-6 h-6 text-[#004FBB]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div key={index} className="bg-[#0a0a0a] p-6 rounded-xl shadow-md text-center hover:shadow-lg border border-white/10 transition-all hover:-translate-y-1">
+                <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-[#0080FF]/10 flex items-center justify-center">
+                  <svg className="w-6 h-6 text-[#0080FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
-                <h3 className="font-bold text-gray-900 mb-1">{service.name}</h3>
-                <p className="text-gray-600 text-sm">{service.description}</p>
+                <h3 className="font-bold text-white mb-1">{service.name}</h3>
+                <p className="text-gray-400 text-sm">{service.description}</p>
               </div>
             ))}
           </div>
@@ -197,84 +197,84 @@ export default function BoatDetailingPage() {
       </section>
 
       {/* Marine Coating Info */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-[#0a0a0a]">
         <div className="container-custom">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <span className="badge badge-primary mb-4">Expertise</span>
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-4xl font-bold text-white mb-4">
               Our Marine <span className="gradient-text">Expertise</span>
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-gray-50 rounded-2xl p-8">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Specialized Marine Knowledge</h3>
+            <div className="bg-[#111111] rounded-2xl p-8">
+              <h3 className="text-2xl font-bold text-white mb-6">Specialized Marine Knowledge</h3>
               <ul className="space-y-4">
                 <li className="flex gap-3">
-                  <svg className="w-5 h-5 text-[#004FBB] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-[#0080FF] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span className="text-gray-600">
+                  <span className="text-gray-400">
                     Expert in fiberglass, gel coat, and stainless steel restoration
                   </span>
                 </li>
                 <li className="flex gap-3">
-                  <svg className="w-5 h-5 text-[#004FBB] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-[#0080FF] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span className="text-gray-600">
+                  <span className="text-gray-400">
                     Understanding of marine-specific environmental challenges
                   </span>
                 </li>
                 <li className="flex gap-3">
-                  <svg className="w-5 h-5 text-[#004FBB] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-[#0080FF] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span className="text-gray-600">
+                  <span className="text-gray-400">
                     Experience with various boat types and sizes
                   </span>
                 </li>
                 <li className="flex gap-3">
-                  <svg className="w-5 h-5 text-[#004FBB] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-[#0080FF] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span className="text-gray-600">
+                  <span className="text-gray-400">
                     Knowledge of mold, mildew, and algae prevention
                   </span>
                 </li>
               </ul>
             </div>
-            <div className="bg-gray-50 rounded-2xl p-8">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Premium Marine Products</h3>
+            <div className="bg-[#111111] rounded-2xl p-8">
+              <h3 className="text-2xl font-bold text-white mb-6">Premium Marine Products</h3>
               <ul className="space-y-4">
                 <li className="flex gap-3">
-                  <svg className="w-5 h-5 text-[#004FBB] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-[#0080FF] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span className="text-gray-600">
+                  <span className="text-gray-400">
                     Marine-grade cleaning solutions and protectants
                   </span>
                 </li>
                 <li className="flex gap-3">
-                  <svg className="w-5 h-5 text-[#004FBB] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-[#0080FF] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span className="text-gray-600">
+                  <span className="text-gray-400">
                     UV-resistant waxes formulated for saltwater environments
                   </span>
                 </li>
                 <li className="flex gap-3">
-                  <svg className="w-5 h-5 text-[#004FBB] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-[#0080FF] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span className="text-gray-600">
+                  <span className="text-gray-400">
                     Professional-grade polishes and coatings
                   </span>
                 </li>
                 <li className="flex gap-3">
-                  <svg className="w-5 h-5 text-[#004FBB] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-[#0080FF] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span className="text-gray-600">
+                  <span className="text-gray-400">
                     Corrosion inhibitors and protective treatments
                   </span>
                 </li>
@@ -285,11 +285,11 @@ export default function BoatDetailingPage() {
       </section>
 
       {/* Service Process */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-[#111111]">
         <div className="container-custom">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <span className="badge badge-primary mb-4">Our Process</span>
-            <h2 className="text-4xl font-bold text-gray-900">How We Work</h2>
+            <h2 className="text-4xl font-bold text-white">How We Work</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             {[
@@ -299,15 +299,15 @@ export default function BoatDetailingPage() {
               { step: "Protection", description: "Apply protective coatings and wax" },
             ].map((item, index) => (
               <div key={index} className="relative">
-                <div className="bg-white rounded-xl p-6 text-center h-full">
-                  <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-[#004FBB] text-white flex items-center justify-center text-xl font-bold">
+                <div className="bg-[#0a0a0a] rounded-xl p-6 text-center h-full">
+                  <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-[#0080FF] text-white flex items-center justify-center text-xl font-bold">
                     {index + 1}
                   </div>
-                  <h3 className="font-bold text-gray-900 mb-1">{item.step}</h3>
-                  <p className="text-gray-600 text-sm">{item.description}</p>
+                  <h3 className="font-bold text-white mb-1">{item.step}</h3>
+                  <p className="text-gray-400 text-sm">{item.description}</p>
                 </div>
                 {index < 3 && (
-                  <div className="hidden md:block absolute top-1/2 -right-2 w-4 h-0.5 bg-[#004FBB]" />
+                  <div className="hidden md:block absolute top-1/2 -right-2 w-4 h-0.5 bg-[#0080FF]" />
                 )}
               </div>
             ))}
@@ -316,28 +316,28 @@ export default function BoatDetailingPage() {
       </section>
 
       {/* Package Cards */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-[#0a0a0a]">
         <div className="container-custom">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <span className="badge badge-primary mb-4">Pricing</span>
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-4xl font-bold text-white mb-4">
               Marine Detailing <span className="gradient-text">Packages</span>
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {packages.map((pkg, index) => (
-              <div key={index} className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                <div className="bg-[#004FBB] text-white p-6">
+              <div key={index} className="bg-[#0a0a0a] rounded-2xl shadow-lg border border-white/10 overflow-hidden hover:shadow-xl transition-shadow">
+                <div className="bg-[#0080FF] text-white p-6">
                   <h3 className="text-2xl font-bold mb-2">{pkg.name}</h3>
-                  <p className="text-blue-100">{pkg.description}</p>
+                  <p className="text-gray-400">{pkg.description}</p>
                 </div>
                 <div className="p-6">
                   <div className="mb-6">
-                    <h4 className="font-bold text-gray-900 mb-3">Includes:</h4>
+                    <h4 className="font-bold text-white mb-3">Includes:</h4>
                     <ul className="space-y-2">
                       {pkg.services.map((service, i) => (
-                        <li key={i} className="flex items-start gap-2 text-gray-600">
-                          <svg className="w-5 h-5 text-[#004FBB] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <li key={i} className="flex items-start gap-2 text-gray-400">
+                          <svg className="w-5 h-5 text-[#0080FF] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                           </svg>
                           {service}
@@ -345,9 +345,9 @@ export default function BoatDetailingPage() {
                       ))}
                     </ul>
                   </div>
-                  <div className="border-t border-gray-200 pt-6">
-                    <p className="text-gray-900 font-bold text-lg">{pkg.price}</p>
-                    <p className="text-gray-600 text-sm mt-2">Contact us for custom boat sizes and pricing</p>
+                  <div className="border-t border-white/10 pt-6">
+                    <p className="text-white font-bold text-lg">{pkg.price}</p>
+                    <p className="text-gray-400 text-sm mt-2">Contact us for custom boat sizes and pricing</p>
                   </div>
                   <Link href="/contact" className="block w-full mt-6 btn btn-primary text-center">
                     Get Quote
@@ -360,11 +360,11 @@ export default function BoatDetailingPage() {
       </section>
 
       {/* Gallery Preview */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-[#111111]">
         <div className="container-custom">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <span className="badge badge-primary mb-4">Our Work</span>
-            <h2 className="text-4xl font-bold text-gray-900">Marine Detailing Gallery</h2>
+            <h2 className="text-4xl font-bold text-white">Marine Detailing Gallery</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {galleryImages.map((src, index) => (
@@ -388,11 +388,11 @@ export default function BoatDetailingPage() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-[#0a0a0a]">
         <div className="container-custom">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <span className="badge badge-accent mb-4">Testimonials</span>
-            <h2 className="text-4xl font-bold text-gray-900">Boat Owner Reviews</h2>
+            <h2 className="text-4xl font-bold text-white">Boat Owner Reviews</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
@@ -412,14 +412,14 @@ export default function BoatDetailingPage() {
                 rating: 5,
               },
             ].map((testimonial, index) => (
-              <div key={index} className="bg-gray-50 p-6 rounded-2xl shadow-md border-l-4 border-[#004FBB]">
+              <div key={index} className="bg-[#111111] p-6 rounded-2xl shadow-md border-l-4 border-[#0080FF]">
                 <div className="flex gap-1 mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
-                    <span key={i} className="text-[#FFBA00] text-xl">★</span>
+                    <span key={i} className="text-[#0080FF] text-xl">★</span>
                   ))}
                 </div>
-                <p className="text-gray-600 mb-4 italic">"{testimonial.text}"</p>
-                <p className="font-bold text-gray-900">- {testimonial.name}</p>
+                <p className="text-gray-400 mb-4 italic">"{testimonial.text}"</p>
+                <p className="font-bold text-white">- {testimonial.name}</p>
               </div>
             ))}
           </div>
@@ -427,12 +427,12 @@ export default function BoatDetailingPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-[#0a1628] relative overflow-hidden">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#004FBB] rounded-full opacity-20 blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#FFBA00] rounded-full opacity-10 blur-3xl" />
+      <section className="py-20 bg-[#0a0a0a] relative overflow-hidden">
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#0080FF] rounded-full opacity-20 blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#0080FF] rounded-full opacity-10 blur-3xl" />
         <div className="container-custom relative z-10 text-center">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Keep Your Boat in <span className="text-[#FFBA00]">Pristine Condition</span>
+            Keep Your Boat in <span className="text-[#0080FF]">Pristine Condition</span>
           </h2>
           <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
             Schedule your marine detailing appointment today and protect your investment from saltwater damage and oxidation.
@@ -441,7 +441,7 @@ export default function BoatDetailingPage() {
             <Link href="/contact" className="btn btn-accent text-base px-8 py-4">
               Schedule Your Appointment
             </Link>
-            <a href="tel:978-660-1356" className="inline-flex items-center gap-2 px-8 py-4 text-base font-semibold text-white bg-white/10 border border-white/20 rounded-xl hover:bg-white/20 transition-colors">
+            <a href="tel:978-660-1356" className="inline-flex items-center gap-2 px-8 py-4 text-base font-semibold text-white bg-[#0a0a0a]/10 border border-white/20 rounded-xl hover:bg-[#0a0a0a]/20 transition-colors">
               (978) 660-1356
             </a>
           </div>

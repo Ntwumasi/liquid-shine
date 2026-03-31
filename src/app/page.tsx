@@ -119,11 +119,14 @@ export default function HomePage() {
 
   const galleryImages = [
     { src: '/images/gallery-corvette-dark.jpg', alt: 'Corvette Detail' },
-    { src: '/images/gallery-koenigsegg-white.jpg', alt: 'Exotic Car Detail' },
-    { src: '/images/gallery-mega-yacht.jpg', alt: 'Yacht Detailing' },
-    { src: '/images/gallery-interior-leather.jpg', alt: 'Interior Detail' },
+    { src: '/images/Auto-Detailing-2018-Corvette-Convertible-After.jpg', alt: 'Corvette Convertible' },
     { src: '/images/Ceramic-Coating-Tesla-3.jpg', alt: 'Tesla Ceramic Coating' },
-    { src: '/images/gallery-yacht-palm-trees.jpg', alt: 'Boat Detail' },
+    { src: '/images/Auto-Detailing-2018-Jeep-Wrangler-Rubicon.jpg', alt: 'Jeep Wrangler Rubicon' },
+    { src: '/images/Auto-Detailing-2018-Dodge-Charger.jpg', alt: 'Dodge Charger' },
+    { src: '/images/gallery-koenigsegg-white.jpg', alt: 'Exotic Car Detail' },
+    { src: '/images/Auto-Detailing-2018-BMW-3-Series.jpg', alt: 'BMW 3 Series' },
+    { src: '/images/gallery-interior-leather.jpg', alt: 'Interior Detail' },
+    { src: '/images/Auto-Detailing-2019-Ram-1500.jpg', alt: 'Ram 1500 Truck' },
   ];
 
   const stats = [
@@ -161,7 +164,7 @@ export default function HomePage() {
   }, [testimonials.length]);
 
   return (
-    <div className="bg-white">
+    <div className="bg-[#0a0a0a]">
       {/* Hero Slider Section */}
       <section className="relative h-screen min-h-[600px] overflow-hidden">
         {/* Slides */}
@@ -189,14 +192,16 @@ export default function HomePage() {
             <div className="max-w-3xl">
               {/* Badge */}
               <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 text-sm font-medium text-white bg-white/10 border border-white/20 rounded-full backdrop-blur-sm">
-                <span className="w-2 h-2 bg-[#FFBA00] rounded-full animate-pulse" />
+                <span className="w-2 h-2 bg-[#0080FF] rounded-full animate-pulse" />
                 Serving Manatee & Sarasota Counties
               </div>
 
               {/* Title */}
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4 leading-tight">
-                {heroSlides[currentSlide].title.split(' ').slice(0, -1).join(' ')}{' '}
-                <span className="text-[#FFBA00]">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-4 leading-tight uppercase tracking-tight">
+                <span className="text-outline">
+                  {heroSlides[currentSlide].title.split(' ').slice(0, -1).join(' ')}
+                </span>{' '}
+                <span className="text-[#0080FF]">
                   {heroSlides[currentSlide].title.split(' ').slice(-1)}
                 </span>
               </h1>
@@ -232,7 +237,7 @@ export default function HomePage() {
               onClick={() => setCurrentSlide(index)}
               className={`h-2 rounded-full transition-all duration-300 ${
                 index === currentSlide
-                  ? 'bg-[#FFBA00] w-8'
+                  ? 'bg-[#0080FF] w-8'
                   : 'bg-white/50 hover:bg-white/80 w-2'
               }`}
               aria-label={`Go to slide ${index + 1}`}
@@ -262,13 +267,13 @@ export default function HomePage() {
       </section>
 
       {/* Military Discount Banner */}
-      <section className="py-4 bg-[#004FBB]">
+      <section className="py-4 bg-[#0080FF]">
         <div className="container-custom">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <p className="text-white text-center sm:text-left">
-              All active duty <span className="font-bold">Military, Veterans, and First Responders</span> get a <span className="text-[#FFBA00] font-bold">10% Discount</span> off of all services
+              All active duty <span className="font-bold">Military, Veterans, and First Responders</span> get a <span className="text-white font-bold underline">10% Discount</span> off of all services
             </p>
-            <Link href="/contact" className="px-5 py-2 bg-white text-[#004FBB] font-semibold rounded-lg hover:bg-gray-100 transition-colors whitespace-nowrap text-sm">
+            <Link href="/contact" className="px-5 py-2 bg-white text-[#0080FF] font-semibold rounded-lg hover:bg-gray-100 transition-colors whitespace-nowrap text-sm">
               Contact Us Today
             </Link>
           </div>
@@ -276,39 +281,39 @@ export default function HomePage() {
       </section>
 
       {/* About Section */}
-      <section className="py-16 md:py-24 bg-white">
+      <section className="py-16 md:py-24 bg-[#0a0a0a]">
         <div className="container-custom" ref={aboutSection.ref}>
           <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center transition-all duration-1000 ${aboutSection.isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <div>
               <span className="badge badge-primary mb-4">About Us</span>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
                 We are a Professional Mobile Detailing Service{' '}
-                <span className="gradient-text-blue">Committed To Excellence</span>
+                <span className="gradient-text">Committed To Excellence</span>
               </h2>
-              <p className="text-gray-600 text-lg mb-6">
+              <p className="text-gray-400 text-lg mb-6">
                 At Liquid Shine, we are committed to delivering you the best Professional Mobile Detailing services possible. Whether you are looking to detail your Auto, Boat, or RV, we would love to have the opportunity to make it look beautiful.
               </p>
 
-              <h3 className="font-bold text-gray-900 mb-4">Servicing all of Manatee and Sarasota Counties, including:</h3>
+              <h3 className="font-bold text-white mb-4">Servicing all of Manatee and Sarasota Counties, including:</h3>
 
               <ul className="space-y-3 mb-6">
                 <li className="flex items-start gap-3">
-                  <svg className="w-5 h-5 text-[#004FBB] mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-[#0080FF] mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
-                  <span className="text-gray-600">{serviceAreas.manatee.join(', ')}</span>
+                  <span className="text-gray-400">{serviceAreas.manatee.join(', ')}</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <svg className="w-5 h-5 text-[#004FBB] mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-[#0080FF] mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
-                  <span className="text-gray-600">{serviceAreas.sarasota.join(', ')}</span>
+                  <span className="text-gray-400">{serviceAreas.sarasota.join(', ')}</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <svg className="w-5 h-5 text-[#004FBB] mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-[#0080FF] mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
-                  <span className="text-gray-600">We come to you with everything we need in our fully self-contained unit</span>
+                  <span className="text-gray-400">We come to you with everything we need in our fully self-contained unit</span>
                 </li>
               </ul>
 
@@ -326,7 +331,7 @@ export default function HomePage() {
                 alt="Yacht Detailing"
                 width={600}
                 height={450}
-                className="rounded-2xl shadow-2xl"
+                className="rounded-2xl shadow-2xl border border-white/10"
               />
             </div>
           </div>
@@ -334,19 +339,19 @@ export default function HomePage() {
       </section>
 
       {/* Services Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-b from-[#004FBB] to-[#003d91] relative overflow-hidden">
+      <section className="py-16 md:py-24 bg-[#111111] relative overflow-hidden">
         {/* Animated background */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-[#FFBA00]/10 rounded-full blur-3xl animate-float" />
+          <div className="absolute top-0 right-0 w-96 h-96 bg-[#0080FF]/5 rounded-full blur-3xl animate-float" />
           <div className="absolute bottom-0 left-0 w-80 h-80 bg-white/5 rounded-full blur-3xl animate-float delay-300" />
         </div>
         <div className="container-custom relative" ref={servicesSection.ref}>
           <div className={`text-center max-w-3xl mx-auto mb-12 transition-all duration-1000 ${servicesSection.isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <span className="badge bg-white/20 text-white mb-4">Professional</span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
-              Detailing Services We <span className="text-[#FFBA00]">Offer</span>
+            <span className="badge badge-primary mb-4">Professional</span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-4 uppercase tracking-tight">
+              <span className="text-outline">Detailing Services We</span> <span className="text-[#0080FF]">Offer</span>
             </h2>
-            <p className="text-blue-100 text-lg">
+            <p className="text-gray-400 text-lg">
               We are a fully self-contained and mobile detailing service. We come to you and we bring everything we need. We provide our own power, water, and everything else necessary to give your auto, boat, or RV that Liquid Shine look.
             </p>
           </div>
@@ -359,8 +364,8 @@ export default function HomePage() {
                 className={`group text-center transition-all duration-700 ${servicesSection.isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
                 style={{ transitionDelay: `${index * 150}ms` }}
               >
-                {/* Circular Image */}
-                <div className="relative w-40 h-40 mx-auto mb-6 rounded-full overflow-hidden border-4 border-white/30 group-hover:border-[#FFBA00] transition-all duration-300">
+                {/* Angular Image */}
+                <div className="relative w-40 h-40 mx-auto mb-6 rounded-lg overflow-hidden border-2 border-white/10 group-hover:border-[#0080FF] transition-all duration-300 clip-corners">
                   <Image
                     src={service.image}
                     alt={service.title}
@@ -373,7 +378,7 @@ export default function HomePage() {
                 <h3 className="text-xl font-bold text-white mb-3 uppercase tracking-wide">
                   {service.title}
                 </h3>
-                <p className="text-blue-100 text-sm leading-relaxed px-4">
+                <p className="text-gray-500 text-sm leading-relaxed px-4">
                   {service.description}
                 </p>
               </Link>
@@ -403,16 +408,16 @@ export default function HomePage() {
       </section>
 
       {/* Why Choose Us / Benefits */}
-      <section className="py-20 bg-[#004FBB] relative overflow-hidden">
+      <section className="py-20 bg-[#0a0a0a] relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#0066cc]/50 rounded-full blur-3xl" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#0080FF]/5 rounded-full blur-3xl" />
         </div>
         <div className="container-custom relative" ref={benefitsSection.ref}>
           <div className={`text-center max-w-2xl mx-auto mb-12 transition-all duration-1000 ${benefitsSection.isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              Why Choose <span className="text-[#FFBA00]">Liquid Shine?</span>
+            <h2 className="text-4xl md:text-5xl font-black text-white mb-4 uppercase tracking-tight">
+              <span className="text-outline">Why Choose</span> <span className="text-[#0080FF]">Liquid Shine?</span>
             </h2>
-            <p className="text-blue-100 text-lg">
+            <p className="text-gray-400 text-lg">
               Experience the difference professional mobile detailing makes
             </p>
           </div>
@@ -421,16 +426,16 @@ export default function HomePage() {
             {benefits.map((benefit, index) => (
               <div
                 key={index}
-                className={`bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 text-center hover:bg-white/20 hover:-translate-y-2 transition-all duration-500 ${benefitsSection.isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+                className={`bg-white/5 backdrop-blur-sm border border-white/10 rounded-sm p-6 text-center hover:bg-white/10 hover:border-[#0080FF]/30 hover:-translate-y-2 transition-all duration-500 ${benefitsSection.isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
-                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-[#FFBA00] flex items-center justify-center">
-                  <svg className="w-8 h-8 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-[#0080FF] flex items-center justify-center">
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
                 <h3 className="text-xl font-bold text-white mb-2">{benefit.title}</h3>
-                <p className="text-blue-100">{benefit.desc}</p>
+                <p className="text-gray-500">{benefit.desc}</p>
               </div>
             ))}
           </div>
@@ -438,7 +443,7 @@ export default function HomePage() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 bg-gray-900" ref={statsSection.ref}>
+      <section className="py-16 bg-[#111111] border-y border-white/5" ref={statsSection.ref}>
         <div className="container-custom">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
@@ -447,8 +452,8 @@ export default function HomePage() {
                 className={`text-center transition-all duration-700 ${statsSection.isInView ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-5 scale-95'}`}
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
-                <div className="text-4xl md:text-6xl font-bold text-[#FFBA00] mb-2">{stat.value}</div>
-                <div className="text-gray-400 font-medium uppercase tracking-wider text-sm">{stat.label}</div>
+                <div className="text-4xl md:text-6xl font-bold text-[#0080FF] mb-2">{stat.value}</div>
+                <div className="text-gray-500 font-medium uppercase tracking-wider text-sm">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -456,14 +461,14 @@ export default function HomePage() {
       </section>
 
       {/* Gallery Preview */}
-      <section className="py-16 md:py-24 bg-white" ref={gallerySection.ref}>
+      <section className="py-16 md:py-24 bg-[#0a0a0a]" ref={gallerySection.ref}>
         <div className="container-custom">
           <div className={`text-center max-w-2xl mx-auto mb-12 transition-all duration-1000 ${gallerySection.isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <span className="badge badge-primary mb-4">Experienced</span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
               Our Work <span className="gradient-text">Gallery</span>
             </h2>
-            <p className="text-gray-600 text-lg">
+            <p className="text-gray-400 text-lg">
               Check out the work we have done for other clients in the community!
             </p>
           </div>
@@ -473,7 +478,7 @@ export default function HomePage() {
               <Link
                 key={index}
                 href="/gallery"
-                className={`relative aspect-square overflow-hidden rounded-2xl group cursor-pointer transition-all duration-700 hover:shadow-2xl ${gallerySection.isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+                className={`relative aspect-square overflow-hidden rounded-sm group cursor-pointer transition-all duration-700 hover:shadow-2xl border border-white/10 hover:border-[#0080FF]/30 ${gallerySection.isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
                 style={{ transitionDelay: `${index * 75}ms` }}
               >
                 <Image
@@ -482,7 +487,7 @@ export default function HomePage() {
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end justify-center pb-4">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end justify-center pb-4">
                   <span className="text-white font-medium text-sm">View Gallery</span>
                 </div>
               </Link>
@@ -501,7 +506,7 @@ export default function HomePage() {
       </section>
 
       {/* System X Certification */}
-      <section className="py-20 bg-gray-50" ref={certSection.ref}>
+      <section className="py-20 bg-[#111111]" ref={certSection.ref}>
         <div className="container-custom">
           <div className={`flex flex-col lg:flex-row items-center gap-12 transition-all duration-1000 ${certSection.isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <div className="lg:w-1/3 flex justify-center">
@@ -510,15 +515,15 @@ export default function HomePage() {
                 alt="System X Authorized Installer"
                 width={300}
                 height={300}
-                className="rounded-2xl shadow-lg"
+                className="rounded-2xl shadow-lg border border-white/10"
               />
             </div>
             <div className="lg:w-2/3 text-center lg:text-left">
-              <span className="badge badge-accent mb-4">Certified Excellence</span>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              <span className="badge badge-primary mb-4">Certified Excellence</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
                 Authorized System X Ceramic Coating Installer
               </h2>
-              <p className="text-gray-600 text-lg mb-6">
+              <p className="text-gray-400 text-lg mb-6">
                 We are proud to be an authorized installer of System X ceramic coatings — the most advanced paint protection available. Our certified technicians use only genuine System X products to ensure your vehicle receives the highest level of protection and shine.
               </p>
               <Link href="/ceramic-coating" className="btn btn-primary">
@@ -533,32 +538,32 @@ export default function HomePage() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 bg-white" ref={testimonialSection.ref}>
+      <section className="py-20 bg-[#0a0a0a]" ref={testimonialSection.ref}>
         <div className="container-custom">
           <div className={`text-center max-w-2xl mx-auto mb-12 transition-all duration-1000 ${testimonialSection.isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <span className="badge badge-primary mb-4">Testimonials</span>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              What Our <span className="gradient-text-blue">Clients Say</span>
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+              What Our <span className="gradient-text">Clients Say</span>
             </h2>
           </div>
 
           <div className="max-w-4xl mx-auto">
-            <div className="bg-gray-50 rounded-3xl p-8 md:p-12 shadow-lg">
+            <div className="bg-[#111111] rounded-sm p-8 md:p-12 border border-white/10">
               <div className="flex gap-1 mb-6">
                 {[...Array(5)].map((_, i) => (
-                  <svg key={i} className="w-6 h-6 text-[#FFBA00]" fill="currentColor" viewBox="0 0 20 20">
+                  <svg key={i} className="w-6 h-6 text-[#0080FF]" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                   </svg>
                 ))}
               </div>
 
-              <blockquote className="text-2xl md:text-3xl text-gray-900 font-medium leading-relaxed mb-8">
+              <blockquote className="text-2xl md:text-3xl text-white font-medium leading-relaxed mb-8">
                 &ldquo;{testimonials[currentTestimonial].text}&rdquo;
               </blockquote>
 
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="font-bold text-gray-900 text-lg">{testimonials[currentTestimonial].name}</p>
+                  <p className="font-bold text-white text-lg">{testimonials[currentTestimonial].name}</p>
                   <p className="text-gray-500">{testimonials[currentTestimonial].role}</p>
                 </div>
 
@@ -569,8 +574,8 @@ export default function HomePage() {
                       onClick={() => setCurrentTestimonial(index)}
                       className={`h-3 rounded-full transition-all duration-300 ${
                         index === currentTestimonial
-                          ? 'bg-[#004FBB] w-8'
-                          : 'bg-gray-300 hover:bg-gray-400 w-3'
+                          ? 'bg-[#0080FF] w-8'
+                          : 'bg-white/20 hover:bg-white/40 w-3'
                       }`}
                     />
                   ))}
@@ -582,16 +587,16 @@ export default function HomePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 bg-[#0a1628] relative overflow-hidden">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#004FBB] rounded-full opacity-20 blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#FFBA00] rounded-full opacity-10 blur-3xl" />
+      <section className="py-24 bg-[#111111] relative overflow-hidden">
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#0080FF] rounded-full opacity-10 blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#0080FF] rounded-full opacity-5 blur-3xl" />
 
         <div className="container-custom relative z-10">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Ready to Get <span className="text-[#FFBA00]">Started?</span>
+            <h2 className="text-4xl md:text-5xl font-black text-white mb-6 uppercase tracking-tight">
+              <span className="text-outline">Ready to Get</span> <span className="text-[#0080FF]">Started?</span>
             </h2>
-            <p className="text-xl text-gray-300 mb-10">
+            <p className="text-xl text-gray-400 mb-10">
               Contact us today for a free quote and discover why hundreds of vehicle owners trust Liquid Shine for their detailing needs.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -601,7 +606,7 @@ export default function HomePage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </Link>
-              <a href="tel:978-660-1356" className="inline-flex items-center gap-2 px-8 py-4 text-base font-semibold text-white bg-white/10 border border-white/20 rounded-xl hover:bg-white/20 transition-colors">
+              <a href="tel:978-660-1356" className="inline-flex items-center gap-2 px-8 py-4 text-base font-semibold text-white bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 transition-colors">
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>

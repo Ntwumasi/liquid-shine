@@ -86,7 +86,7 @@ export default function AutoDetailingPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[#0a0a0a]">
       {/* Hero Section */}
       <section className="relative h-[70vh] min-h-[500px] flex items-center">
         <Image
@@ -122,17 +122,17 @@ export default function AutoDetailingPage() {
       </section>
 
       {/* Military Discount Banner */}
-      <section className="bg-[#FFBA00] py-4">
+      <section className="bg-[#0080FF] py-4">
         <div className="container-custom">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-4">
               <span className="text-3xl">🎖️</span>
               <div>
-                <span className="font-bold text-gray-900 text-lg">Military & First Responders:</span>
-                <span className="text-gray-800 ml-2">15% OFF all auto detailing services</span>
+                <span className="font-bold text-white text-lg">Military & First Responders:</span>
+                <span className="text-white/90 ml-2">15% OFF all auto detailing services</span>
               </div>
             </div>
-            <Link href="/contact" className="px-6 py-2 bg-gray-900 text-white font-semibold rounded-lg hover:bg-gray-800 transition-colors">
+            <Link href="/contact" className="px-6 py-2 bg-white text-[#0080FF] font-semibold rounded-lg hover:bg-gray-100 transition-colors">
               Claim Discount
             </Link>
           </div>
@@ -140,24 +140,24 @@ export default function AutoDetailingPage() {
       </section>
 
       {/* Services Overview */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-[#111111]">
         <div className="container-custom">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <span className="badge badge-primary mb-4">Our Services</span>
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Complete <span className="gradient-text-blue">Detailing Services</span>
+            <h2 className="text-4xl font-bold text-white mb-4">
+              Complete <span className="gradient-text">Detailing Services</span>
             </h2>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
             {services.map((service, index) => (
-              <div key={index} className="bg-white p-6 rounded-xl shadow-md text-center hover:shadow-lg transition-all hover:-translate-y-1">
-                <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-[#004FBB]/10 flex items-center justify-center">
-                  <svg className="w-6 h-6 text-[#004FBB]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div key={index} className="bg-white/5 border border-white/10 p-6 rounded-xl text-center hover:bg-white/10 hover:border-[#0080FF]/30 transition-all hover:-translate-y-1">
+                <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-[#0080FF]/20 flex items-center justify-center">
+                  <svg className="w-6 h-6 text-[#0080FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
-                <h3 className="font-bold text-gray-900 mb-1">{service.name}</h3>
-                <p className="text-gray-600 text-sm">{service.description}</p>
+                <h3 className="font-bold text-white mb-1">{service.name}</h3>
+                <p className="text-gray-500 text-sm">{service.description}</p>
               </div>
             ))}
           </div>
@@ -165,11 +165,11 @@ export default function AutoDetailingPage() {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-20 bg-[#004FBB]">
+      <section className="py-20 bg-[#0a0a0a]">
         <div className="container-custom">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <h2 className="text-4xl font-bold text-white mb-4">
-              Why Choose <span className="text-[#FFBA00]">Liquid Shine?</span>
+              Why Choose <span className="text-[#0080FF]">Liquid Shine?</span>
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -179,14 +179,14 @@ export default function AutoDetailingPage() {
               { title: "Mobile Service", desc: "We come to your home or workplace" },
               { title: "Satisfaction Guaranteed", desc: "100% satisfaction on all services" },
             ].map((item, index) => (
-              <div key={index} className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-6 text-center">
-                <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-[#FFBA00] flex items-center justify-center">
-                  <svg className="w-7 h-7 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div key={index} className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 text-center hover:border-[#0080FF]/30 transition-colors">
+                <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-[#0080FF] flex items-center justify-center">
+                  <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
                 <h3 className="text-lg font-bold text-white mb-2">{item.title}</h3>
-                <p className="text-blue-100 text-sm">{item.desc}</p>
+                <p className="text-gray-500 text-sm">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -194,11 +194,11 @@ export default function AutoDetailingPage() {
       </section>
 
       {/* Detailing Process */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-[#111111]">
         <div className="container-custom">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <span className="badge badge-primary mb-4">Our Process</span>
-            <h2 className="text-4xl font-bold text-gray-900">How We Work</h2>
+            <h2 className="text-4xl font-bold text-white">How We Work</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
             {[
@@ -209,15 +209,15 @@ export default function AutoDetailingPage() {
               { step: "Final Touch", desc: "Quality inspection" },
             ].map((item, index) => (
               <div key={index} className="relative">
-                <div className="bg-gray-50 rounded-xl p-6 text-center h-full">
-                  <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-[#004FBB] text-white flex items-center justify-center text-xl font-bold">
+                <div className="bg-white/5 border border-white/10 rounded-xl p-6 text-center h-full">
+                  <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-[#0080FF] text-white flex items-center justify-center text-xl font-bold">
                     {index + 1}
                   </div>
-                  <h3 className="font-bold text-gray-900 mb-1">{item.step}</h3>
-                  <p className="text-gray-600 text-sm">{item.desc}</p>
+                  <h3 className="font-bold text-white mb-1">{item.step}</h3>
+                  <p className="text-gray-500 text-sm">{item.desc}</p>
                 </div>
                 {index < 4 && (
-                  <div className="hidden md:block absolute top-1/2 -right-2 w-4 h-0.5 bg-[#004FBB]" />
+                  <div className="hidden md:block absolute top-1/2 -right-2 w-4 h-0.5 bg-[#0080FF]" />
                 )}
               </div>
             ))}
@@ -226,33 +226,33 @@ export default function AutoDetailingPage() {
       </section>
 
       {/* Package Cards */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-[#0a0a0a]">
         <div className="container-custom">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <span className="badge badge-primary mb-4">Pricing</span>
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-4xl font-bold text-white mb-4">
               Detailing <span className="gradient-text">Packages</span>
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {packages.map((pkg, index) => (
-              <div key={index} className={`bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow ${pkg.popular ? 'ring-2 ring-[#FFBA00]' : ''}`}>
+              <div key={index} className={`bg-[#111111] rounded-2xl border overflow-hidden hover:border-[#0080FF]/50 transition-all ${pkg.popular ? 'border-[#0080FF] ring-1 ring-[#0080FF]' : 'border-white/10'}`}>
                 {pkg.popular && (
-                  <div className="bg-[#FFBA00] text-gray-900 text-center py-2 font-bold text-sm">
+                  <div className="bg-[#0080FF] text-white text-center py-2 font-bold text-sm">
                     MOST POPULAR
                   </div>
                 )}
-                <div className="bg-[#004FBB] text-white p-6">
+                <div className="bg-white/5 text-white p-6 border-b border-white/10">
                   <h3 className="text-2xl font-bold mb-2">{pkg.name}</h3>
-                  <p className="text-blue-100">{pkg.description}</p>
+                  <p className="text-gray-400">{pkg.description}</p>
                 </div>
                 <div className="p-6">
                   <div className="mb-6">
-                    <h4 className="font-bold text-gray-900 mb-3">Includes:</h4>
+                    <h4 className="font-bold text-white mb-3">Includes:</h4>
                     <ul className="space-y-2">
                       {pkg.services.map((service, i) => (
-                        <li key={i} className="flex items-start gap-2 text-gray-600">
-                          <svg className="w-5 h-5 text-[#004FBB] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <li key={i} className="flex items-start gap-2 text-gray-400">
+                          <svg className="w-5 h-5 text-[#0080FF] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                           </svg>
                           {service}
@@ -260,24 +260,24 @@ export default function AutoDetailingPage() {
                       ))}
                     </ul>
                   </div>
-                  <div className="border-t border-gray-200 pt-6">
-                    <h4 className="font-bold text-gray-900 mb-3">Starting At:</h4>
+                  <div className="border-t border-white/10 pt-6">
+                    <h4 className="font-bold text-white mb-3">Starting At:</h4>
                     <div className="grid grid-cols-2 gap-3">
-                      <div className="bg-gray-50 p-3 rounded-lg">
+                      <div className="bg-white/5 border border-white/10 p-3 rounded-lg">
                         <p className="text-gray-500 text-sm">Coupe</p>
-                        <p className="text-2xl font-bold text-[#004FBB]">${pkg.prices.coupe}</p>
+                        <p className="text-2xl font-bold text-[#0080FF]">${pkg.prices.coupe}</p>
                       </div>
-                      <div className="bg-gray-50 p-3 rounded-lg">
+                      <div className="bg-white/5 border border-white/10 p-3 rounded-lg">
                         <p className="text-gray-500 text-sm">Sedan</p>
-                        <p className="text-2xl font-bold text-[#004FBB]">${pkg.prices.sedan}</p>
+                        <p className="text-2xl font-bold text-[#0080FF]">${pkg.prices.sedan}</p>
                       </div>
-                      <div className="bg-gray-50 p-3 rounded-lg">
+                      <div className="bg-white/5 border border-white/10 p-3 rounded-lg">
                         <p className="text-gray-500 text-sm">Mid-SUV</p>
-                        <p className="text-2xl font-bold text-[#004FBB]">${pkg.prices.midSuv}</p>
+                        <p className="text-2xl font-bold text-[#0080FF]">${pkg.prices.midSuv}</p>
                       </div>
-                      <div className="bg-gray-50 p-3 rounded-lg">
+                      <div className="bg-white/5 border border-white/10 p-3 rounded-lg">
                         <p className="text-gray-500 text-sm">Full-Size</p>
-                        <p className="text-2xl font-bold text-[#004FBB]">${pkg.prices.fullSize}</p>
+                        <p className="text-2xl font-bold text-[#0080FF]">${pkg.prices.fullSize}</p>
                       </div>
                     </div>
                   </div>
@@ -292,15 +292,15 @@ export default function AutoDetailingPage() {
       </section>
 
       {/* Gallery Preview */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-[#111111]">
         <div className="container-custom">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <span className="badge badge-primary mb-4">Our Work</span>
-            <h2 className="text-4xl font-bold text-gray-900">Before & After</h2>
+            <h2 className="text-4xl font-bold text-white">Before & After</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {galleryImages.map((src, index) => (
-              <div key={index} className="relative aspect-square rounded-2xl overflow-hidden group">
+              <div key={index} className="relative aspect-square rounded-2xl overflow-hidden group border border-white/10 hover:border-[#0080FF]/30 transition-colors">
                 <Image
                   src={src}
                   alt={`Auto detailing result ${index + 1}`}
@@ -320,21 +320,21 @@ export default function AutoDetailingPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-[#0a1628] relative overflow-hidden">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#004FBB] rounded-full opacity-20 blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#FFBA00] rounded-full opacity-10 blur-3xl" />
+      <section className="py-20 bg-[#0a0a0a] relative overflow-hidden">
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#0080FF] rounded-full opacity-10 blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#0080FF] rounded-full opacity-5 blur-3xl" />
         <div className="container-custom relative z-10 text-center">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Transform Your Vehicle <span className="text-[#FFBA00]">Today</span>
+            Transform Your Vehicle <span className="text-[#0080FF]">Today</span>
           </h2>
-          <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
             Schedule your auto detailing appointment and see the difference professional care can make.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link href="/contact" className="btn btn-accent text-base px-8 py-4">
               Book Your Appointment
             </Link>
-            <a href="tel:978-660-1356" className="inline-flex items-center gap-2 px-8 py-4 text-base font-semibold text-white bg-white/10 border border-white/20 rounded-xl hover:bg-white/20 transition-colors">
+            <a href="tel:978-660-1356" className="inline-flex items-center gap-2 px-8 py-4 text-base font-semibold text-white bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 transition-colors">
               (978) 660-1356
             </a>
           </div>

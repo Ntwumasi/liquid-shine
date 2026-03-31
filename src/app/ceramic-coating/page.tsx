@@ -1,7 +1,36 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
+import { useEffect } from 'react';
 
 export default function CeramicCoatingPage() {
+  // Initialize scroll animations
+  useEffect(() => {
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px 0px -100px 0px',
+      threshold: 0.1,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+        }
+      });
+    }, observerOptions);
+
+    const animatedElements = document.querySelectorAll(
+      '.scroll-animate, .scroll-animate-left, .scroll-animate-right, .scroll-animate-scale'
+    );
+
+    animatedElements.forEach((el) => observer.observe(el));
+
+    return () => {
+      animatedElements.forEach((el) => observer.unobserve(el));
+    };
+  }, []);
   const benefits = [
     {
       title: "Long-Lasting Protection",
@@ -205,7 +234,7 @@ export default function CeramicCoatingPage() {
       <section className="py-20 bg-[#111111]">
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
+            <div className="scroll-animate-left">
               <span className="badge badge-primary mb-4">What Is It?</span>
               <h2 className="text-3xl md:text-4xl font-black text-white mb-6 uppercase tracking-tight">
                 <span className="text-outline">What Is</span> <span className="text-[#0080FF]">Ceramic Coating?</span>
@@ -230,7 +259,7 @@ export default function CeramicCoatingPage() {
                 </div>
               </div>
             </div>
-            <div className="relative">
+            <div className="relative scroll-animate-right">
               {/* Video Section */}
               <div className="relative rounded-sm overflow-hidden border border-white/10">
                 <video
@@ -251,7 +280,7 @@ export default function CeramicCoatingPage() {
       {/* Benefits Section */}
       <section className="py-20 bg-[#0a0a0a]">
         <div className="container-custom">
-          <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="text-center max-w-3xl mx-auto mb-16 scroll-animate">
             <span className="badge badge-primary mb-4">Why Ceramic Coating?</span>
             <h2 className="text-3xl md:text-4xl font-black text-white mb-4 uppercase tracking-tight">
               <span className="text-outline">Benefits Of</span> <span className="text-[#0080FF]">Ceramic Coating</span>
@@ -262,7 +291,7 @@ export default function CeramicCoatingPage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {benefits.map((benefit, index) => (
-              <div key={index} className="bg-white/5 border border-white/10 p-8 rounded-sm hover:border-[#0080FF]/30 transition-all group">
+              <div key={index} className={`scroll-animate scroll-delay-${index + 1} bg-white/5 border border-white/10 p-8 rounded-sm hover:border-[#0080FF]/30 transition-all group`}>
                 <div className="w-16 h-16 mb-6 rounded-sm bg-[#0080FF]/20 flex items-center justify-center text-[#0080FF] group-hover:bg-[#0080FF] group-hover:text-white transition-all">
                   {benefit.icon}
                 </div>
@@ -277,7 +306,7 @@ export default function CeramicCoatingPage() {
       {/* System X Products Section */}
       <section className="py-20 bg-[#111111]">
         <div className="container-custom">
-          <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="text-center max-w-3xl mx-auto mb-16 scroll-animate">
             <span className="badge badge-primary mb-4">System X Ceramic</span>
             <h2 className="text-3xl md:text-4xl font-black text-white mb-4 uppercase tracking-tight">
               <span className="text-outline">Protection</span> <span className="text-[#0080FF]">Levels</span>
@@ -288,7 +317,7 @@ export default function CeramicCoatingPage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {systemXProducts.map((product, index) => (
-              <div key={index} className={`bg-[#0a0a0a] border rounded-sm overflow-hidden transition-all hover:border-[#0080FF]/50 ${product.popular ? 'border-[#0080FF] ring-1 ring-[#0080FF]' : 'border-white/10'}`}>
+              <div key={index} className={`scroll-animate-scale scroll-delay-${index + 1} bg-[#0a0a0a] border rounded-sm overflow-hidden transition-all hover:border-[#0080FF]/50 ${product.popular ? 'border-[#0080FF] ring-1 ring-[#0080FF]' : 'border-white/10'}`}>
                 {product.popular && (
                   <div className="bg-[#0080FF] text-white text-center py-2 font-bold text-sm uppercase tracking-wider">
                     Most Popular
@@ -323,7 +352,7 @@ export default function CeramicCoatingPage() {
       {/* 4-Step Process */}
       <section className="py-20 bg-[#0a0a0a]">
         <div className="container-custom">
-          <div className="text-center max-w-2xl mx-auto mb-16">
+          <div className="text-center max-w-2xl mx-auto mb-16 scroll-animate">
             <span className="badge badge-primary mb-4">Our Process</span>
             <h2 className="text-3xl md:text-4xl font-black text-white mb-4 uppercase tracking-tight">
               <span className="text-outline">How We</span> <span className="text-[#0080FF]">Apply It</span>
@@ -334,7 +363,7 @@ export default function CeramicCoatingPage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             {process.map((item, index) => (
-              <div key={index} className="relative">
+              <div key={index} className={`relative scroll-animate scroll-delay-${index + 1}`}>
                 <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-sm p-6 h-full text-center hover:border-[#0080FF]/30 transition-colors">
                   <div className="w-16 h-16 mx-auto mb-4 rounded-sm bg-[#0080FF] text-white flex items-center justify-center text-2xl font-black">
                     {item.step}
@@ -354,7 +383,7 @@ export default function CeramicCoatingPage() {
       {/* Pricing Packages */}
       <section className="py-20 bg-[#111111]">
         <div className="container-custom">
-          <div className="text-center max-w-2xl mx-auto mb-16">
+          <div className="text-center max-w-2xl mx-auto mb-16 scroll-animate">
             <span className="badge badge-primary mb-4">Pricing</span>
             <h2 className="text-3xl md:text-4xl font-black text-white mb-4 uppercase tracking-tight">
               <span className="text-outline">Coating</span> <span className="text-[#0080FF]">Packages</span>
@@ -365,7 +394,7 @@ export default function CeramicCoatingPage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {packages.map((pkg, index) => (
-              <div key={index} className={`bg-[#0a0a0a] rounded-sm border overflow-hidden hover:border-[#0080FF]/50 transition-all ${pkg.popular ? 'border-[#0080FF] ring-1 ring-[#0080FF]' : 'border-white/10'}`}>
+              <div key={index} className={`scroll-animate scroll-delay-${(index % 3) + 1} bg-[#0a0a0a] rounded-sm border overflow-hidden hover:border-[#0080FF]/50 transition-all ${pkg.popular ? 'border-[#0080FF] ring-1 ring-[#0080FF]' : 'border-white/10'}`}>
                 {pkg.popular && (
                   <div className="bg-[#0080FF] text-white text-center py-2 font-bold text-sm uppercase tracking-wider">
                     Most Popular
@@ -406,7 +435,7 @@ export default function CeramicCoatingPage() {
       {/* Gallery */}
       <section className="py-20 bg-[#0a0a0a]">
         <div className="container-custom">
-          <div className="text-center max-w-2xl mx-auto mb-12">
+          <div className="text-center max-w-2xl mx-auto mb-12 scroll-animate">
             <span className="badge badge-primary mb-4">Our Results</span>
             <h2 className="text-3xl md:text-4xl font-black text-white mb-4 uppercase tracking-tight">
               <span className="text-outline">Ceramic Coating</span> <span className="text-[#0080FF]">Gallery</span>
@@ -423,7 +452,7 @@ export default function CeramicCoatingPage() {
               '/images/gallery-koenigsegg-white.jpg',
               '/images/Auto-Detailing-2018-Dodge-Charger.jpg',
             ].map((src, index) => (
-              <div key={index} className="relative aspect-square rounded-sm overflow-hidden group border border-white/10 hover:border-[#0080FF]/30 transition-colors">
+              <div key={index} className={`scroll-animate-scale scroll-delay-${(index % 4) + 1} relative aspect-square rounded-sm overflow-hidden group border border-white/10 hover:border-[#0080FF]/30 transition-colors`}>
                 <Image
                   src={src}
                   alt={`Ceramic coating result ${index + 1}`}
@@ -446,7 +475,7 @@ export default function CeramicCoatingPage() {
       <section className="py-20 bg-[#111111] relative overflow-hidden">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#0080FF] rounded-full opacity-10 blur-3xl" />
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#0080FF] rounded-full opacity-5 blur-3xl" />
-        <div className="container-custom relative z-10 text-center">
+        <div className="container-custom relative z-10 text-center scroll-animate-scale">
           <h2 className="text-4xl md:text-5xl font-black text-white mb-6 uppercase tracking-tight">
             <span className="text-outline">Protect Your</span> <span className="text-[#0080FF]">Investment</span>
           </h2>

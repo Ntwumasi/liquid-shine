@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import FloatingCallButton from '@/components/FloatingCallButton';
+import ScrollAnimations from '@/components/ScrollAnimations';
 import './globals.css';
 
 const inter = Inter({
@@ -38,6 +39,7 @@ export default function RootLayout({
         </main>
         <Footer />
         <FloatingCallButton />
+        <ScrollAnimations />
       </body>
     </html>
   );

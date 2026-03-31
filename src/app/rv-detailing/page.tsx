@@ -2,9 +2,11 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function RVDetailingPage() {
+  const [openPackage, setOpenPackage] = useState<string | null>('glossy');
+
   // Initialize scroll animations
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -20,82 +22,96 @@ export default function RVDetailingPage() {
 
     return () => observer.disconnect();
   }, []);
-  const services = [
-    { name: "Washing", description: "Specialized RV exterior washing" },
-    { name: "Waxing", description: "UV-resistant RV wax application" },
-    { name: "Polishing", description: "Professional polish and restoration" },
-    { name: "Buffing", description: "Expert buffing for RV finish" },
-    { name: "Wet-Sanding", description: "Fine wet-sanding for smooth finish" },
-    { name: "Oxidation Removal", description: "Remove oxidation and discoloration" },
-    { name: "Bug Removal", description: "Professional bug and stain removal" },
-    { name: "Roof Cleaning", description: "Safe RV roof cleaning and treatment" },
-    { name: "Window Cleaning", description: "Deep clean all windows and skylights" },
-    { name: "Wheel & Tire Care", description: "Wheels polished, tires dressed" },
+
+  const process = [
+    {
+      step: "1",
+      title: "CLEAN THE GRIME",
+      desc: "Utilizing proper wash techniques, we clean the dirt and grime from your RV and then dry it, preparing the surface for protection.",
+      image: "/images/gallery-rv-front.jpg"
+    },
+    {
+      step: "2",
+      title: "GO FOR A CLIMB",
+      desc: "We head up to the roof to inspect the seams and sealant. We then clean the roof and make it sparkle like new.",
+      image: "/images/gallery-rv-road.jpg"
+    },
+    {
+      step: "3",
+      title: "MAKE IT SLICK",
+      desc: "Quality products are used to provide protection for the paint or gelcoat from the environment and harmful UV rays. This keeps the surface shiny, slick, and looking showroom new.",
+      image: "/images/airstream-inc-hKw3HbDF1ew-unsplash.jpg"
+    },
+    {
+      step: "4",
+      title: "BRING THE SHINE",
+      desc: "We clean the windows, polish the rims, and dress the tires, leaving your RV sparkling with a Liquid Shine.",
+      image: "/images/camper-2260094_1920.jpg"
+    },
+  ];
+
+  const serviceAreas = [
+    "Bradenton", "Palmetto", "Ellenton", "Parrish", "Lakewood Ranch",
+    "Anna Maria Island", "Holmes Beach", "Bradenton Beach", "Myakka",
+    "Sarasota", "Venice", "Osprey", "Nokomis", "North Port", "Englewood"
   ];
 
   const packages = [
     {
-      name: "Standard RV Wash",
-      description: "Regular maintenance washing",
-      services: [
-        "Complete RV exterior washing",
-        "Roof and sidewall cleaning",
-        "Window and skylight cleaning",
-        "Trim rinse and dry",
-        "Bug removal from front",
+      id: 'glossy',
+      name: "Glossy Package",
+      description: "Complete exterior wash with carnauba wax protection",
+      exteriorIncludes: [
+        "Pre-wash rinse of vehicle to rinse off loose dirt particles",
+        "Degrease bugs, wheels, and tires",
+        "Brush wash wheels, wheel barrels, and tires",
+        "Clean roof",
+        "Apply foam cannon soap to lift dirt particles from the paint/gelcoat",
+        "Contact hand wash to remove dirt particles",
+        "Blow dry/hand dry with microfiber towel",
+        "Windows cleaned to a streak free sparkling shine",
+        "Machine apply carnauba wax protection",
+        "Polish rims",
+        "Dress tires to a satin shine",
       ],
-      price: "Call for pricing",
+      prices: [
+        { type: "Travel Trailer", price: "$10/foot" },
+        { type: "5th Wheel", price: "$13/foot" },
+        { type: "Motorhome", price: "$15/foot" },
+      ],
     },
     {
-      name: "Premium RV Detail",
-      description: "Complete exterior care",
-      services: [
-        "Complete RV exterior washing",
-        "Specialized bug and stain removal",
-        "Roof cleaning and treatment",
-        "Sidewall and trim cleaning",
-        "RV wax application",
-        "Window and skylight treatment",
-        "Wheel cleaning and shine",
-        "Tire dressing and protection",
+      id: 'liquid-shine',
+      name: "Liquid Shine Package",
+      description: "Everything in Glossy plus one-step polish and polymer sealant",
+      basedOn: "Everything included in the Glossy Package, plus:",
+      additionalIncludes: [
+        "Vehicle polished with one-step polish to remove light surface scratches, clean the paint/gelcoat, and provide a deep shine",
+        "Machine application of wax/polymer sealant protection",
+        "Spray sealant applied as a \"topper\" for additional protection",
       ],
-      price: "Call for pricing",
+      prices: [
+        { type: "Travel Trailer", price: "$15/foot" },
+        { type: "5th Wheel", price: "$18/foot" },
+        { type: "Motorhome", price: "$20/foot" },
+      ],
     },
     {
-      name: "Deluxe RV Restoration",
-      description: "Comprehensive restoration",
-      services: [
-        "Complete RV washing and treatment",
-        "Oxidation removal from all surfaces",
-        "Professional wet-sanding",
-        "Two-stage RV polishing",
-        "Premium UV-resistant wax",
-        "Complete bug and stain removal",
-        "Roof cleaning and sealing",
-        "Window and skylight restoration",
-        "Wheel and tire professional detail",
-        "Trim restoration and dressing",
+      id: 'severe-oxidation',
+      name: "Severe Oxidation Removal and Paint/Gelcoat Revitalization",
+      description: "Complete restoration for heavily oxidized RVs",
+      basedOn: "Everything included in the Liquid Shine Package, plus:",
+      additionalIncludes: [
+        "Vehicle compounded by machine to remove oxidation and surface scratches",
+        "If oxidation is severe enough, additional compounding steps or wet sanding may be required to properly remove the oxidation",
+        "Vehicle polished with a finishing wax/sealant to remove surface scratches and any marring caused by the compounding, clean the paint, and provide a deep shine",
       ],
-      price: "Call for pricing",
-    },
-    {
-      name: "Complete RV Transformation",
-      description: "Full restoration and protection",
-      services: [
-        "Complete professional RV washing",
-        "Complete oxidation removal and restoration",
-        "Professional wet-sanding throughout",
-        "Complete paint correction",
-        "Three-stage RV polishing",
-        "Premium ceramic RV coating",
-        "Complete bug and stain elimination",
-        "Roof restoration and protective coating",
-        "Complete window and skylight detail",
-        "Professional wheel and tire restoration",
-        "Trim and accent piece restoration",
-        "Interior living space refresh",
+      prices: [
+        { type: "Travel Trailer", price: "$20/foot" },
+        { type: "5th Wheel", price: "$23/foot" },
+        { type: "Motorhome", price: "$25/foot" },
       ],
-      price: "Call for pricing",
+      note: "**Severe oxidation that requires multiple compounding or wet sanding steps will be charged an additional $5/foot for each additional step required",
     },
   ];
 
@@ -104,6 +120,8 @@ export default function RVDetailingPage() {
     '/images/airstream-inc-hKw3HbDF1ew-unsplash.jpg',
     '/images/camping-beach-sea-landscape.jpg',
     '/images/camper-2260094_1920.jpg',
+    '/images/gallery-rv-road.jpg',
+    '/images/Class-Super-C-Motorhomes-Diesel-Class-C-RV.jpg',
   ];
 
   return (
@@ -122,10 +140,10 @@ export default function RVDetailingPage() {
           <div className="max-w-2xl">
             <span className="badge badge-primary mb-4 animate-fade-in-up">Professional Service</span>
             <h1 className="text-5xl md:text-6xl font-black text-white mb-4 uppercase tracking-tight">
-              <span className="text-outline">RV</span> <span className="text-[#0080FF]">Detailing</span>
+              <span className="text-outline">RV Detailing</span> <span className="text-[#0080FF]">Services</span>
             </h1>
             <p className="text-xl text-gray-300 mb-8">
-              Professional RV detailing that keeps your home on wheels looking spectacular. Specialized care for travel trailers, motorhomes, and fifth wheels.
+              Whether you have a travel trailer, a fifth wheel, or a motorhome, we&apos;ve got you covered with an RV detailing package to fit your needs. If you live in Bradenton, Palmetto, Ellenton, Parrish, Lakewood Ranch, or Sarasota, we&apos;ll come to you with our mobile detailing setup.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/contact" className="btn btn-accent">
@@ -135,7 +153,7 @@ export default function RVDetailingPage() {
                 </svg>
               </Link>
               <a href="tel:978-660-1356" className="btn btn-secondary">
-                (978) 660-1356
+                Call Us Now!
               </a>
             </div>
           </div>
@@ -150,244 +168,229 @@ export default function RVDetailingPage() {
               <span className="text-3xl">🎖️</span>
               <div>
                 <span className="font-bold text-white text-lg">Military & First Responders:</span>
-                <span className="text-gray-800 ml-2">15% OFF all RV detailing services</span>
+                <span className="text-white/90 ml-2">15% OFF all RV detailing services</span>
               </div>
             </div>
-            <Link href="/contact" className="px-6 py-2 bg-gray-900 text-white font-semibold rounded-lg hover:bg-gray-800 transition-colors">
+            <Link href="/contact" className="px-6 py-2 bg-white text-[#0080FF] font-semibold rounded-sm hover:bg-gray-100 transition-colors uppercase text-sm tracking-wide">
               Claim Discount
             </Link>
           </div>
         </div>
       </section>
 
-      {/* RV Detailing Importance */}
-      <section className="py-20 bg-[#0080FF]">
+      {/* What Makes Our RV Detailing Services Better */}
+      <section className="py-20 bg-[#111111]">
         <div className="container-custom">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <h2 className="text-4xl font-bold text-white mb-4">
-              Why Professional <span className="text-[#0080FF]">RV Detailing</span> Matters
-            </h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-[#0a0a0a]/10 backdrop-blur-sm border border-white/20 rounded-xl p-6 text-center">
-              <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-[#0080FF] flex items-center justify-center">
-                <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-                </svg>
-              </div>
-              <h3 className="text-lg font-bold text-white mb-2">Weather Protection</h3>
-              <p className="text-gray-400 text-sm">
-                Protect against sun, rain, bugs, and environmental damage with professional treatments.
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="scroll-animate-left">
+              <span className="badge badge-primary mb-4">Why Us</span>
+              <h2 className="text-3xl md:text-4xl font-black text-white mb-6 uppercase tracking-tight">
+                <span className="text-outline">What Makes Our RV Detailing</span> <span className="text-[#0080FF]">Services Better?</span>
+              </h2>
+              <p className="text-gray-400 text-lg mb-6">
+                At Liquid Shine, we are committed to delivering you the best Professional Mobile Detailing services possible. Whether you are looking to detail your Auto, Boat, or RV, we would love to have the opportunity to make your investment look beautiful!
               </p>
+              <p className="text-white font-bold mb-4">Servicing all of Manatee and Sarasota Counties, including:</p>
+              <div className="flex flex-wrap gap-2 mb-6">
+                {serviceAreas.map((area, i) => (
+                  <span key={i} className="px-3 py-1 bg-[#0080FF]/20 text-[#0080FF] text-sm rounded-full border border-[#0080FF]/30">
+                    {area}
+                  </span>
+                ))}
+              </div>
+              <p className="text-gray-400 mb-6">
+                We come to you with everything we need in our fully self-contained unit.
+              </p>
+              <Link href="/contact" className="btn btn-accent">
+                Request Your Free Quote
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </Link>
             </div>
-            <div className="bg-[#0a0a0a]/10 backdrop-blur-sm border border-white/20 rounded-xl p-6 text-center">
-              <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-[#0080FF] flex items-center justify-center">
-                <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
+            <div className="relative scroll-animate-right">
+              <div className="relative rounded-sm overflow-hidden border border-white/10">
+                <Image
+                  src="/images/1280px-Powerhouse_Coach_-_luxury_motor_coach_based_on_Volvo_NH12.jpg"
+                  alt="Professional RV Detailing"
+                  width={600}
+                  height={400}
+                  className="w-full h-auto object-cover"
+                />
               </div>
-              <h3 className="text-lg font-bold text-white mb-2">Road-Ready Appearance</h3>
-              <p className="text-gray-400 text-sm">
-                Keep your RV looking fresh and well-maintained throughout your travels.
-              </p>
-            </div>
-            <div className="bg-[#0a0a0a]/10 backdrop-blur-sm border border-white/20 rounded-xl p-6 text-center">
-              <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-[#0080FF] flex items-center justify-center">
-                <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <h3 className="text-lg font-bold text-white mb-2">Value & Longevity</h3>
-              <p className="text-gray-400 text-sm">
-                Regular detailing extends your RV's lifespan and maintains resale value.
-              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Services Grid */}
-      <section className="py-20 bg-[#111111]">
-        <div className="container-custom">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="badge badge-primary mb-4">Our Services</span>
-            <h2 className="text-4xl font-bold text-white mb-4">
-              Complete <span className="gradient-text-blue">RV Detailing Services</span>
+      {/* 4-Step Process - Circular Design */}
+      <section className="py-24 relative overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src="/images/camping-beach-sea-landscape.jpg"
+            alt="Background"
+            fill
+            className="object-cover opacity-20"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a] via-[#0a0a0a]/95 to-[#0a0a0a]" />
+        </div>
+
+        <div className="container-custom relative z-10">
+          <div className="text-center max-w-3xl mx-auto mb-16 scroll-animate">
+            <span className="badge badge-primary mb-4">Professional</span>
+            <h2 className="text-3xl md:text-5xl font-black text-white mb-6">
+              Process We Follow for <span className="text-[#0080FF]">Detailing</span>
             </h2>
+            <p className="text-gray-400 text-lg">
+              We are a fully self-contained and mobile detailing service. We come to you and we bring everything we need. We provide our own power, water, and everything else necessary to give your auto, boat, or RV that Liquid Shine look.
+            </p>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-            {services.map((service, index) => (
-              <div key={index} className="bg-[#0a0a0a] p-6 rounded-xl shadow-md text-center hover:shadow-lg border border-white/10 transition-all hover:-translate-y-1">
-                <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-[#0080FF]/10 flex items-center justify-center">
-                  <svg className="w-6 h-6 text-[#0080FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
+
+          {/* Circular Process Steps */}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-4 items-start">
+            {process.map((item, index) => (
+              <div key={index} className={`relative scroll-animate scroll-delay-${index + 1} flex flex-col items-center text-center`}>
+                {/* Circular Image Container */}
+                <div className="relative mb-6 group">
+                  <div className="absolute inset-0 rounded-full border-2 border-white/30 group-hover:border-[#0080FF] transition-colors duration-500" style={{ margin: '-8px', padding: '8px' }} />
+
+                  <div className="relative w-44 h-44 md:w-40 md:h-40 lg:w-48 lg:h-48 rounded-full overflow-hidden border-4 border-white/20 group-hover:border-[#0080FF]/50 transition-all duration-500 shadow-2xl">
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  </div>
+
+                  <div className="absolute bottom-2 left-1/2 -translate-x-1/2 text-7xl md:text-6xl lg:text-7xl font-black text-[#0080FF] drop-shadow-[0_0_20px_rgba(0,128,255,0.5)] z-10" style={{ fontFamily: 'Impact, sans-serif' }}>
+                    {item.step}
+                  </div>
+
+                  {index < 3 && (
+                    <div className="hidden md:flex absolute top-1/2 -right-6 lg:-right-4 -translate-y-1/2 items-center z-20">
+                      <svg className="w-8 h-8 text-[#0080FF] animate-pulse" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                      </svg>
+                    </div>
+                  )}
                 </div>
-                <h3 className="font-bold text-white mb-1">{service.name}</h3>
-                <p className="text-gray-400 text-sm">{service.description}</p>
+
+                <h3 className="text-lg font-bold text-white mb-3 uppercase tracking-wider">{item.title}</h3>
+                <p className="text-gray-400 text-sm leading-relaxed max-w-xs">{item.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* RV Expertise */}
-      <section className="py-20 bg-[#0a0a0a]">
-        <div className="container-custom">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="badge badge-primary mb-4">Our Expertise</span>
-            <h2 className="text-4xl font-bold text-white">
-              Professional <span className="gradient-text">RV Care</span>
-            </h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-[#111111] rounded-2xl p-8">
-              <h3 className="text-2xl font-bold text-white mb-6">RV Specialization</h3>
-              <ul className="space-y-4">
-                <li className="flex gap-3">
-                  <svg className="w-6 h-6 text-[#0080FF] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="text-gray-400">
-                    Experience with all RV types and sizes
-                  </span>
-                </li>
-                <li className="flex gap-3">
-                  <svg className="w-6 h-6 text-[#0080FF] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="text-gray-400">
-                    Knowledge of specialized RV materials and finishes
-                  </span>
-                </li>
-                <li className="flex gap-3">
-                  <svg className="w-6 h-6 text-[#0080FF] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="text-gray-400">
-                    Expert in roof cleaning and maintenance
-                  </span>
-                </li>
-                <li className="flex gap-3">
-                  <svg className="w-6 h-6 text-[#0080FF] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="text-gray-400">
-                    Specialized bug and road stain removal
-                  </span>
-                </li>
-              </ul>
-            </div>
-            <div className="bg-[#111111] rounded-2xl p-8">
-              <h3 className="text-2xl font-bold text-white mb-6">Professional RV Care</h3>
-              <ul className="space-y-4">
-                <li className="flex gap-3">
-                  <svg className="w-6 h-6 text-[#0080FF] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="text-gray-400">
-                    UV-resistant products formulated for RVs
-                  </span>
-                </li>
-                <li className="flex gap-3">
-                  <svg className="w-6 h-6 text-[#0080FF] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="text-gray-400">
-                    Safe methods for roof and aluminum surfaces
-                  </span>
-                </li>
-                <li className="flex gap-3">
-                  <svg className="w-6 h-6 text-[#0080FF] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="text-gray-400">
-                    Long-lasting protective coatings
-                  </span>
-                </li>
-                <li className="flex gap-3">
-                  <svg className="w-6 h-6 text-[#0080FF] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="text-gray-400">
-                    Expert wheel and tire restoration
-                  </span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Service Process */}
+      {/* RV Detailing Packages */}
       <section className="py-20 bg-[#111111]">
         <div className="container-custom">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="badge badge-primary mb-4">Our Process</span>
-            <h2 className="text-4xl font-bold text-white">How We Work</h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
-            {[
-              { step: "Inspection", description: "Complete RV assessment" },
-              { step: "Wash", description: "Specialized exterior washing" },
-              { step: "Polish", description: "Restore shine and clarity" },
-              { step: "Protect", description: "Apply protective coatings" },
-              { step: "Final Touch", description: "Quality inspection" },
-            ].map((item, index) => (
-              <div key={index} className="relative">
-                <div className="bg-[#0a0a0a] rounded-xl p-6 text-center h-full">
-                  <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-[#0080FF] text-white flex items-center justify-center text-xl font-bold">
-                    {index + 1}
-                  </div>
-                  <h3 className="font-bold text-white mb-1">{item.step}</h3>
-                  <p className="text-gray-400 text-sm">{item.description}</p>
-                </div>
-                {index < 4 && (
-                  <div className="hidden md:block absolute top-1/2 -right-2 w-4 h-0.5 bg-[#0080FF]" />
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Package Cards */}
-      <section className="py-20 bg-[#0a0a0a]">
-        <div className="container-custom">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="badge badge-primary mb-4">Pricing</span>
-            <h2 className="text-4xl font-bold text-white mb-4">
-              RV Detailing <span className="gradient-text">Packages</span>
+          <div className="text-center max-w-3xl mx-auto mb-16 scroll-animate">
+            <span className="badge badge-primary mb-4">Experienced</span>
+            <h2 className="text-3xl md:text-4xl font-black text-white mb-4 uppercase tracking-tight">
+              <span className="text-outline">Our RV Detailing</span> <span className="text-[#0080FF]">Packages</span>
             </h2>
+            <p className="text-gray-400 text-lg">
+              Regardless of whether you want a quick wash with a little protection provided, or want a deeper cleaning with a longer shine added, we&apos;ve got an RV detailing package to fit your needs.
+            </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {packages.map((pkg, index) => (
-              <div key={index} className="bg-[#0a0a0a] rounded-2xl shadow-lg border border-white/10 overflow-hidden hover:shadow-xl transition-shadow">
-                <div className="bg-[#0080FF] text-white p-6">
-                  <h3 className="text-2xl font-bold mb-2">{pkg.name}</h3>
-                  <p className="text-gray-400">{pkg.description}</p>
-                </div>
-                <div className="p-6">
-                  <div className="mb-6">
-                    <h4 className="font-bold text-white mb-3">Includes:</h4>
-                    <ul className="space-y-2">
-                      {pkg.services.map((service, i) => (
-                        <li key={i} className="flex items-start gap-2 text-gray-400">
-                          <svg className="w-5 h-5 text-[#0080FF] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                          </svg>
-                          {service}
-                        </li>
-                      ))}
-                    </ul>
+
+          <div className="space-y-6 max-w-5xl mx-auto">
+            {packages.map((pkg) => (
+              <div
+                key={pkg.id}
+                className={`bg-[#0a0a0a] border rounded-sm overflow-hidden transition-all duration-300 ${
+                  openPackage === pkg.id ? 'border-[#0080FF]' : 'border-white/10'
+                }`}
+              >
+                {/* Package Header */}
+                <button
+                  onClick={() => setOpenPackage(openPackage === pkg.id ? null : pkg.id)}
+                  className="w-full p-6 flex items-center justify-between text-left hover:bg-white/5 transition-colors"
+                >
+                  <div>
+                    <h3 className="text-2xl font-black text-[#0080FF] uppercase tracking-wide flex items-center gap-3">
+                      <span className="text-2xl">🚐</span>
+                      {pkg.name}
+                    </h3>
+                    <p className="text-gray-400 mt-2">{pkg.description}</p>
                   </div>
-                  <div className="border-t border-white/10 pt-6">
-                    <p className="text-white font-bold text-lg">{pkg.price}</p>
-                    <p className="text-gray-400 text-sm mt-2">Contact us for your specific RV size and pricing</p>
+                  <svg
+                    className={`w-6 h-6 text-[#0080FF] transition-transform duration-300 flex-shrink-0 ${
+                      openPackage === pkg.id ? 'rotate-180' : ''
+                    }`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+
+                {/* Package Content */}
+                <div className={`overflow-hidden transition-all duration-500 ${openPackage === pkg.id ? 'max-h-[1500px]' : 'max-h-0'}`}>
+                  <div className="p-6 pt-0 border-t border-white/10">
+                    <div className="grid md:grid-cols-2 gap-8 mb-8">
+                      {/* Includes */}
+                      <div>
+                        {pkg.basedOn ? (
+                          <>
+                            <h4 className="text-xl font-bold text-white mb-4">{pkg.basedOn}</h4>
+                            <ul className="space-y-3">
+                              {pkg.additionalIncludes?.map((item, i) => (
+                                <li key={i} className="flex items-start gap-3">
+                                  <svg className="w-5 h-5 text-[#0080FF] mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                                  </svg>
+                                  <span className="text-gray-400 text-sm">{item}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </>
+                        ) : (
+                          <>
+                            <h4 className="text-xl font-bold text-white mb-4">Exterior Includes</h4>
+                            <ul className="space-y-3">
+                              {pkg.exteriorIncludes?.map((item, i) => (
+                                <li key={i} className="flex items-start gap-3">
+                                  <svg className="w-5 h-5 text-[#0080FF] mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                                  </svg>
+                                  <span className="text-gray-400 text-sm">{item}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </>
+                        )}
+                      </div>
+
+                      {/* Pricing */}
+                      <div>
+                        <h4 className="text-xl font-bold text-white mb-4">Prices starting at:</h4>
+                        <div className="space-y-3">
+                          {pkg.prices.map((price, i) => (
+                            <div key={i} className="flex justify-between items-center py-3 px-4 bg-[#111111] rounded-sm border border-white/10">
+                              <span className="text-gray-300 font-medium">{price.type}</span>
+                              <span className="text-[#0080FF] font-bold text-xl">{price.price}</span>
+                            </div>
+                          ))}
+                        </div>
+
+                        {pkg.note && (
+                          <p className="mt-4 text-sm text-gray-500 italic">{pkg.note}</p>
+                        )}
+                      </div>
+                    </div>
+
+                    <div className="text-center">
+                      <Link href="/contact" className="btn btn-accent">
+                        Get Quote for {pkg.name}
+                      </Link>
+                    </div>
                   </div>
-                  <Link href="/contact" className="block w-full mt-6 btn btn-primary text-center">
-                    Get Quote
-                  </Link>
                 </div>
               </div>
             ))}
@@ -396,24 +399,24 @@ export default function RVDetailingPage() {
       </section>
 
       {/* RV Types We Service */}
-      <section className="py-20 bg-[#111111]">
+      <section className="py-20 bg-[#0a0a0a]">
         <div className="container-custom">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="badge badge-accent mb-4">All RV Types</span>
-            <h2 className="text-4xl font-bold text-white">RV Types We Service</h2>
+          <div className="text-center max-w-2xl mx-auto mb-12 scroll-animate">
+            <span className="badge badge-primary mb-4">All RV Types</span>
+            <h2 className="text-3xl md:text-4xl font-black text-white uppercase tracking-tight">
+              <span className="text-outline">RV Types</span> <span className="text-[#0080FF]">We Service</span>
+            </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { type: "Motorhomes", description: "Class A, B & C motorhomes" },
-              { type: "Travel Trailers", description: "All sizes and types" },
-              { type: "Fifth Wheels", description: "Luxury and standard models" },
-              { type: "Toy Haulers", description: "Specialized heavy-duty care" },
+              { type: "Motorhomes", description: "Class A, B & C motorhomes", icon: "🚐" },
+              { type: "Travel Trailers", description: "All sizes and types", icon: "🏕️" },
+              { type: "Fifth Wheels", description: "Luxury and standard models", icon: "🚛" },
+              { type: "Toy Haulers", description: "Specialized heavy-duty care", icon: "🎮" },
             ].map((item, index) => (
-              <div key={index} className="bg-[#0a0a0a] p-6 rounded-xl shadow-md text-center hover:shadow-lg border border-white/10 transition-all hover:-translate-y-1">
-                <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-[#0080FF]/10 flex items-center justify-center text-2xl">
-                  🚐
-                </div>
-                <h3 className="font-bold text-white mb-2">{item.type}</h3>
+              <div key={index} className={`scroll-animate scroll-delay-${index + 1} bg-[#111111] p-6 rounded-sm text-center border border-white/10 hover:border-[#0080FF]/30 transition-all hover:-translate-y-1`}>
+                <div className="text-5xl mb-4">{item.icon}</div>
+                <h3 className="font-bold text-white mb-2 uppercase tracking-wide">{item.type}</h3>
                 <p className="text-gray-400 text-sm">{item.description}</p>
               </div>
             ))}
@@ -421,16 +424,18 @@ export default function RVDetailingPage() {
         </div>
       </section>
 
-      {/* Gallery Preview */}
-      <section className="py-20 bg-[#0a0a0a]">
+      {/* Gallery */}
+      <section className="py-20 bg-[#111111]">
         <div className="container-custom">
-          <div className="text-center max-w-2xl mx-auto mb-12">
+          <div className="text-center max-w-2xl mx-auto mb-12 scroll-animate">
             <span className="badge badge-primary mb-4">Our Work</span>
-            <h2 className="text-4xl font-bold text-white">RV Detailing Gallery</h2>
+            <h2 className="text-3xl md:text-4xl font-black text-white mb-4 uppercase tracking-tight">
+              <span className="text-outline">RV Detailing</span> <span className="text-[#0080FF]">Gallery</span>
+            </h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {galleryImages.map((src, index) => (
-              <div key={index} className="relative aspect-square rounded-2xl overflow-hidden group">
+              <div key={index} className={`scroll-animate-scale scroll-delay-${(index % 3) + 1} relative aspect-square rounded-sm overflow-hidden group border border-white/10 hover:border-[#0080FF]/30 transition-colors`}>
                 <Image
                   src={src}
                   alt={`RV detailing result ${index + 1}`}
@@ -449,63 +454,22 @@ export default function RVDetailingPage() {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="py-20 bg-[#111111]">
-        <div className="container-custom">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="badge badge-accent mb-4">Testimonials</span>
-            <h2 className="text-4xl font-bold text-white">What <span className="gradient-text">RV Owners</span> Say</h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                name: "Dave Wilson",
-                text: "Best RV detailing service I've found! They really know how to handle motorhomes. My RV looks brand new!",
-                rating: 5,
-              },
-              {
-                name: "Patricia Anderson",
-                text: "Professional team that treats your RV like their own. The restoration was incredible. Highly recommended!",
-                rating: 5,
-              },
-              {
-                name: "George Martinez",
-                text: "The quality of their work is outstanding. My fifth wheel looks spectacular after their detailing. Worth every penny!",
-                rating: 5,
-              },
-            ].map((testimonial, index) => (
-              <div key={index} className="bg-[#0a0a0a] p-6 rounded-xl shadow-md border-l-4 border-[#0080FF]">
-                <div className="flex gap-1 mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <svg key={i} className="w-5 h-5 text-[#0080FF]" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                  ))}
-                </div>
-                <p className="text-gray-400 mb-4 italic">"{testimonial.text}"</p>
-                <p className="font-bold text-white">- {testimonial.name}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* CTA Section */}
       <section className="py-20 bg-[#0a0a0a] relative overflow-hidden">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#0080FF] rounded-full opacity-20 blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#0080FF] rounded-full opacity-10 blur-3xl" />
-        <div className="container-custom relative z-10 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Get Your RV Ready <span className="text-[#0080FF]">for the Road</span>
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#0080FF] rounded-full opacity-10 blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#0080FF] rounded-full opacity-5 blur-3xl" />
+        <div className="container-custom relative z-10 text-center scroll-animate-scale">
+          <h2 className="text-4xl md:text-5xl font-black text-white mb-6 uppercase tracking-tight">
+            <span className="text-outline">Get Your RV Ready</span> <span className="text-[#0080FF]">for the Road</span>
           </h2>
-          <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
             Schedule your RV detailing appointment today and keep your home on wheels in top condition for all your adventures.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link href="/contact" className="btn btn-accent text-base px-8 py-4">
-              Schedule Now
+              Get Free Estimate
             </Link>
-            <a href="tel:978-660-1356" className="inline-flex items-center gap-2 px-8 py-4 text-base font-semibold text-white bg-[#0a0a0a]/10 border border-white/20 rounded-xl hover:bg-[#0a0a0a]/20 transition-colors">
+            <a href="tel:978-660-1356" className="inline-flex items-center gap-2 px-8 py-4 text-base font-semibold text-white bg-white/5 border border-white/10 rounded-sm hover:bg-white/10 transition-colors uppercase tracking-wide">
               (978) 660-1356
             </a>
           </div>

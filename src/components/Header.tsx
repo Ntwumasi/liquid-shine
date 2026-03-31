@@ -86,10 +86,10 @@ export default function Header() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-black ${
           isScrolled
-            ? 'bg-[#0a0a0a]/95 backdrop-blur-xl shadow-lg shadow-black/20 py-2 border-b border-white/5'
-            : 'bg-gradient-to-b from-black/70 to-transparent py-4'
+            ? 'shadow-lg shadow-black/20 py-2 border-b border-white/5'
+            : 'py-4'
         }`}
       >
         <div className="container-custom">
@@ -99,9 +99,9 @@ export default function Header() {
               <Image
                 src="/images/logo.png"
                 alt="Liquid Shine Elite Mobile Detailing"
-                width={180}
-                height={60}
-                className="h-12 md:h-14 w-auto transition-all duration-500 group-hover:scale-105"
+                width={207}
+                height={69}
+                className="h-14 md:h-16 w-auto transition-all duration-500 group-hover:scale-105"
                 priority
               />
             </Link>

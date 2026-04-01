@@ -412,22 +412,40 @@ export default function HomePage() {
               { src: '/videos/IMG_3857.MOV', poster: '/images/IMG_5784.jpeg' },
               { src: '/videos/E7643D04-E42C-4C0E-A124-F0423EFE1FF1.MOV', poster: '/images/gallery-corvette-dark.jpg' },
             ].map((video, index) => (
-              <div key={index} className="relative aspect-[9/16] rounded-lg overflow-hidden border border-white/10 hover:border-[#0080FF]/50 transition-all group shadow-xl">
+              <div
+                key={index}
+                className="relative aspect-[9/16] rounded-lg overflow-hidden border border-white/10 hover:border-[#0080FF]/50 transition-all shadow-xl cursor-pointer"
+                onClick={(e) => {
+                  const videoEl = e.currentTarget.querySelector('video');
+                  const overlay = e.currentTarget.querySelector('.video-overlay') as HTMLElement;
+                  if (videoEl) {
+                    if (videoEl.paused) {
+                      videoEl.play();
+                      if (overlay) overlay.style.opacity = '0';
+                    } else {
+                      videoEl.pause();
+                      if (overlay) overlay.style.opacity = '1';
+                    }
+                  }
+                }}
+              >
                 <video
                   className="w-full h-full object-cover"
                   poster={video.poster}
                   muted
                   loop
                   playsInline
-                  onMouseEnter={(e) => e.currentTarget.play()}
-                  onMouseLeave={(e) => { e.currentTarget.pause(); e.currentTarget.currentTime = 0; }}
+                  onEnded={(e) => {
+                    const overlay = e.currentTarget.parentElement?.querySelector('.video-overlay') as HTMLElement;
+                    if (overlay) overlay.style.opacity = '1';
+                  }}
                 >
                   <source src={video.src} type="video/mp4" />
                 </video>
                 {/* Play indicator */}
-                <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-transparent transition-all">
-                  <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-0 transition-transform duration-300">
-                    <svg className="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                <div className="video-overlay absolute inset-0 flex items-center justify-center bg-black/30 transition-opacity duration-300">
+                  <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center active:scale-90 transition-transform">
+                    <svg className="w-6 h-6 md:w-8 md:h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M8 5v14l11-7z" />
                     </svg>
                   </div>

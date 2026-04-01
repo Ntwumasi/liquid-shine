@@ -30,6 +30,8 @@ function useInView(options = {}) {
 export default function HomePage() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [videoModal, setVideoModal] = useState<{ isOpen: boolean; index: number }>({ isOpen: false, index: 0 });
+  const videoModalRef = useRef<HTMLVideoElement>(null);
 
   // Section refs for animations
   const aboutSection = useInView();
@@ -147,6 +149,52 @@ export default function HomePage() {
     { title: 'Stunning Aesthetics', desc: 'Deep gloss and mirror-like finish' },
     { title: 'Increased Value', desc: 'Preserve and protect your investment' },
   ];
+
+  const showcaseVideos = [
+    { src: '/videos/IMG_3796.mov', poster: '/images/IMG_5783.jpeg', title: 'Lamborghini Detail' },
+    { src: '/videos/IMG_3854.MOV', poster: '/images/IMG_5785.jpeg', title: 'Ferrari Showcase' },
+    { src: '/videos/IMG_3857.MOV', poster: '/images/IMG_5784.jpeg', title: 'Wheel Perfection' },
+    { src: '/videos/E7643D04-E42C-4C0E-A124-F0423EFE1FF1.MOV', poster: '/images/gallery-corvette-dark.jpg', title: 'Corvette Finish' },
+  ];
+
+  // Video modal handlers
+  const openVideoModal = (index: number) => {
+    setVideoModal({ isOpen: true, index });
+  };
+
+  const closeVideoModal = () => {
+    setVideoModal({ isOpen: false, index: 0 });
+  };
+
+  const nextVideo = () => {
+    setVideoModal(prev => ({ ...prev, index: (prev.index + 1) % showcaseVideos.length }));
+  };
+
+  const prevVideo = () => {
+    setVideoModal(prev => ({ ...prev, index: (prev.index - 1 + showcaseVideos.length) % showcaseVideos.length }));
+  };
+
+  // Handle keyboard navigation for video modal
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (!videoModal.isOpen) return;
+      if (e.key === 'Escape') closeVideoModal();
+      if (e.key === 'ArrowRight') nextVideo();
+      if (e.key === 'ArrowLeft') prevVideo();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [videoModal.isOpen]);
+
+  // Prevent body scroll when modal is open
+  useEffect(() => {
+    if (videoModal.isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => { document.body.style.overflow = 'unset'; };
+  }, [videoModal.isOpen]);
 
   const nextSlide = useCallback(() => {
     setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
@@ -401,60 +449,119 @@ export default function HomePage() {
               <span className="text-outline">Detailing</span> <span className="text-[#0080FF]">In Action</span>
             </h2>
             <p className="text-gray-400 text-lg">
-              Watch our team bring vehicles back to showroom condition
+              Tap to watch our team bring vehicles back to showroom condition
             </p>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
-            {[
-              { src: '/videos/IMG_3796.mov', poster: '/images/IMG_5783.jpeg' },
-              { src: '/videos/IMG_3854.MOV', poster: '/images/IMG_5785.jpeg' },
-              { src: '/videos/IMG_3857.MOV', poster: '/images/IMG_5784.jpeg' },
-              { src: '/videos/E7643D04-E42C-4C0E-A124-F0423EFE1FF1.MOV', poster: '/images/gallery-corvette-dark.jpg' },
-            ].map((video, index) => (
+            {showcaseVideos.map((video, index) => (
               <div
                 key={index}
-                className="relative aspect-[9/16] rounded-lg overflow-hidden border border-white/10 hover:border-[#0080FF]/50 transition-all shadow-xl cursor-pointer"
-                onClick={(e) => {
-                  const videoEl = e.currentTarget.querySelector('video');
-                  const overlay = e.currentTarget.querySelector('.video-overlay') as HTMLElement;
-                  if (videoEl) {
-                    if (videoEl.paused) {
-                      videoEl.play();
-                      if (overlay) overlay.style.opacity = '0';
-                    } else {
-                      videoEl.pause();
-                      if (overlay) overlay.style.opacity = '1';
-                    }
-                  }
-                }}
+                className="relative aspect-[9/16] rounded-2xl overflow-hidden border-2 border-white/10 hover:border-[#0080FF]/50 transition-all shadow-xl cursor-pointer group"
+                onClick={() => openVideoModal(index)}
               >
-                <video
-                  className="w-full h-full object-cover"
-                  poster={video.poster}
-                  muted
-                  loop
-                  playsInline
-                  onEnded={(e) => {
-                    const overlay = e.currentTarget.parentElement?.querySelector('.video-overlay') as HTMLElement;
-                    if (overlay) overlay.style.opacity = '1';
-                  }}
-                >
-                  <source src={video.src} type="video/mp4" />
-                </video>
-                {/* Play indicator */}
-                <div className="video-overlay absolute inset-0 flex items-center justify-center bg-black/30 transition-opacity duration-300">
-                  <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center active:scale-90 transition-transform">
-                    <svg className="w-6 h-6 md:w-8 md:h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                {/* Thumbnail Image */}
+                <Image
+                  src={video.poster}
+                  alt={video.title}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                {/* Gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                {/* Play button */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-[#0080FF]/90 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 group-active:scale-95 transition-transform duration-300 shadow-lg shadow-[#0080FF]/30">
+                    <svg className="w-7 h-7 md:w-8 md:h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M8 5v14l11-7z" />
                     </svg>
                   </div>
+                </div>
+                {/* Title */}
+                <div className="absolute bottom-0 left-0 right-0 p-4">
+                  <p className="text-white font-semibold text-sm md:text-base">{video.title}</p>
                 </div>
               </div>
             ))}
           </div>
         </div>
       </section>
+
+      {/* Video Modal */}
+      {videoModal.isOpen && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center"
+          onClick={closeVideoModal}
+        >
+          {/* Backdrop */}
+          <div className="absolute inset-0 bg-black/95 backdrop-blur-xl" />
+
+          {/* Modal Content */}
+          <div
+            className="relative z-10 w-full h-full md:w-auto md:h-auto md:max-w-[90vw] md:max-h-[90vh] flex items-center justify-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close Button */}
+            <button
+              onClick={closeVideoModal}
+              className="absolute top-4 right-4 md:top-6 md:right-6 z-20 w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/20 transition-all active:scale-95"
+              aria-label="Close video"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+
+            {/* Video Counter */}
+            <div className="absolute top-4 left-4 md:top-6 md:left-6 z-20 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm text-white text-sm font-medium">
+              {videoModal.index + 1} / {showcaseVideos.length}
+            </div>
+
+            {/* Previous Button */}
+            <button
+              onClick={(e) => { e.stopPropagation(); prevVideo(); }}
+              className="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 z-20 w-12 h-12 md:w-14 md:h-14 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/20 transition-all active:scale-95"
+              aria-label="Previous video"
+            >
+              <svg className="w-6 h-6 md:w-7 md:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+
+            {/* Next Button */}
+            <button
+              onClick={(e) => { e.stopPropagation(); nextVideo(); }}
+              className="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 z-20 w-12 h-12 md:w-14 md:h-14 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/20 transition-all active:scale-95"
+              aria-label="Next video"
+            >
+              <svg className="w-6 h-6 md:w-7 md:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+
+            {/* Video Container */}
+            <div className="relative w-full h-full md:w-auto md:h-[85vh] md:aspect-[9/16] md:rounded-2xl overflow-hidden bg-black">
+              <video
+                ref={videoModalRef}
+                key={showcaseVideos[videoModal.index].src}
+                className="w-full h-full object-contain md:object-cover"
+                poster={showcaseVideos[videoModal.index].poster}
+                controls
+                autoPlay
+                playsInline
+                loop
+              >
+                <source src={showcaseVideos[videoModal.index].src} type="video/mp4" />
+              </video>
+            </div>
+
+            {/* Video Title */}
+            <div className="absolute bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 z-20 px-6 py-3 rounded-full bg-white/10 backdrop-blur-sm text-white font-semibold">
+              {showcaseVideos[videoModal.index].title}
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Why Choose Us / Benefits */}
       <section className="py-20 bg-[#0a0a0a] relative overflow-hidden">

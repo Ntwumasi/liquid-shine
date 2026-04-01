@@ -34,12 +34,12 @@ export default function AboutUs() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[#0a0a0a]">
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 px-4 sm:pt-40 sm:pb-32 overflow-hidden bg-gradient-to-br from-[#004FBB] via-[#0066cc] to-[#004FBB]">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 left-0 w-96 h-96 bg-[#FFBA00] rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+      <section className="relative pt-32 pb-20 px-4 sm:pt-40 sm:pb-32 overflow-hidden bg-gradient-to-br from-[#0a0a0a] via-[#111111] to-[#0a0a0a]">
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-0 left-0 w-96 h-96 bg-[#0080FF] rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#0066cc] rounded-full blur-3xl"></div>
         </div>
         <div className="container-custom relative">
           <div className="max-w-4xl mx-auto text-center">
@@ -47,7 +47,7 @@ export default function AboutUs() {
             <h1 className="text-5xl sm:text-7xl font-bold text-white mb-6 leading-tight">
               About Liquid Shine
             </h1>
-            <p className="text-xl sm:text-2xl text-blue-100 max-w-3xl mx-auto">
+            <p className="text-xl sm:text-2xl text-gray-300 max-w-3xl mx-auto">
               Elite Mobile Detailing Excellence Since 2016
             </p>
           </div>
@@ -55,12 +55,12 @@ export default function AboutUs() {
       </section>
 
       {/* Story Section with Owner Image */}
-      <section className="section bg-white">
+      <section className="section bg-[#0a0a0a]">
         <div className="container-custom">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Image */}
             <div className="order-2 lg:order-1">
-              <div className="relative rounded-2xl overflow-hidden shadow-large">
+              <div className="relative rounded-2xl overflow-hidden shadow-large border border-white/10">
                 <Image
                   src="/images/Overstreet-Head-Shot-scaled.jpg"
                   alt="Liquid Shine Owner"
@@ -74,10 +74,10 @@ export default function AboutUs() {
             {/* Content */}
             <div className="order-1 lg:order-2">
               <span className="badge badge-primary mb-4">Our Story</span>
-              <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">
+              <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
                 The Liquid Shine Story
               </h2>
-              <div className="space-y-4 text-gray-700 text-lg leading-relaxed">
+              <div className="space-y-4 text-gray-300 text-lg leading-relaxed">
                 <p>
                   Liquid Shine Elite Mobile Detailing was born from a passion for perfection and a commitment to delivering unparalleled service. Proudly serving Manatee and Sarasota Counties in Florida, we bring professional detailing directly to your location.
                 </p>
@@ -94,67 +94,67 @@ export default function AboutUs() {
       </section>
 
       {/* Values Section */}
-      <section className="section bg-gray-50">
+      <section className="section bg-[#111111]">
         <div className="container-custom">
           <div className="text-center mb-16">
             <span className="badge badge-primary mb-4">Our Foundation</span>
-            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
+            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
               Core Values
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
               These principles guide everything we do at Liquid Shine
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Quality */}
-            <div className="bg-white rounded-2xl p-8 shadow-soft hover:shadow-large transition-all duration-300 border-t-4 border-[#004FBB]">
-              <div className="w-16 h-16 bg-gradient-to-br from-[#004FBB] to-[#0066cc] rounded-xl flex items-center justify-center mb-6">
+            <div className="bg-[#1a1a1a] rounded-2xl p-8 shadow-soft hover:shadow-large transition-all duration-300 border border-white/10 hover:border-[#0080FF]/50">
+              <div className="w-16 h-16 bg-gradient-to-br from-[#0080FF] to-[#0066cc] rounded-xl flex items-center justify-center mb-6">
                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-3">Quality</h3>
-              <p className="text-gray-600 leading-relaxed">
+              <h3 className="text-2xl font-bold text-white mb-3">Quality</h3>
+              <p className="text-gray-400 leading-relaxed">
                 We use only premium products and proven techniques to deliver exceptional results every time.
               </p>
             </div>
 
             {/* Integrity */}
-            <div className="bg-white rounded-2xl p-8 shadow-soft hover:shadow-large transition-all duration-300 border-t-4 border-[#FFBA00]">
-              <div className="w-16 h-16 bg-gradient-to-br from-[#FFBA00] to-[#e5a800] rounded-xl flex items-center justify-center mb-6">
-                <svg className="w-8 h-8 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="bg-[#1a1a1a] rounded-2xl p-8 shadow-soft hover:shadow-large transition-all duration-300 border border-white/10 hover:border-[#0080FF]/50">
+              <div className="w-16 h-16 bg-gradient-to-br from-[#0080FF] to-[#0066cc] rounded-xl flex items-center justify-center mb-6">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                 </svg>
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-3">Integrity</h3>
-              <p className="text-gray-600 leading-relaxed">
+              <h3 className="text-2xl font-bold text-white mb-3">Integrity</h3>
+              <p className="text-gray-400 leading-relaxed">
                 Honest, transparent service built on trust and respect for our clients and their vehicles.
               </p>
             </div>
 
             {/* Customer Service */}
-            <div className="bg-white rounded-2xl p-8 shadow-soft hover:shadow-large transition-all duration-300 border-t-4 border-[#004FBB]">
-              <div className="w-16 h-16 bg-gradient-to-br from-[#004FBB] to-[#0066cc] rounded-xl flex items-center justify-center mb-6">
+            <div className="bg-[#1a1a1a] rounded-2xl p-8 shadow-soft hover:shadow-large transition-all duration-300 border border-white/10 hover:border-[#0080FF]/50">
+              <div className="w-16 h-16 bg-gradient-to-br from-[#0080FF] to-[#0066cc] rounded-xl flex items-center justify-center mb-6">
                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-3">Customer Service</h3>
-              <p className="text-gray-600 leading-relaxed">
+              <h3 className="text-2xl font-bold text-white mb-3">Customer Service</h3>
+              <p className="text-gray-400 leading-relaxed">
                 Your satisfaction is our priority. We go above and beyond to exceed expectations.
               </p>
             </div>
 
             {/* Excellence */}
-            <div className="bg-white rounded-2xl p-8 shadow-soft hover:shadow-large transition-all duration-300 border-t-4 border-[#FFBA00]">
-              <div className="w-16 h-16 bg-gradient-to-br from-[#FFBA00] to-[#e5a800] rounded-xl flex items-center justify-center mb-6">
-                <svg className="w-8 h-8 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="bg-[#1a1a1a] rounded-2xl p-8 shadow-soft hover:shadow-large transition-all duration-300 border border-white/10 hover:border-[#0080FF]/50">
+              <div className="w-16 h-16 bg-gradient-to-br from-[#0080FF] to-[#0066cc] rounded-xl flex items-center justify-center mb-6">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
                 </svg>
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-3">Excellence</h3>
-              <p className="text-gray-600 leading-relaxed">
+              <h3 className="text-2xl font-bold text-white mb-3">Excellence</h3>
+              <p className="text-gray-400 leading-relaxed">
                 We strive for perfection in every detail, making your vehicle look its absolute best.
               </p>
             </div>
@@ -163,13 +163,13 @@ export default function AboutUs() {
       </section>
 
       {/* Certification Section */}
-      <section className="section bg-white">
+      <section className="section bg-[#0a0a0a]">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto">
-            <div className="bg-gradient-to-br from-gray-50 to-white rounded-3xl shadow-large p-8 sm:p-12 border border-gray-200">
+            <div className="bg-gradient-to-br from-[#1a1a1a] to-[#111111] rounded-3xl shadow-large p-8 sm:p-12 border border-white/10">
               <div className="flex flex-col md:flex-row items-center gap-8">
                 <div className="flex-shrink-0">
-                  <div className="relative w-48 h-48 sm:w-56 sm:h-56">
+                  <div className="relative w-48 h-48 sm:w-56 sm:h-56 bg-white rounded-2xl p-4">
                     <Image
                       src="/images/logo-system-x-authorized-installer.jpeg"
                       alt="System X Authorized Installer"
@@ -181,13 +181,13 @@ export default function AboutUs() {
                 </div>
                 <div>
                   <span className="badge badge-accent mb-4">Certified Professional</span>
-                  <h3 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+                  <h3 className="text-3xl sm:text-4xl font-bold text-white mb-4">
                     System X Authorized Installer
                   </h3>
-                  <p className="text-lg text-gray-700 leading-relaxed mb-4">
+                  <p className="text-lg text-gray-300 leading-relaxed mb-4">
                     We are proud to be a certified System X installer, bringing you the most advanced ceramic coating technology available. This certification ensures you receive professional-grade protection backed by industry-leading warranty coverage.
                   </p>
-                  <p className="text-gray-600">
+                  <p className="text-gray-400">
                     System X ceramic coatings provide unmatched durability, UV protection, and a stunning finish that lasts for years.
                   </p>
                 </div>
@@ -198,9 +198,10 @@ export default function AboutUs() {
       </section>
 
       {/* Stats Section */}
-      <section className="section bg-gradient-to-br from-[#004FBB] via-[#0066cc] to-[#004FBB] relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-[#FFBA00] rounded-full blur-3xl"></div>
+      <section className="section bg-gradient-to-br from-[#0080FF] via-[#0066cc] to-[#0080FF] relative overflow-hidden">
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#0066cc] rounded-full blur-3xl"></div>
         </div>
         <div className="container-custom relative">
           <div className="text-center mb-12">
@@ -218,30 +219,30 @@ export default function AboutUs() {
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {/* 500+ Clients */}
             <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 text-center border border-white/20 hover:bg-white/15 transition-all">
-              <div className="text-6xl sm:text-7xl font-bold text-[#FFBA00] mb-2">
+              <div className="text-6xl sm:text-7xl font-bold text-white mb-2">
                 {clientsCount}+
               </div>
-              <p className="text-white text-xl font-semibold">
+              <p className="text-blue-100 text-xl font-semibold">
                 Satisfied Clients
               </p>
             </div>
 
             {/* 8+ Years */}
             <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 text-center border border-white/20 hover:bg-white/15 transition-all">
-              <div className="text-6xl sm:text-7xl font-bold text-[#FFBA00] mb-2">
+              <div className="text-6xl sm:text-7xl font-bold text-white mb-2">
                 {yearsCount}+
               </div>
-              <p className="text-white text-xl font-semibold">
+              <p className="text-blue-100 text-xl font-semibold">
                 Years of Excellence
               </p>
             </div>
 
             {/* 100% Satisfaction */}
             <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 text-center border border-white/20 hover:bg-white/15 transition-all">
-              <div className="text-6xl sm:text-7xl font-bold text-[#FFBA00] mb-2">
+              <div className="text-6xl sm:text-7xl font-bold text-white mb-2">
                 {satisfactionCount}%
               </div>
-              <p className="text-white text-xl font-semibold">
+              <p className="text-blue-100 text-xl font-semibold">
                 Satisfaction Guarantee
               </p>
             </div>
@@ -250,13 +251,13 @@ export default function AboutUs() {
       </section>
 
       {/* CTA Section */}
-      <section className="section bg-gray-900">
+      <section className="section bg-[#111111]">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
               Ready to Experience the Liquid Shine Difference?
             </h2>
-            <p className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-400 mb-10 max-w-2xl mx-auto">
               Join hundreds of satisfied clients in Manatee and Sarasota Counties. Book your mobile detailing service today.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

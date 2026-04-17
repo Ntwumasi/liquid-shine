@@ -54,40 +54,24 @@ export default function AboutUs() {
         </div>
       </section>
 
-      {/* Story Section with Owner Image */}
+      {/* Story Section */}
       <section className="section bg-[#0a0a0a]">
         <div className="container-custom">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            {/* Image */}
-            <div className="order-2 lg:order-1">
-              <div className="relative rounded-2xl overflow-hidden shadow-large border border-white/10">
-                <Image
-                  src="/images/Overstreet-Head-Shot-scaled.jpg"
-                  alt="Liquid Shine Owner"
-                  width={600}
-                  height={700}
-                  className="w-full h-auto object-cover"
-                />
-              </div>
-            </div>
-
-            {/* Content */}
-            <div className="order-1 lg:order-2">
-              <span className="badge badge-primary mb-4">Our Story</span>
-              <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
-                The Liquid Shine Story
-              </h2>
-              <div className="space-y-4 text-gray-300 text-lg leading-relaxed">
-                <p>
-                  Liquid Shine Elite Mobile Detailing was born from a passion for perfection and a commitment to delivering unparalleled service. Proudly serving Manatee and Sarasota Counties in Florida, we bring professional detailing directly to your location.
-                </p>
-                <p>
-                  Our journey began with a simple belief: your vehicle deserves the highest level of care and attention. Whether it's your daily driver, luxury car, boat, or RV, we treat every vehicle as if it were our own, using premium products and proven techniques.
-                </p>
-                <p>
-                  What sets us apart is our mobile advantage. We come to you, saving you time while delivering showroom-quality results. Our dedication to excellence and customer satisfaction has made us the trusted choice for discerning vehicle owners throughout the region.
-                </p>
-              </div>
+          <div className="max-w-4xl mx-auto">
+            <span className="badge badge-primary mb-4">Our Story</span>
+            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
+              The Liquid Shine Story
+            </h2>
+            <div className="space-y-4 text-gray-300 text-lg leading-relaxed">
+              <p>
+                Liquid Shine Elite Mobile Detailing was born from a passion for perfection and a commitment to delivering unparalleled service. Proudly serving Manatee and Sarasota Counties in Florida, we bring professional detailing directly to your location.
+              </p>
+              <p>
+                Our journey began with a simple belief: your vehicle deserves the highest level of care and attention. Whether it's your daily driver, luxury car, boat, or RV, we treat every vehicle as if it were our own, using premium products and proven techniques.
+              </p>
+              <p>
+                What sets us apart is our mobile advantage. We come to you, saving you time while delivering showroom-quality results. Our dedication to excellence and customer satisfaction has made us the trusted choice for discerning vehicle owners throughout the region.
+              </p>
             </div>
           </div>
         </div>

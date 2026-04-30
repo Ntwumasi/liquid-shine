@@ -25,9 +25,9 @@ export default function Gallery() {
     { id: 1, title: 'Lamborghini Huracán STO', category: 'Auto', image: '/images/IMG_5783.jpeg', description: 'Gulf livery exotic detail' },
     { id: 2, title: 'Ferrari 488', category: 'Auto', image: '/images/IMG_5785.jpeg', description: 'Supercar paint correction' },
     { id: 3, title: 'Lamborghini Wheel Detail', category: 'Auto', image: '/images/IMG_5784.jpeg', description: 'Exotic wheel detailing' },
-    { id: 4, title: '2018 Corvette Convertible', category: 'Auto', image: '/images/Auto-Detailing-2018-Corvette-Convertible-After.jpg', description: 'Full detail and ceramic coating' },
-    { id: 5, title: 'Corvette Dark', category: 'Auto', image: '/images/gallery-corvette-dark.jpg', description: 'Premium paint correction' },
-    { id: 6, title: 'Koenigsegg', category: 'Auto', image: '/images/gallery-koenigsegg-white.jpg', description: 'Hypercar detail' },
+    { id: 4, title: 'Ferrari Detail', category: 'Auto', image: '/images/ferarri-1.jpeg', description: 'Black Ferrari full detail' },
+    { id: 5, title: 'Ferrari Side Profile', category: 'Auto', image: '/images/ferarri-2.jpeg', description: 'Mirror-finish paint correction' },
+    { id: 6, title: 'SUV Detail', category: 'Auto', image: '/images/car-detail.jpeg', description: 'Full SUV detail and protection' },
     { id: 7, title: 'BMW 3 Series', category: 'Auto', image: '/images/Auto-Detailing-2018-BMW-3-Series.jpg', description: 'Premium paint correction' },
     { id: 8, title: '2018 Dodge Charger', category: 'Auto', image: '/images/Auto-Detailing-2018-Dodge-Charger.jpg', description: 'Show-ready finish' },
 

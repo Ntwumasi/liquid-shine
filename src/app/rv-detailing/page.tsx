@@ -2,10 +2,53 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
 
 export default function RVDetailingPage() {
   const [openPackage, setOpenPackage] = useState<string | null>('glossy');
+  const [videoModal, setVideoModal] = useState<{ isOpen: boolean; index: number }>({ isOpen: false, index: 0 });
+  const videoModalRef = useRef<HTMLVideoElement>(null);
+
+  const rvVideos = [
+    { src: '/videos/rv-section-1.MOV', title: 'RV Exterior Wash' },
+    { src: '/videos/rv-section-2.MOV', title: 'RV Roof Detail' },
+    { src: '/videos/rv-section-3.MOV', title: 'RV Protection' },
+    { src: '/videos/rv-section-4.mov', title: 'RV Final Shine' },
+  ];
+
+  const openVideoModal = (index: number) => {
+    setVideoModal({ isOpen: true, index });
+  };
+
+  const closeVideoModal = () => {
+    setVideoModal({ isOpen: false, index: 0 });
+  };
+
+  const nextVideo = useCallback(() => {
+    setVideoModal(prev => ({ ...prev, index: (prev.index + 1) % rvVideos.length }));
+  }, [rvVideos.length]);
+
+  const prevVideo = useCallback(() => {
+    setVideoModal(prev => ({ ...prev, index: (prev.index - 1 + rvVideos.length) % rvVideos.length }));
+  }, [rvVideos.length]);
+
+  // Video modal keyboard nav
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (!videoModal.isOpen) return;
+      if (e.key === 'Escape') closeVideoModal();
+      if (e.key === 'ArrowLeft') prevVideo();
+      if (e.key === 'ArrowRight') nextVideo();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [videoModal.isOpen, nextVideo, prevVideo]);
+
+  // Prevent body scroll when modal is open
+  useEffect(() => {
+    document.body.style.overflow = videoModal.isOpen ? 'hidden' : 'unset';
+    return () => { document.body.style.overflow = 'unset'; };
+  }, [videoModal.isOpen]);
 
   // Initialize scroll animations
   useEffect(() => {
@@ -396,6 +439,111 @@ export default function RVDetailingPage() {
           </div>
         </div>
       </section>
+
+      {/* RV Video Showcase */}
+      <section className="py-20 bg-[#0a0a0a]">
+        <div className="container-custom">
+          <div className="text-center max-w-2xl mx-auto mb-12 scroll-animate">
+            <span className="badge badge-primary mb-4">See Our Work</span>
+            <h2 className="text-3xl md:text-4xl font-black text-white mb-4 uppercase tracking-tight">
+              <span className="text-outline">RV Detailing</span> <span className="text-[#0080FF]">In Action</span>
+            </h2>
+            <p className="text-gray-400 text-lg">
+              Watch our team transform RVs back to showroom condition
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+            {rvVideos.map((video, index) => (
+              <div
+                key={index}
+                className="relative aspect-[9/16] rounded-2xl overflow-hidden border-2 border-white/10 hover:border-[#0080FF]/50 transition-all shadow-xl cursor-pointer group scroll-animate-scale"
+                onClick={() => openVideoModal(index)}
+              >
+                <video
+                  src={video.src}
+                  className="w-full h-full object-cover"
+                  muted
+                  playsInline
+                  preload="metadata"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-[#0080FF]/90 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 group-active:scale-95 transition-transform duration-300 shadow-lg shadow-[#0080FF]/30">
+                    <svg className="w-7 h-7 md:w-8 md:h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                  </div>
+                </div>
+                <div className="absolute bottom-0 left-0 right-0 p-4">
+                  <p className="text-white font-semibold text-sm md:text-base">{video.title}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* RV Video Modal */}
+      {videoModal.isOpen && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center"
+          onClick={closeVideoModal}
+        >
+          <div className="absolute inset-0 bg-black/95 backdrop-blur-xl" />
+          <div
+            className="relative z-10 w-full h-full md:w-auto md:h-auto md:max-w-[90vw] md:max-h-[90vh] flex items-center justify-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={closeVideoModal}
+              className="absolute top-4 right-4 md:top-6 md:right-6 z-20 w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/20 transition-all active:scale-95"
+              aria-label="Close video"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            <div className="absolute top-4 left-4 md:top-6 md:left-6 z-20 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm text-white text-sm font-medium">
+              {videoModal.index + 1} / {rvVideos.length}
+            </div>
+            <button
+              onClick={(e) => { e.stopPropagation(); prevVideo(); }}
+              className="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 z-20 w-12 h-12 md:w-14 md:h-14 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/20 transition-all active:scale-95"
+              aria-label="Previous video"
+            >
+              <svg className="w-6 h-6 md:w-7 md:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            <button
+              onClick={(e) => { e.stopPropagation(); nextVideo(); }}
+              className="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 z-20 w-12 h-12 md:w-14 md:h-14 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/20 transition-all active:scale-95"
+              aria-label="Next video"
+            >
+              <svg className="w-6 h-6 md:w-7 md:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+            <div className="relative w-full h-full md:w-auto md:h-[85vh] md:aspect-[9/16] md:rounded-2xl overflow-hidden bg-black">
+              <video
+                ref={videoModalRef}
+                key={rvVideos[videoModal.index].src}
+                className="w-full h-full object-contain md:object-cover"
+                controls
+                autoPlay
+                playsInline
+                loop
+              >
+                <source src={rvVideos[videoModal.index].src} type="video/mp4" />
+              </video>
+            </div>
+            <div className="absolute bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 z-20 px-6 py-3 rounded-full bg-white/10 backdrop-blur-sm text-white font-semibold">
+              {rvVideos[videoModal.index].title}
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Gallery */}
       <section className="py-20 bg-[#111111]">

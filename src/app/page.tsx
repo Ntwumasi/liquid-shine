@@ -151,7 +151,7 @@ export default function HomePage() {
   ];
 
   const showcaseVideos = [
-    { src: '/videos/homepage-vid-2.mov', poster: '/images/IMG_5783.jpeg', title: 'Lamborghini Detail' },
+    { src: '/videos/homepage-vid-1.MOV', poster: '/images/homepage-vid-1-cover.png', title: 'Auto Detail' },
     { src: '/videos/ferarri.MOV', poster: '/images/ferarri-1.jpeg', title: 'Ferrari Showcase' },
     { src: '/videos/rv-section-4.mov', poster: '/images/rv-thumbnail.png', title: 'RV Detail' },
   ];

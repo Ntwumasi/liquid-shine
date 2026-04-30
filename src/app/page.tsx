@@ -64,7 +64,7 @@ export default function HomePage() {
       subtitle: 'Keep your vessel in pristine condition',
     },
     {
-      image: '/images/gallery-rv-road.jpg',
+      image: '/images/camper-2260094_1920.jpg',
       title: 'RV Detailing Services',
       subtitle: 'From roof to wheels, we do it all',
     },

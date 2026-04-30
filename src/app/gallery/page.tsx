@@ -39,7 +39,7 @@ export default function Gallery() {
 
     // RV
     { id: 13, title: 'RV Front View', category: 'RV', image: '/images/gallery-rv-front.jpg', description: 'Complete RV detail' },
-    { id: 14, title: 'RV on the Road', category: 'RV', image: '/images/gallery-rv-road.jpg', description: 'Road-trip ready finish' },
+    { id: 14, title: 'RV on the Road', category: 'RV', image: '/images/camper-2260094_1920.jpg', description: 'Road-trip ready finish' },
 
     // Ceramic Coating
     { id: 15, title: 'Lamborghini Ceramic Coating', category: 'Ceramic Coating', image: '/images/IMG_5783.jpeg', description: 'System X ceramic protection' },

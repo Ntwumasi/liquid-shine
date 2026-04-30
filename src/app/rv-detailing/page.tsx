@@ -77,7 +77,7 @@ export default function RVDetailingPage() {
       step: "2",
       title: "GO FOR A CLIMB",
       desc: "We head up to the roof to inspect the seams and sealant. We then clean the roof and make it sparkle like new.",
-      image: "/images/gallery-rv-road.jpg"
+      image: "/images/camper-2260094_1920.jpg"
     },
     {
       step: "3",
@@ -163,7 +163,7 @@ export default function RVDetailingPage() {
     '/images/airstream-inc-hKw3HbDF1ew-unsplash.jpg',
     '/images/camping-beach-sea-landscape.jpg',
     '/images/camper-2260094_1920.jpg',
-    '/images/gallery-rv-road.jpg',
+    '/images/camper-2260094_1920.jpg',
     '/images/Class-Super-C-Motorhomes-Diesel-Class-C-RV.jpg',
   ];
 

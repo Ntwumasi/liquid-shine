@@ -153,6 +153,7 @@ export default function HomePage() {
   const showcaseVideos = [
     { src: '/videos/homepage-vid-2.mov', poster: '/images/IMG_5783.jpeg', title: 'Lamborghini Detail' },
     { src: '/videos/ferarri.MOV', poster: '/images/ferarri-1.jpeg', title: 'Ferrari Showcase' },
+    { src: '/videos/rv-section-4.mov', poster: '/images/gallery-rv-front.jpg', title: 'RV Detail' },
   ];
 
   // Video modal handlers
@@ -451,7 +452,7 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2 max-w-2xl mx-auto gap-3 md:gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 max-w-4xl mx-auto gap-3 md:gap-4">
             {showcaseVideos.map((video, index) => (
               <div
                 key={index}

@@ -10,10 +10,10 @@ export default function RVDetailingPage() {
   const videoModalRef = useRef<HTMLVideoElement>(null);
 
   const rvVideos = [
-    { src: '/videos/rv-section-1.MOV', title: 'RV Exterior Wash' },
-    { src: '/videos/rv-section-2.MOV', title: 'RV Roof Detail' },
-    { src: '/videos/rv-section-3.MOV', title: 'RV Protection' },
-    { src: '/videos/rv-section-4.mov', title: 'RV Final Shine' },
+    { src: '/videos/rv-section-1.MOV', poster: '/images/gallery-rv-front.jpg', title: 'RV Exterior Wash' },
+    { src: '/videos/rv-section-2.MOV', poster: '/images/airstream-inc-hKw3HbDF1ew-unsplash.jpg', title: 'RV Roof Detail' },
+    { src: '/videos/rv-section-3.MOV', poster: '/images/camper-2260094_1920.jpg', title: 'RV Protection' },
+    { src: '/videos/rv-section-4.mov', poster: '/images/Class-Super-C-Motorhomes-Diesel-Class-C-RV.jpg', title: 'RV Final Shine' },
   ];
 
   const openVideoModal = (index: number) => {
@@ -460,12 +460,11 @@ export default function RVDetailingPage() {
                 className="relative aspect-[9/16] rounded-2xl overflow-hidden border-2 border-white/10 hover:border-[#0080FF]/50 transition-all shadow-xl cursor-pointer group scroll-animate-scale"
                 onClick={() => openVideoModal(index)}
               >
-                <video
-                  src={video.src}
-                  className="w-full h-full object-cover"
-                  muted
-                  playsInline
-                  preload="metadata"
+                <Image
+                  src={video.poster}
+                  alt={video.title}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                 <div className="absolute inset-0 flex items-center justify-center">

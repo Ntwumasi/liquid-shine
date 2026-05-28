@@ -318,19 +318,6 @@ export default function HomePage() {
         </button>
       </section>
 
-      {/* Military Discount Banner */}
-      <section className="py-4 bg-[#0080FF]">
-        <div className="container-custom">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p className="text-white text-center sm:text-left">
-              All active duty <span className="font-bold">Military, Veterans, and First Responders</span> get a <span className="text-white font-bold underline">10% Discount</span> off of all services
-            </p>
-            <Link href="/contact" className="px-5 py-2 bg-white text-[#0080FF] font-semibold rounded-lg hover:bg-gray-100 transition-colors whitespace-nowrap text-sm">
-              Contact Us Today
-            </Link>
-          </div>
-        </div>
-      </section>
 
       {/* About Section */}
       <section className="py-16 md:py-24 bg-[#0a0a0a]">

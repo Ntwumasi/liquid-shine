@@ -63,23 +63,6 @@ export default function MaintenancePage() {
         </div>
       </section>
 
-      {/* Military Discount Banner */}
-      <section className="bg-[#0080FF] py-4">
-        <div className="container-custom">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <div className="flex items-center gap-4">
-              <span className="text-3xl">🎖️</span>
-              <div>
-                <span className="font-bold text-white text-lg">All Active duty Military, Veterans, and First Responders</span>
-                <span className="text-white ml-2">get a 10% Discount off of all services</span>
-              </div>
-            </div>
-            <Link href="/contact" className="px-6 py-2 bg-white text-[#0080FF] font-semibold rounded-sm hover:bg-gray-100 transition-colors uppercase text-sm tracking-wide">
-              Contact Us Today
-            </Link>
-          </div>
-        </div>
-      </section>
 
       {/* Why Our Maintenance Packages Make Sense */}
       <section className="py-20 bg-[#111111]">

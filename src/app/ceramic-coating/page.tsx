@@ -32,60 +32,11 @@ export default function CeramicCoatingPage() {
     };
   }, []);
   const benefits = [
-    {
-      title: "Long-Lasting Protection",
-      desc: "Shield your vehicle from UV rays, oxidation, bird droppings, tree sap, and harsh chemicals for years, not months.",
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-        </svg>
-      ),
-    },
-    {
-      title: "Hydrophobic Properties",
-      desc: "Water beads up and rolls off effortlessly, taking dirt and contaminants with it. Your car stays cleaner, longer.",
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-        </svg>
-      ),
-    },
-    {
-      title: "Enhanced Gloss & Shine",
-      desc: "Achieve that deep, wet-look shine that turns heads. Ceramic coating enhances your paint's depth and clarity.",
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-        </svg>
-      ),
-    },
-    {
-      title: "Scratch Resistance",
-      desc: "The hardened ceramic layer provides a sacrificial barrier against light scratches, swirl marks, and minor abrasions.",
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-        </svg>
-      ),
-    },
-    {
-      title: "Reduced Maintenance",
-      desc: "Spend less time washing and more time enjoying your vehicle. Dirt and grime wash off with minimal effort.",
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
-      ),
-    },
-    {
-      title: "Chemical Resistance",
-      desc: "Protect against acid rain, bug splatter, and environmental contaminants that can etch and damage unprotected paint.",
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M20.618 5.984A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-        </svg>
-      ),
-    },
+    { lead: "Long-lasting protection", rest: "against UV rays, oxidation, and chemicals" },
+    { lead: "Hydrophobic properties", rest: "for easier cleaning and maintenance" },
+    { lead: "Deep, glossy finish", rest: "that enhances your car's appearance" },
+    { lead: "Resistance to minor scratches", rest: "and swirl marks" },
+    { lead: "Reduced need for waxing", rest: "with long-term durability" },
   ];
 
   const systemXProducts = [
@@ -264,37 +215,11 @@ export default function CeramicCoatingPage() {
         </div>
       </section>
 
-      {/* Benefits Section */}
-      <section className="py-20 bg-[#0a0a0a]">
-        <div className="container-custom">
-          <div className="text-center max-w-3xl mx-auto mb-16 scroll-animate">
-            <span className="badge badge-primary mb-4">Why Ceramic Coating?</span>
-            <h2 className="text-3xl md:text-4xl font-black text-white mb-4 uppercase tracking-tight">
-              <span className="text-outline">Benefits Of</span> <span className="text-[#0080FF]">Ceramic Coating</span>
-            </h2>
-            <p className="text-gray-400 text-lg">
-              Discover why thousands of vehicle owners choose professional ceramic coating over traditional wax and sealants.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {benefits.map((benefit, index) => (
-              <div key={index} className={`scroll-animate scroll-delay-${index + 1} bg-white/5 border border-white/10 p-8 rounded-sm hover:border-[#0080FF]/30 transition-all group`}>
-                <div className="w-16 h-16 mb-6 rounded-sm bg-[#0080FF]/20 flex items-center justify-center text-[#0080FF] group-hover:bg-[#0080FF] group-hover:text-white transition-all">
-                  {benefit.icon}
-                </div>
-                <h3 className="text-xl font-bold text-white mb-3 uppercase tracking-wide">{benefit.title}</h3>
-                <p className="text-gray-500">{benefit.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* YouTube Video Section - Modern Design */}
+      {/* Benefits + Video Section */}
       <section className="py-24 bg-[#0a0a0a]">
         <div className="container-custom">
-          {/* Video Container */}
-          <div className="max-w-5xl mx-auto scroll-animate">
+          {/* YouTube Video */}
+          <div className="max-w-4xl mx-auto scroll-animate">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-black/50 group">
               {/* Decorative border glow */}
               <div className="absolute -inset-1 bg-gradient-to-r from-[#0080FF]/20 via-transparent to-[#0080FF]/20 rounded-2xl blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
@@ -310,6 +235,36 @@ export default function CeramicCoatingPage() {
                 />
               </div>
             </div>
+          </div>
+
+          {/* Benefits */}
+          <div className="max-w-4xl mx-auto mt-12 scroll-animate">
+            <h2 className="text-3xl md:text-4xl font-black text-white mb-8 uppercase tracking-tight">
+              Benefits Of <span className="text-[#0080FF]">Ceramic Coatings</span>
+            </h2>
+            <ul className="space-y-5 mb-10">
+              {benefits.map((benefit, index) => (
+                <li key={index} className="flex items-start gap-4 text-lg text-gray-300">
+                  <span className="mt-2 w-2 h-2 flex-shrink-0 rounded-full bg-[#0080FF]" />
+                  <span>
+                    <span className="font-bold text-white">{benefit.lead}</span> {benefit.rest}
+                  </span>
+                </li>
+              ))}
+            </ul>
+
+            {/* System X technical specifications */}
+            <a
+              href="https://systemxceramic.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-bold px-6 py-4 rounded-full transition-colors"
+            >
+              System X technical specifications
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+            </a>
           </div>
 
           {/* System X Authorization Section */}

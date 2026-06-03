@@ -38,7 +38,7 @@ Routes: `/`, `/ceramic-coating`, `/auto-detailing`, `/boat-detailing`, `/rv-deta
 
 ### Page Patterns
 
-Most pages are `"use client"` components that set up their own IntersectionObserver for scroll animations. The home page (`src/app/page.tsx`, ~777 lines) is the most complex — hero slider (5 slides, 6s auto-rotate), video modal with keyboard nav (Escape/Arrow keys), testimonials carousel, and multiple animated sections.
+Most pages are `"use client"` components that set up their own IntersectionObserver for scroll animations. The home page (`src/app/page.tsx`, ~760 lines) is the most complex — hero slider (5 slides, 6s auto-rotate), video modal with keyboard nav (Escape/Arrow keys), testimonials carousel, and multiple animated sections.
 
 Service pages follow a consistent structure: hero → benefits grid → packages/comparison → process steps → service areas → CTA.
 
@@ -61,7 +61,7 @@ Dark theme is the default — all pages use dark backgrounds with white text. Re
 
 ### Static Assets
 
-Images in `/public/images/`, videos (`.MOV`) in `/public/videos/`. Use Next.js `<Image>` component with priority loading for above-fold images.
+Images in `/public/images/`, videos in `/public/videos/` (mixed `.MOV`/`.mov`/`.mp4`). Use Next.js `<Image>` component with priority loading for above-fold images.
 
 ## Important Warning
 

@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import AwardBadge, { AwardPill } from '@/components/AwardBadge';
 
 // Custom hook for intersection observer
 function useInView(options = {}) {
@@ -39,17 +40,13 @@ export default function HomePage() {
   const benefitsSection = useInView();
   const statsSection = useInView();
   const gallerySection = useInView();
+  const awardSection = useInView();
   const certSection = useInView();
   const testimonialSection = useInView();
 
   const heroSlides = [
     {
-      image: '/images/IMG_5783.jpeg',
-      title: 'Exotic Car Specialists',
-      subtitle: 'Lamborghini, Ferrari, and beyond',
-    },
-    {
-      image: '/images/IMG_5785.jpeg',
+      image: '/images/car-detail.jpeg',
       title: 'Professional Mobile Detailing',
       subtitle: 'We bring the shine to you',
     },
@@ -83,6 +80,13 @@ export default function HomePage() {
       description: 'Professional-grade System X ceramic coating for years of protection and that incredible gloss finish. The most advanced paint protection available.',
       href: '/ceramic-coating',
       image: '/images/IMG_5783.jpeg',
+      icon: '/images/shield-1.png.webp',
+    },
+    {
+      title: 'Paint Protection Film',
+      description: 'Ultra-durable 8-mil self-healing film that shields your paint from rock chips, scratches, and road debris — backed by a 10-year warranty and a deep, wet-look gloss that stays virtually invisible.',
+      href: '/paint-protection-film',
+      image: '/images/Auto-Detailing-2018-Corvette-Convertible-After.jpg',
       icon: '/images/shield-1.png.webp',
     },
     {
@@ -242,10 +246,13 @@ export default function HomePage() {
         <div className="relative z-10 h-full flex items-center">
           <div className="container-custom">
             <div className="max-w-3xl">
-              {/* Badge */}
-              <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 text-sm font-medium text-white bg-white/10 border border-white/20 rounded-full backdrop-blur-sm">
-                <span className="w-2 h-2 bg-[#0080FF] rounded-full animate-pulse" />
-                Serving Manatee & Sarasota Counties
+              {/* Badges */}
+              <div className="flex flex-wrap items-center gap-3 mb-6">
+                <span className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-white/10 border border-white/20 rounded-full backdrop-blur-sm">
+                  <span className="w-2 h-2 bg-[#0080FF] rounded-full animate-pulse" />
+                  Serving Manatee & Sarasota Counties
+                </span>
+                <AwardPill />
               </div>
 
               {/* Title */}
@@ -395,7 +402,7 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {services.filter(s => s.title !== 'Ceramic Coating').map((service, index) => (
               <Link
                 key={index}
@@ -643,6 +650,38 @@ export default function HomePage() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Best of 2026 Award */}
+      <section className="py-20 bg-[#0a0a0a] border-t border-white/5 relative overflow-hidden" ref={awardSection.ref}>
+        <div className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 w-[36rem] h-[36rem] bg-[#d4af37]/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="container-custom relative">
+          <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center transition-all duration-1000 ${awardSection.isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            <div className="order-2 lg:order-1 text-center lg:text-left">
+              <span className="badge badge-primary mb-4">Award Winning</span>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-6 uppercase tracking-tight">
+                <span className="text-outline">Voted Best Mobile Car Detailer in</span>{' '}
+                <span className="text-[#0080FF]">Parrish, Florida</span>
+              </h2>
+              <p className="text-gray-400 text-lg mb-6">
+                Liquid Shine Elite Mobile Detailing has been officially recognized as a <strong className="text-white">BEST of 2026 Parrish Award Winner</strong> in the Car Detailing Service category — an honor based on verified data from Google Reviews, analyzed and certified by BusinessRate.
+              </p>
+              <p className="text-gray-400 text-lg mb-8">
+                This recognition isn&apos;t earned by application or nomination. It&apos;s earned by the authentic feedback of our own customers — the people whose cars, boats, and RVs we detail every week.
+              </p>
+              <Link href="/contact" className="btn btn-primary">
+                Book the Award-Winning Team
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </Link>
+            </div>
+
+            <div className="order-1 lg:order-2 flex justify-center">
+              <AwardBadge className="w-full max-w-md" />
+            </div>
           </div>
         </div>
       </section>

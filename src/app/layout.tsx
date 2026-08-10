@@ -15,12 +15,12 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: 'Liquid Shine Elite Mobile Detailing | Professional Auto Detailing Services',
   description:
-    'Professional mobile detailing services for cars, boats, and RVs. Ceramic coating, auto detailing, and more in Manatee & Sarasota Counties, FL.',
+    'Voted Best Car Detailing Service in Parrish, FL for 2026. Professional mobile detailing for cars, boats, and RVs — ceramic coating, paint protection film (PPF), auto detailing, and more in Manatee & Sarasota Counties, FL.',
   keywords:
-    'mobile detailing, auto detailing, ceramic coating, boat detailing, RV detailing, car detailing, Manatee County, Sarasota County, Parrish FL',
+    'mobile detailing, auto detailing, ceramic coating, paint protection film, PPF, clear bra, boat detailing, RV detailing, car detailing, Manatee County, Sarasota County, Parrish FL, best detailer Parrish',
   openGraph: {
     title: 'Liquid Shine Elite Mobile Detailing',
-    description: 'Professional mobile detailing services for automotive, marine, and recreational vehicles in Manatee & Sarasota Counties.',
+    description: 'Voted Best Car Detailing Service in Parrish, FL for 2026. Professional mobile detailing, ceramic coating, and paint protection film for automotive, marine, and recreational vehicles in Manatee & Sarasota Counties.',
     type: 'website',
   },
 };
@@ -33,7 +33,7 @@ const jsonLd = {
       "@id": "https://www.liquid-shine.com/#business",
       "name": "Liquid Shine Mobile Detailing",
       "alternateName": ["Liquid Shine", "Liquid Shine Detailing", "Liquid Shine Mobile Detail"],
-      "description": "Liquid Shine Mobile Detailing is a premier mobile auto and marine detailing company based in Parrish, Florida, serving Tampa, Bradenton, Palmetto, Parrish, Lakewood Ranch, Sarasota, and the surrounding Gulf Coast communities. Founded in 2016 by owner Nate Mansour, Liquid Shine is an Authorized System X Ceramic Coating Installer specializing in mobile car detailing, professional ceramic coating installation, paint protection film (PPF) removal, full-service boat and yacht detailing, paint correction, and interior restoration. Our certified technicians bring professional-grade equipment, water, and power directly to your home, office, or marina — delivering showroom-quality results without you leaving your driveway or slip.",
+      "description": "Liquid Shine Mobile Detailing is a premier mobile auto and marine detailing company based in Parrish, Florida, serving Tampa, Bradenton, Palmetto, Parrish, Lakewood Ranch, Sarasota, and the surrounding Gulf Coast communities. Founded in 2016 by owner Nate Mansour, Liquid Shine is an Authorized System X Ceramic Coating Installer specializing in mobile car detailing, professional ceramic coating installation, paint protection film (PPF) installation and removal, full-service boat and yacht detailing, paint correction, and interior restoration. Liquid Shine was voted Best Car Detailing Service in Parrish for 2026 in the BusinessRate BEST of 2026 Awards. Our certified technicians bring professional-grade equipment, water, and power directly to your home, office, or marina — delivering showroom-quality results without you leaving your driveway or slip.",
       "url": "https://www.liquid-shine.com/",
       "logo": {
         "@type": "ImageObject",
@@ -123,7 +123,9 @@ const jsonLd = {
         "Mobile car detailing",
         "System X Ceramic Coating",
         "Ceramic coating installation",
+        "Paint Protection Film (PPF) installation",
         "Paint Protection Film (PPF) removal",
+        "Self-healing urethane paint protection film",
         "Boat and yacht detailing",
         "Marine ceramic coatings",
         "Paint correction",
@@ -150,6 +152,14 @@ const jsonLd = {
           }
         }
       ],
+      "award": [
+        "BusinessRate BEST of 2026 Award Winner — Best Car Detailing Service in Parrish, FL"
+      ],
+      "hasCertification": {
+        "@type": "Certification",
+        "name": "BEST of 2026 Parrish Award — Car Detailing Service",
+        "issuedBy": { "@type": "Organization", "name": "BusinessRate", "url": "https://www.businessrate.com/awards" }
+      },
       "slogan": "Parrish & Tampa Bay's Premier Mobile Detailing, Ceramic Coating & Marine Detailing Specialists",
       "foundingLocation": { "@type": "Place", "name": "Parrish, FL" },
       "sameAs": [
@@ -167,6 +177,7 @@ const jsonLd = {
       "makesOffer": [
         { "@type": "Offer", "itemOffered": { "@id": "https://www.liquid-shine.com/#service-mobile-detailing" } },
         { "@type": "Offer", "itemOffered": { "@id": "https://www.liquid-shine.com/#service-ceramic-coating" } },
+        { "@type": "Offer", "itemOffered": { "@id": "https://www.liquid-shine.com/#service-ppf-installation" } },
         { "@type": "Offer", "itemOffered": { "@id": "https://www.liquid-shine.com/#service-ppf-removal" } },
         { "@type": "Offer", "itemOffered": { "@id": "https://www.liquid-shine.com/#service-boat-detailing" } }
       ]
@@ -233,6 +244,34 @@ const jsonLd = {
         },
         {
           "@type": "Service",
+          "@id": "https://www.liquid-shine.com/#service-ppf-installation",
+          "name": "Paint Protection Film (PPF) Installation in Tampa, Bradenton & Sarasota",
+          "serviceType": "Paint Protection Film Installation",
+          "category": "Paint Protection Film Services",
+          "description": "Premium paint protection film installation from Liquid Shine. Our ultra-durable 8-mil self-healing urethane film defends against rock chips, scratches, road debris, and everyday wear while deepening your paint's natural gloss for a richer, wet-look finish — and stays virtually invisible. Backed by a full 10-year warranty, the film also offers UV resistance to help prevent fading and a smooth hydrophobic surface that makes washing easier. Coverage options range from partial front and full front to track packs and full-vehicle wraps, with add-ons for headlights, door cups, rocker panels, and door edges. Serving Tampa, Bradenton, Palmetto, Parrish, Lakewood Ranch, Sarasota, and surrounding Gulf Coast communities.",
+          "provider": { "@id": "https://www.liquid-shine.com/#business" },
+          "areaServed": [
+            { "@type": "City", "name": "Tampa" },
+            { "@type": "City", "name": "Bradenton" },
+            { "@type": "City", "name": "Palmetto" },
+            { "@type": "City", "name": "Parrish" },
+            { "@type": "City", "name": "Lakewood Ranch" },
+            { "@type": "City", "name": "Sarasota" }
+          ],
+          "availableChannel": {
+            "@type": "ServiceChannel",
+            "serviceUrl": "https://www.liquid-shine.com/paint-protection-film",
+            "servicePhone": "+1-978-660-1356"
+          },
+          "offers": {
+            "@type": "Offer",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock",
+            "url": "https://www.liquid-shine.com/paint-protection-film"
+          }
+        },
+        {
+          "@type": "Service",
           "@id": "https://www.liquid-shine.com/#service-ppf-removal",
           "name": "Paint Protection Film (PPF) Removal in Tampa & Sarasota",
           "serviceType": "PPF Removal",
@@ -291,8 +330,8 @@ const jsonLd = {
       "@type": "WebPage",
       "@id": "https://www.liquid-shine.com/#webpage",
       "url": "https://www.liquid-shine.com/",
-      "name": "Liquid Shine | Mobile Car Detailing, System X Ceramic Coating, PPF Removal & Boat Detailing — Tampa, Bradenton, Sarasota FL",
-      "description": "Tampa Bay and Sarasota's trusted mobile detailing company. Authorized System X Ceramic Coating installer offering PPF removal, boat detailing, and paint correction — we come to you in Tampa, Bradenton, Palmetto, Parrish, Lakewood Ranch, and Sarasota.",
+      "name": "Liquid Shine | Mobile Car Detailing, System X Ceramic Coating, Paint Protection Film & Boat Detailing — Tampa, Bradenton, Sarasota FL",
+      "description": "Voted Best Car Detailing Service in Parrish, FL for 2026. Tampa Bay and Sarasota's trusted mobile detailing company. Authorized System X Ceramic Coating installer offering paint protection film (PPF) installation and removal, boat detailing, and paint correction — we come to you in Tampa, Bradenton, Palmetto, Parrish, Lakewood Ranch, and Sarasota.",
       "isPartOf": { "@id": "https://www.liquid-shine.com/#website" },
       "about": { "@id": "https://www.liquid-shine.com/#business" },
       "primaryImageOfPage": { "@type": "ImageObject", "url": "https://www.liquid-shine.com/images/hero-car-front.jpg" },
@@ -324,6 +363,22 @@ const jsonLd = {
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "A professionally installed System X ceramic coating from Liquid Shine typically lasts between 2 and 10+ years depending on the package selected (Crystal, Diamond, Max, or Proton), with manufacturer-backed warranties available. Florida's intense sun, salt air, and humidity make professional coatings especially valuable for preserving paint and gelcoat."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you install paint protection film (PPF)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Liquid Shine installs premium paint protection film — an ultra-durable 8-mil self-healing urethane film that defends against rock chips, scratches, road debris, and everyday wear. It deepens your paint's natural gloss for a richer, wet-look finish while remaining virtually invisible, and it's backed by a full 10-year warranty with UV resistance and a hydrophobic, easy-clean surface. Coverage options range from partial front to full-vehicle wraps, and pricing is quoted per vehicle."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Has Liquid Shine won any awards?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Liquid Shine Elite Mobile Detailing was officially recognized as a BEST of 2026 Parrish Award Winner in the Car Detailing Service category — voted the best mobile car detailer in Parrish, Florida. The award is issued by BusinessRate and is based on verified data from Google Reviews, measuring customer satisfaction, brand reputation, and service excellence. It cannot be applied for or nominated; it is earned through authentic customer feedback."
           }
         },
         {

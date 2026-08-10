@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import AwardBadge, { AwardPill } from '@/components/AwardBadge';
 
 export default function AboutUs() {
   const [clientsCount, setClientsCount] = useState(0);
@@ -47,9 +48,12 @@ export default function AboutUs() {
             <h1 className="text-5xl sm:text-7xl font-bold text-white mb-6 leading-tight">
               About Liquid Shine
             </h1>
-            <p className="text-xl sm:text-2xl text-gray-300 max-w-3xl mx-auto">
+            <p className="text-xl sm:text-2xl text-gray-300 max-w-3xl mx-auto mb-8">
               Elite Mobile Detailing Excellence Since 2016
             </p>
+            <div className="flex justify-center">
+              <AwardPill />
+            </div>
           </div>
         </div>
       </section>
@@ -72,6 +76,31 @@ export default function AboutUs() {
               <p>
                 What sets us apart is our mobile advantage. We come to you, saving you time while delivering showroom-quality results. Our dedication to excellence and customer satisfaction has made us the trusted choice for discerning vehicle owners throughout the region.
               </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Best of 2026 Award */}
+      <section className="section bg-[#0a0a0a] border-t border-white/5">
+        <div className="container-custom">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
+            <div className="flex justify-center">
+              <AwardBadge className="w-full max-w-md" />
+            </div>
+            <div className="text-center lg:text-left">
+              <span className="badge badge-primary mb-4">Award Winning</span>
+              <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
+                Best of 2026 in Parrish
+              </h2>
+              <div className="space-y-4 text-gray-300 text-lg leading-relaxed">
+                <p>
+                  Liquid Shine Elite Mobile Detailing has been officially recognized as a <strong className="text-white">BEST of 2026 Parrish Award Winner</strong> in the Car Detailing Service category by BusinessRate — an honor based on verified data from Google Reviews.
+                </p>
+                <p>
+                  The BusinessRate BEST of 2026 Awards identify local leaders in customer satisfaction, brand reputation, and service excellence. The recognition can&apos;t be bought, applied for, or nominated — it&apos;s earned entirely through the authentic feedback of our own customers.
+                </p>
+              </div>
             </div>
           </div>
         </div>

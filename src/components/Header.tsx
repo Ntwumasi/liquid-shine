@@ -56,6 +56,7 @@ export default function Header() {
   ];
 
   const otherServices = [
+    { href: '/paint-protection-film', label: 'Paint Protection Film', icon: '🛡️' },
     { href: '/boat-detailing', label: 'Boat Detailing', icon: '⚓' },
     { href: '/rv-detailing', label: 'RV Detailing', icon: '🚐' },
     { href: '/maintenance', label: 'Maintenance', icon: '🔧' },
@@ -138,7 +139,7 @@ export default function Header() {
 
                 {/* Dropdown Menu */}
                 <div
-                  className={`absolute top-full left-0 mt-2 w-48 bg-[#111111] border border-white/10 rounded-xl shadow-xl overflow-hidden transition-all duration-200 ${
+                  className={`absolute top-full left-0 mt-2 w-56 bg-[#111111] border border-white/10 rounded-xl shadow-xl overflow-hidden transition-all duration-200 ${
                     isServicesOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'
                   }`}
                 >

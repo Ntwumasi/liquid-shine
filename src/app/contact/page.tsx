@@ -163,7 +163,7 @@ export default function Contact() {
               Request a Quote
             </h2>
             <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-              Fill out the form below and we'll get back to you within 24 hours with a personalized quote.
+              Fill out the form below and we&apos;ll get back to you within 24 hours with a personalized quote.
             </p>
           </div>
 

@@ -20,18 +20,39 @@ export default function Contact() {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Form submission handled by UI only
-    alert('Thank you for your interest! We will contact you shortly.');
-    // Reset form
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      serviceType: '',
-      message: '',
-    });
+    setStatus('sending');
+
+    try {
+      // Submissions are emailed via FormSubmit (https://formsubmit.co)
+      const res = await fetch('https://formsubmit.co/ajax/nmansour1198@gmail.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          ...formData,
+          _subject: `New quote request from ${formData.name}`,
+          _replyto: formData.email,
+          _template: 'table',
+          _captcha: 'false',
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok || String(data.success) !== 'true') throw new Error(data.message);
+
+      setStatus('success');
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        serviceType: '',
+        message: '',
+      });
+    } catch {
+      setStatus('error');
+    }
   };
 
   return (
@@ -246,13 +267,25 @@ export default function Contact() {
             {/* Submit Button */}
             <button
               type="submit"
-              className="btn btn-accent w-full text-lg py-5 shadow-large"
+              disabled={status === 'sending'}
+              className="btn btn-accent w-full text-lg py-5 shadow-large disabled:opacity-60 disabled:cursor-not-allowed"
             >
-              Send Message
+              {status === 'sending' ? 'Sending...' : 'Send Message'}
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
               </svg>
             </button>
+
+            {status === 'success' && (
+              <p role="status" className="mt-6 text-center text-green-400 font-semibold">
+                Thank you for your interest! We will contact you shortly.
+              </p>
+            )}
+            {status === 'error' && (
+              <p role="alert" className="mt-6 text-center text-red-400 font-semibold">
+                Something went wrong sending your message. Please call or text us instead.
+              </p>
+            )}
           </form>
         </div>
       </section>

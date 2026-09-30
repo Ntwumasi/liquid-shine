@@ -28,7 +28,7 @@ export default function Contact() {
 
     try {
       // Submissions are emailed via FormSubmit (https://formsubmit.co)
-      const res = await fetch('https://formsubmit.co/ajax/nate@liquid-shine.com', {
+      const res = await fetch('https://formsubmit.co/ajax/nmansour1198@gmail.com', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({

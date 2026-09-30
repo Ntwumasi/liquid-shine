@@ -26,16 +26,22 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus('sending');
-    const company = new FormData(e.currentTarget).get('company');
 
     try {
-      // Emailed to the business via our own API route (src/app/api/contact/route.ts)
-      const res = await fetch('/api/contact', {
+      // Submissions are emailed via FormSubmit (https://formsubmit.co)
+      const res = await fetch('https://formsubmit.co/ajax/nmansour1198@gmail.com', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...formData, company }),
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          ...formData,
+          _subject: `New quote request from ${formData.name}`,
+          _replyto: formData.email,
+          _template: 'table',
+          _captcha: 'false',
+        }),
       });
-      if (!res.ok) throw new Error(`Contact form failed: ${res.status}`);
+      const data = await res.json();
+      if (!res.ok || String(data.success) !== 'true') throw new Error(data.message);
 
       posthog.capture('quote_form_submitted', { service_type: formData.serviceType });
       setStatus('success');
@@ -242,12 +248,6 @@ export default function Contact() {
                   <option value="other">Other</option>
                 </select>
               </div>
-            </div>
-
-            {/* Honeypot field for bots; hidden from real visitors */}
-            <div aria-hidden="true" className="absolute -left-[9999px] w-px h-px overflow-hidden">
-              <label htmlFor="company">Company</label>
-              <input type="text" id="company" name="company" tabIndex={-1} autoComplete="off" />
             </div>
 
             {/* Message Field */}

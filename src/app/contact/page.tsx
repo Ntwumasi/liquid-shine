@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import posthog from 'posthog-js';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -42,6 +43,7 @@ export default function Contact() {
       const data = await res.json();
       if (!res.ok || String(data.success) !== 'true') throw new Error(data.message);
 
+      posthog.capture('quote_form_submitted', { service_type: formData.serviceType });
       setStatus('success');
       setFormData({
         name: '',
